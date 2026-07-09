@@ -1,669 +1,1684 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDEOWORKS — Communicate</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Social Media Marketing — IDEOWORKS</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Sora:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 <style>
-
-  :root{
-    --ink:#14161a;
-    --ink-soft:#4c4c4e;
-    --paper:#f5f6f7;
-    --white:#ffffff;
-    --navy:#0a1420;
-    --blue:#055eaa;
-    --blue-deep:#043f73;
-    --red:#cd201f;
-    --line:rgba(20,22,26,0.10);
-    --line-soft:rgba(255,255,255,0.14);
-    --serif:'Fraunces', serif;
-    --sans:'Inter', sans-serif;
-    --mono:'JetBrains Mono', monospace;
-    --ease:cubic-bezier(.16,.8,.28,1);
+  /* ─── TOKENS ─────────────────────────────────────── */
+  :root {
+    --red:        #E31F26;
+    --red-dark:   #B01820;
+    --blue:       #0033A0;
+    --blue-dark:  #001F6B;
+    --blue-light: #E8EDF8;
+    --white:      #FFFFFF;
+    --bg:         #F5F5F7;
+    --ink:        #1D1D1F;
+    --ink-mid:    #3D3D3F;
+    --ink-soft:   #6E6E73;
+    --ink-xsoft:  #A1A1A6;
+    --border:     #D2D2D7;
+    --shadow-sm:  0 2px 8px rgba(0,0,0,.06);
+    --shadow-md:  0 8px 32px rgba(0,0,0,.10);
+    --r-sm:       8px;
+    --r-md:       16px;
+    --r-lg:       24px;
+    --font-display: 'Sora', sans-serif;
+    --font-body:    'Inter', sans-serif;
+    --ease:       cubic-bezier(.25,.46,.45,.94);
   }
 
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    background:var(--paper);
-    color:var(--ink);
-    font-family:var(--sans);
-    -webkit-font-smoothing:antialiased;
-    overflow-x:hidden;
+  /* ─── RESET ──────────────────────────────────────── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  body { font-family: var(--font-body); color: var(--ink); background: var(--white); overflow-x: hidden; }
+  img { display: block; max-width: 100%; }
+  a { color: inherit; text-decoration: none; }
+  button { cursor: pointer; border: none; background: none; font: inherit; }
+
+  /* ─── TYPOGRAPHY ─────────────────────────────────── */
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
   }
-  @media (prefers-reduced-motion: reduce){
-    html{scroll-behavior:auto;}
-    *{animation-duration:0.01ms !important; transition-duration:0.01ms !important;}
+  .eyebrow--red   { color: var(--red); }
+  .eyebrow--blue  { color: var(--blue); }
+  .eyebrow--white { color: rgba(255,255,255,.6); }
+
+  h1.display {
+    font-family: var(--font-display);
+    font-size: clamp(38px, 5.5vw, 72px);
+    font-weight: 700;
+    line-height: 1.07;
+    letter-spacing: -.02em;
+    color: var(--white);
+  }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 52px);
+    font-weight: 700;
+    line-height: 1.1;
+    letter-spacing: -.02em;
+  }
+  h3.card-title {
+    font-family: var(--font-display);
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -.01em;
+  }
+  p.lead {
+    font-size: clamp(16px, 1.5vw, 20px);
+    line-height: 1.65;
+    color: var(--ink-mid);
+    font-weight: 300;
+  }
+  p.body-copy {
+    font-size: clamp(14px, 1.1vw, 16px);
+    line-height: 1.75;
+    color: var(--ink-soft);
+    font-weight: 400;
   }
 
-  img,svg{display:block; max-width:100%;}
-  a{color:inherit;}
-  h1,h2,h3{margin:0; font-family:var(--serif); font-weight:500; letter-spacing:-0.01em;}
-  p{margin:0;}
+  /* ─── LAYOUT UTILS ───────────────────────────────── */
+  .container   { width: 100%; max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .container--wide { max-width: 1240px; }
+  .section-pad { padding: 100px 0; }
+  .section-pad--sm { padding: 64px 0; }
+  .text-center { text-align: center; }
+  .gap-8  { gap: 8px; }
+  .gap-12 { gap: 12px; }
+  .gap-16 { gap: 16px; }
+  .gap-24 { gap: 24px; }
+  .gap-32 { gap: 32px; }
+  .gap-48 { gap: 48px; }
+  .flex { display: flex; }
+  .flex-col { flex-direction: column; }
+  .align-center { align-items: center; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; }
 
-  .wrap{max-width:1180px; margin:0 auto; padding:0 32px;}
-  @media (max-width:640px){ .wrap{padding:0 20px;} }
+  /* ─── BUTTONS ────────────────────────────────────── */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 14px 28px;
+    border-radius: 980px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all .22s var(--ease);
+    white-space: nowrap;
+  }
+  .btn--primary {
+    background: var(--red);
+    color: var(--white);
+  }
+  .btn--primary:hover { background: var(--red-dark); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(227,31,38,.35); }
+  .btn--outline {
+    background: transparent;
+    color: var(--blue);
+    border: 1.5px solid var(--blue);
+  }
+  .btn--outline:hover { background: var(--blue); color: var(--white); transform: translateY(-1px); }
+  .btn--ghost {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,.4);
+  }
+  .btn--ghost:hover { background: rgba(255,255,255,.12); border-color: rgba(255,255,255,.7); }
+  .btn--white {
+    background: var(--white);
+    color: var(--blue-dark);
+    font-weight: 600;
+  }
+  .btn--white:hover { background: #f0f0f5; transform: translateY(-1px); }
 
-  .eyebrow{
-    font-family:var(--mono);
-    font-size:11px;
-    letter-spacing:0.14em;
-    text-transform:uppercase;
-    color:var(--blue);
-    display:flex;
-    align-items:center;
-    gap:10px;
+  /* ─── NAV ────────────────────────────────────────── */
+  .nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 40px;
+    height: 52px;
+    background: rgba(255,255,255,.85);
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    border-bottom: 1px solid rgba(0,0,0,.08);
+    transition: background .3s;
   }
-  .eyebrow::before{
-    content:"";
-    width:16px; height:1px;
-    background:var(--red);
-    display:inline-block;
+  .nav__logo {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: -.03em;
+    color: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 6px;
   }
+  .nav__logo-mark {
+    width: 22px; height: 22px;
+    background: var(--red);
+    border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .nav__logo-mark svg { width: 12px; height: 12px; }
+  .nav__links {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+    list-style: none;
+  }
+  .nav__links a {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-mid);
+    transition: color .2s;
+  }
+  .nav__links a:hover { color: var(--ink); }
+  .nav__links a.active { color: var(--red); }
+  .nav__right { display: flex; align-items: center; gap: 12px; }
+  .lang-toggle {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink-soft);
+    letter-spacing: .04em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+  }
+  .lang-toggle span.active-lang { color: var(--red); }
+  .lang-divider { color: var(--border); }
+  .nav__cta {
+    font-size: 13px;
+    font-weight: 500;
+    background: var(--red);
+    color: var(--white);
+    padding: 8px 18px;
+    border-radius: 980px;
+    transition: background .2s;
+  }
+  .nav__cta:hover { background: var(--red-dark); }
 
-  /* ---------- lang toggle data ---------- */
-  [data-id]{display:none;}
-  body.lang-id [data-en]{display:none;}
-  body.lang-id [data-id]{display:block;}
-  body.lang-id span[data-id], body.lang-id a[data-id]{display:inline;}
+  /* ─── BREADCRUMB ─────────────────────────────────── */
+  .breadcrumb {
+    position: absolute;
+    top: 52px;
+    left: 0; right: 0;
+    z-index: 50;
+    padding: 14px 40px;
+    background: rgba(0,0,0,.35);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 400;
+    color: rgba(255,255,255,.65);
+  }
+  .breadcrumb a { color: rgba(255,255,255,.65); transition: color .2s; }
+  .breadcrumb a:hover { color: white; }
+  .breadcrumb__sep { color: rgba(255,255,255,.3); }
+  .breadcrumb__current { color: white; font-weight: 500; }
 
-  /* ---------- NAV ---------- */
-  .topnav{
-    position:sticky; top:0; z-index:60;
-    background:rgba(245,246,247,0.86);
-    backdrop-filter:blur(14px);
-    border-bottom:1px solid var(--line);
+  /* ─── HERO ───────────────────────────────────────── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 80px;
+    overflow: hidden;
+    background: var(--blue-dark);
   }
-  .topnav-inner{
-    max-width:1180px; margin:0 auto; padding:0 32px;
-    height:64px; display:flex; align-items:center; justify-content:space-between;
-  }
-  .brand{
-    font-family:var(--serif); font-weight:600; font-size:19px; letter-spacing:-0.01em;
-    display:flex; align-items:baseline; gap:8px;
-  }
-  .brand .dot{color:var(--red);}
-  .brand-crumb{
-    font-family:var(--mono); font-size:11px; color:var(--ink-soft); letter-spacing:0.04em;
-    padding-left:10px; margin-left:10px; border-left:1px solid var(--line);
-  }
-  .nav-right{display:flex; align-items:center; gap:22px;}
-  .nav-links{display:flex; gap:22px; font-size:13.5px; font-weight:500;}
-  .nav-links a{text-decoration:none; opacity:0.72; transition:opacity .2s var(--ease);}
-  .nav-links a:hover{opacity:1;}
-  @media (max-width:800px){ .nav-links{display:none;} }
-
-  .lang-toggle{
-    display:flex; border:1px solid var(--line); border-radius:999px; overflow:hidden;
-    font-family:var(--mono); font-size:11px; letter-spacing:0.06em;
-  }
-  .lang-toggle button{
-    border:0; background:transparent; padding:7px 13px; cursor:pointer;
-    color:var(--ink-soft); font-family:var(--mono); font-size:11px; letter-spacing:0.06em;
-    transition:all .2s var(--ease);
-  }
-  .lang-toggle button.active{background:var(--ink); color:var(--white);}
-
-  /* ---------- HERO ---------- */
-  .hero{
-    position:relative;
-    padding:96px 0 0;
-    overflow:hidden;
-  }
-  .hero-inner{
-    max-width:1180px; margin:0 auto; padding:0 32px;
-    display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:end;
-  }
-  @media (max-width:900px){ .hero-inner{grid-template-columns:1fr;} }
-
-  .hero-copy{padding-bottom:52px;}
-  .hero-copy .eyebrow{margin-bottom:22px;}
-  .hero h1{
-    font-size:clamp(40px, 5.6vw, 76px);
-    line-height:1.02;
-    color:var(--ink);
-    max-width:11ch;
-  }
-  .hero-sub{
-    margin-top:26px;
-    font-size:17px; line-height:1.55; color:var(--ink-soft);
-    max-width:46ch;
-  }
-  .hero-ctas{margin-top:34px; display:flex; gap:14px; flex-wrap:wrap;}
-
-  .btn{
-    display:inline-flex; align-items:center; gap:8px;
-    padding:13px 24px; border-radius:999px;
-    font-size:14px; font-weight:600; text-decoration:none;
-    cursor:pointer; border:1px solid transparent;
-    transition:transform .25s var(--ease), background .25s var(--ease), border-color .25s var(--ease);
-  }
-  .btn:hover{transform:translateY(-1px);}
-  .btn-primary{background:var(--ink); color:var(--white);}
-  .btn-primary:hover{background:var(--blue-deep);}
-  .btn-ghost{border-color:var(--line); color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--ink);}
-
-  .hero-photo{
-    aspect-ratio:4/5;
-    border-radius:18px;
-    position:relative;
-    overflow:hidden;
+  .hero__bg {
+    position: absolute;
+    inset: 0;
     background:
-      radial-gradient(120% 100% at 20% 0%, rgba(5,94,170,0.55), transparent 55%),
-      radial-gradient(110% 90% at 90% 100%, rgba(205,32,31,0.42), transparent 55%),
-      linear-gradient(160deg, #10141c 0%, #1c2430 55%, #0a1420 100%);
+      linear-gradient(135deg, rgba(0,31,107,.92) 0%, rgba(0,51,160,.6) 50%, rgba(227,31,38,.15) 100%),
+      url('https://images.unsplash.com/photo-1551434678-e076c223a692?w=1800&q=80') center/cover no-repeat;
   }
-  .hero-photo::after{
-    content:"";
-    position:absolute; inset:0;
-    background-image:
-      repeating-linear-gradient(115deg, rgba(255,255,255,0.045) 0px, rgba(255,255,255,0.045) 1px, transparent 1px, transparent 5px);
-    mix-blend-mode:overlay;
+  /* Decorative animated line — brand signature */
+  .hero__line {
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--red) 0%, var(--blue) 60%, transparent 100%);
+    transform-origin: left;
+    animation: lineIn 1.2s var(--ease) .2s both;
   }
-  .photo-tag{
-    position:absolute; left:18px; bottom:18px; right:18px;
-    color:rgba(255,255,255,0.82);
-    font-family:var(--mono); font-size:10.5px; letter-spacing:0.05em; line-height:1.5;
-    z-index:2;
+  @keyframes lineIn {
+    from { transform: scaleX(0); }
+    to   { transform: scaleX(1); }
   }
-  .photo-tag b{color:#fff; display:block; font-family:var(--mono); font-weight:500; margin-bottom:2px;}
+  .hero__content {
+    position: relative;
+    z-index: 2;
+    max-width: 780px;
+    padding: 0 40px;
+  }
+  .hero__module-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 28px;
+    padding: 6px 14px 6px 6px;
+    background: rgba(255,255,255,.10);
+    border: 1px solid rgba(255,255,255,.18);
+    border-radius: 980px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .10em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.8);
+    backdrop-filter: blur(8px);
+  }
+  .hero__module-tag .dot {
+    width: 20px; height: 20px;
+    background: var(--red);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .hero__module-tag .dot svg { width: 10px; height: 10px; fill: white; }
+  .hero__sub {
+    margin-top: 24px;
+    font-size: clamp(16px, 1.6vw, 20px);
+    line-height: 1.6;
+    color: rgba(255,255,255,.75);
+    max-width: 600px;
+    font-weight: 300;
+  }
+  .hero__ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+  }
+  .hero__scroll {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    font-size: 10px;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.4);
+    font-weight: 500;
+  }
+  .hero__scroll-line {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,.2);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero__scroll-line::after {
+    content: '';
+    position: absolute;
+    top: -100%; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(255,255,255,.5);
+    animation: scrollLine 2s ease-in-out infinite;
+  }
+  @keyframes scrollLine { 0% { top: -100%; } 100% { top: 100%; } }
 
-  .marquee{
-    border-top:1px solid var(--line);
-    margin-top:56px;
-    padding:16px 0;
-    overflow:hidden;
-    white-space:nowrap;
+  /* ─── POSITIONING ─────────────────────────────────── */
+  .positioning {
+    padding: 120px 0;
+    background: var(--white);
+    text-align: center;
   }
-  .marquee-track{
-    display:inline-flex; gap:48px;
-    font-family:var(--mono); font-size:12px; letter-spacing:0.08em; color:var(--ink-soft);
-    animation:scroll 26s linear infinite;
-  }
-  @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .positioning .section-title { max-width: 640px; margin: 16px auto; }
+  .positioning .lead { max-width: 680px; margin: 24px auto 0; }
 
-  /* sticky pill nav */
-  .pillnav-wrap{
-    position:sticky; top:64px; z-index:50;
-    background:var(--paper);
-    border-bottom:1px solid var(--line);
+  /* ─── PILLARS (What We Do) ───────────────────────── */
+  .pillars { background: var(--bg); }
+  .pillar-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    min-height: 520px;
+    overflow: hidden;
   }
-  .pillnav{
-    display:flex; gap:8px; padding:14px 0; overflow-x:auto;
-    max-width:1180px; margin:0 auto; padding-left:32px; padding-right:32px;
-    scrollbar-width:none;
+  .pillar-item:nth-child(even) .pillar-visual { order: -1; }
+  .pillar-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px;
   }
-  .pillnav::-webkit-scrollbar{display:none;}
-  .pillnav a{
-    flex:0 0 auto;
-    font-size:12.5px; font-weight:500; text-decoration:none;
-    padding:8px 16px; border-radius:999px; border:1px solid var(--line);
-    color:var(--ink-soft); white-space:nowrap;
-    transition:all .2s var(--ease);
+  .pillar-copy .card-title { margin-top: 14px; }
+  .pillar-copy .body-copy  { margin-top: 18px; max-width: 420px; }
+  .pillar-visual {
+    position: relative;
+    overflow: hidden;
+    min-height: 420px;
   }
-  .pillnav a:hover{border-color:var(--ink); color:var(--ink);}
+  .pillar-visual img {
+    width: 100%; height: 100%;
+    object-fit: cover;
+    transition: transform .8s var(--ease);
+  }
+  .pillar-item:hover .pillar-visual img { transform: scale(1.04); }
+  .pillar-visual__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,31,107,.12), rgba(227,31,38,.08));
+  }
 
-  /* ---------- SECTION GENERIC ---------- */
-  section{padding:104px 0;}
-  .section-head{max-width:640px; margin-bottom:56px;}
-  .section-head .eyebrow{margin-bottom:18px;}
-  .section-head h2{font-size:clamp(30px,3.6vw,46px); line-height:1.08;}
-  .section-head .sub{margin-top:16px; font-size:16px; color:var(--ink-soft); line-height:1.6; max-width:52ch;}
+  /* ─── PROCESS ────────────────────────────────────── */
+  .process {
+    background: var(--white);
+    padding: 100px 0;
+  }
+  .process__header { text-align: center; margin-bottom: 72px; }
+  .process__header .section-title { margin-top: 14px; }
+  .process__steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+  }
+  .process__step {
+    background: var(--white);
+    padding: 48px 36px;
+    position: relative;
+    transition: background .25s;
+  }
+  .process__step:hover { background: var(--bg); }
+  .process__num {
+    font-family: var(--font-display);
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .12em;
+    color: var(--red);
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .process__num::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .process__step h4 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    letter-spacing: -.01em;
+  }
+  .process__step p { font-size: 14px; line-height: 1.7; color: var(--ink-soft); }
+  .process__icon {
+    width: 40px; height: 40px;
+    margin-bottom: 20px;
+    background: var(--blue-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .process__icon svg { width: 20px; height: 20px; stroke: var(--blue); fill: none; stroke-width: 1.8; }
 
-  /* ---------- LINEUP (horizontal scroll) ---------- */
-  .lineup-scroller{
-    display:flex; gap:20px; overflow-x:auto;
-    padding-bottom:12px; margin:0 -32px; padding-left:32px; padding-right:32px;
-    scroll-snap-type:x mandatory;
+  /* ─── NUMBERS ────────────────────────────────────── */
+  .numbers {
+    background: var(--blue-dark);
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
   }
-  .lineup-scroller::-webkit-scrollbar{height:6px;}
-  .lineup-scroller::-webkit-scrollbar-thumb{background:var(--line); border-radius:3px;}
+  .numbers::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 500px; height: 500px;
+    background: radial-gradient(circle, rgba(227,31,38,.18) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .numbers::after {
+    content: '';
+    position: absolute;
+    bottom: -80px; left: -80px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(0,51,160,.4) 0%, transparent 65%);
+    pointer-events: none;
+  }
+  .numbers__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: rgba(255,255,255,.06);
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+  }
+  .numbers__item {
+    padding: 56px 36px;
+    background: rgba(255,255,255,.04);
+    text-align: center;
+    transition: background .25s;
+    border: 1px solid rgba(255,255,255,.06);
+  }
+  .numbers__item:hover { background: rgba(255,255,255,.08); }
+  .numbers__value {
+    font-family: var(--font-display);
+    font-size: clamp(36px, 4.5vw, 60px);
+    font-weight: 800;
+    color: var(--white);
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+  .numbers__value span { color: var(--red); }
+  .numbers__label {
+    margin-top: 14px;
+    font-size: 13px;
+    line-height: 1.5;
+    color: rgba(255,255,255,.5);
+    font-weight: 400;
+  }
+  .numbers__header { text-align: center; margin-bottom: 56px; }
+  .numbers__header h2 {
+    font-family: var(--font-display);
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 700;
+    color: var(--white);
+    margin-top: 12px;
+    letter-spacing: -.02em;
+  }
 
-  .service-card{
-    scroll-snap-align:start;
-    flex:0 0 auto;
-    width:300px;
-    background:var(--white);
-    border:1px solid var(--line);
-    border-radius:16px;
-    overflow:hidden;
-    display:flex; flex-direction:column;
-    transition:transform .3s var(--ease), box-shadow .3s var(--ease);
+  /* ─── PLATFORMS ──────────────────────────────────── */
+  .platforms {
+    background: var(--bg);
+    padding: 100px 0;
   }
-  .service-card:hover{transform:translateY(-4px); box-shadow:0 20px 40px -20px rgba(20,22,26,0.22);}
-  .service-photo{
-    aspect-ratio:4/3;
-    position:relative;
-    overflow:hidden;
+  .platforms__header { text-align: center; margin-bottom: 60px; }
+  .platforms__header .section-title { margin-top: 14px; }
+  .platforms__grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 12px;
   }
-  .service-photo::after{
-    content:"";
-    position:absolute; inset:0;
-    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.05) 0px, rgba(255,255,255,0.05) 1px, transparent 1px, transparent 6px);
-    mix-blend-mode:overlay;
+  .platform-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 28px 16px;
+    text-align: center;
+    transition: all .25s var(--ease);
+    position: relative;
+    overflow: hidden;
   }
-  .sp-01{background:radial-gradient(120% 120% at 15% 15%, rgba(5,94,170,0.6), transparent 60%), linear-gradient(150deg,#141922,#0b0f16);}
-  .sp-02{background:radial-gradient(120% 120% at 85% 10%, rgba(205,32,31,0.55), transparent 60%), linear-gradient(150deg,#171313,#0b0d16);}
-  .sp-03{background:radial-gradient(120% 120% at 20% 85%, rgba(5,94,170,0.5), transparent 60%), linear-gradient(150deg,#10141c,#191113);}
-  .sp-04{background:radial-gradient(120% 120% at 80% 80%, rgba(205,32,31,0.5), transparent 60%), linear-gradient(150deg,#12161f,#1a1414);}
-  .sp-05{background:radial-gradient(120% 120% at 50% 0%, rgba(5,94,170,0.45), rgba(205,32,31,0.35) 55%, transparent 75%), linear-gradient(150deg,#111621,#151014);}
+  .platform-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: var(--red);
+    transform: scaleX(0);
+    transition: transform .3s var(--ease);
+  }
+  .platform-card:hover { box-shadow: var(--shadow-md); transform: translateY(-4px); border-color: transparent; }
+  .platform-card:hover::after { transform: scaleX(1); }
+  .platform-icon {
+    width: 44px; height: 44px;
+    margin: 0 auto 14px;
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 22px;
+  }
+  .platform-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 6px;
+  }
+  .platform-note {
+    font-size: 10px;
+    line-height: 1.5;
+    color: var(--ink-xsoft);
+  }
 
-  .card-index{
-    position:absolute; top:14px; left:14px;
-    font-family:var(--mono); font-size:11px; color:rgba(255,255,255,0.7);
+  /* ─── FORMATS ────────────────────────────────────── */
+  .formats {
+    background: var(--white);
+    padding: 100px 0;
   }
-  .card-body{padding:20px 20px 24px;}
-  .card-body h3{font-size:19px; margin-bottom:6px;}
-  .card-tagline{font-size:13.5px; font-style:italic; color:var(--blue); margin-bottom:10px; font-family:var(--serif);}
-  .card-desc{font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
-  .card-link{
-    margin-top:16px; display:inline-flex; align-items:center; gap:6px;
-    font-size:12.5px; font-weight:600; text-decoration:none; color:var(--ink);
+  .formats__header { text-align: center; margin-bottom: 56px; }
+  .formats__header .section-title { margin-top: 14px; }
+  .formats__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
   }
-  .card-link .arrow{transition:transform .2s var(--ease);}
-  .card-link:hover .arrow{transform:translateX(3px);}
+  .format-card {
+    border: 1px solid var(--border);
+    border-radius: var(--r-md);
+    padding: 32px 28px;
+    transition: all .25s var(--ease);
+    background: var(--white);
+  }
+  .format-card:hover { background: var(--bg); border-color: transparent; box-shadow: var(--shadow-sm); transform: translateY(-2px); }
+  .format-card__icon {
+    width: 44px; height: 44px;
+    background: var(--blue-light);
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 18px;
+  }
+  .format-card__icon svg { width: 22px; height: 22px; stroke: var(--blue); fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .format-card h4 {
+    font-family: var(--font-display);
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .format-card p { font-size: 13px; line-height: 1.6; color: var(--ink-soft); }
 
-  /* ---------- WHY TILES ---------- */
-  .why-grid{
-    display:grid; grid-template-columns:repeat(4,1fr); gap:1px;
-    background:var(--line); border:1px solid var(--line); border-radius:16px; overflow:hidden;
+  /* ─── WHY IDW ────────────────────────────────────── */
+  .why {
+    background: var(--bg);
   }
-  @media (max-width:900px){ .why-grid{grid-template-columns:repeat(2,1fr);} }
-  @media (max-width:560px){ .why-grid{grid-template-columns:1fr;} }
-  .why-tile{background:var(--white); padding:32px 26px; min-height:220px; display:flex; flex-direction:column; justify-content:space-between;}
-  .why-num{font-family:var(--mono); font-size:11px; color:var(--red);}
-  .why-tile h3{font-size:19px; margin:18px 0 10px; line-height:1.2;}
-  .why-tile p{font-size:13.5px; line-height:1.55; color:var(--ink-soft);}
+  .why__header { text-align: center; padding: 100px 0 72px; }
+  .why__header .section-title { margin-top: 14px; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .why-item {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 500px;
+    overflow: hidden;
+    background: var(--white);
+  }
+  .why-item:nth-child(odd) .why-visual { order: 1; }
+  .why-item:last-child { margin-bottom: 0; }
+  .why-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 72px;
+  }
+  .why-copy .card-title { margin-top: 14px; }
+  .why-copy .body-copy  { margin-top: 18px; max-width: 400px; }
+  .why-visual {
+    position: relative;
+    overflow: hidden;
+    background: var(--blue-light);
+    min-height: 380px;
+  }
+  .why-visual img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+  .why-item:hover .why-visual img { transform: scale(1.04); }
+  .why-visual__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(0,31,107,.1), rgba(227,31,38,.06));
+  }
+  /* accent badge on why visuals */
+  .why-visual__badge {
+    position: absolute;
+    bottom: 28px;
+    left: 28px;
+    background: var(--red);
+    color: white;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 8px 16px;
+    border-radius: 980px;
+    z-index: 2;
+  }
+  .why__footer { padding-bottom: 100px; background: var(--bg); }
 
-  /* ---------- FEATURE ROWS (Get to know) ---------- */
-  .feature-row{
-    display:grid; grid-template-columns:0.85fr 1.15fr; gap:56px; align-items:center;
-    padding:56px 0; border-top:1px solid var(--line);
+  /* ─── CASE STUDIES ───────────────────────────────── */
+  .casestudies {
+    background: var(--white);
+    padding: 100px 0;
   }
-  .feature-row:last-child{border-bottom:1px solid var(--line);}
-  .feature-row.reverse{grid-template-columns:1.15fr 0.85fr;}
-  .feature-row.reverse .feature-photo{order:2;}
-  @media (max-width:800px){
-    .feature-row, .feature-row.reverse{grid-template-columns:1fr;}
-    .feature-row.reverse .feature-photo{order:0;}
+  .casestudies__header { margin-bottom: 52px; }
+  .casestudies__header-top {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
   }
-  .feature-photo{
-    aspect-ratio:16/11; border-radius:14px; position:relative; overflow:hidden;
+  .casestudies__header .section-title { margin-top: 12px; }
+  .see-all {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--blue);
+    white-space: nowrap;
+    display: flex; align-items: center; gap: 6px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid var(--blue);
+    transition: all .2s;
   }
-  .feature-photo::after{
-    content:""; position:absolute; inset:0;
-    background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.04) 0px, rgba(255,255,255,0.04) 1px, transparent 1px, transparent 6px);
-    mix-blend-mode:overlay;
+  .see-all:hover { color: var(--red); border-color: var(--red); }
+  .cs-track-wrap {
+    overflow: hidden;
+    margin: 0 -24px;
+    padding: 0 24px;
   }
-  .fp-1{background:radial-gradient(110% 110% at 10% 0%, rgba(5,94,170,0.55), transparent 60%), linear-gradient(150deg,#12161f,#0a0d14);}
-  .fp-2{background:radial-gradient(110% 110% at 90% 100%, rgba(205,32,31,0.5), transparent 60%), linear-gradient(150deg,#191213,#0d0f16);}
-  .fp-3{background:radial-gradient(110% 110% at 10% 100%, rgba(5,94,170,0.5), transparent 60%), linear-gradient(150deg,#101520,#141018);}
-  .fp-4{background:radial-gradient(110% 110% at 90% 0%, rgba(205,32,31,0.45), transparent 60%), linear-gradient(150deg,#151a22,#181113);}
-  .fp-5{background:radial-gradient(110% 110% at 50% 100%, rgba(5,94,170,0.5), rgba(205,32,31,0.3) 60%, transparent 80%), linear-gradient(150deg,#121620,#120e13);}
-  .fp-6{background:radial-gradient(110% 110% at 30% 20%, rgba(205,32,31,0.45), transparent 60%), linear-gradient(150deg,#161a22,#100d16);}
+  .cs-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 12px;
+    scrollbar-width: none;
+  }
+  .cs-track::-webkit-scrollbar { display: none; }
+  .cs-card {
+    flex: 0 0 320px;
+    scroll-snap-align: start;
+    border-radius: var(--r-lg);
+    overflow: hidden;
+    background: var(--white);
+    border: 1px solid var(--border);
+    transition: all .3s var(--ease);
+    display: flex;
+    flex-direction: column;
+  }
+  .cs-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); border-color: transparent; }
+  .cs-card__thumb {
+    position: relative;
+    height: 200px;
+    overflow: hidden;
+    background: var(--blue-light);
+  }
+  .cs-card__thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s var(--ease); }
+  .cs-card:hover .cs-card__thumb img { transform: scale(1.06); }
+  .cs-card__tag {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    background: var(--blue-dark);
+    color: white;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    padding: 5px 10px;
+    border-radius: 980px;
+  }
+  .cs-card__tag--red { background: var(--red); }
+  .cs-card__body { padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 10px; }
+  .cs-card__client {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--ink-xsoft);
+  }
+  .cs-card__title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.3;
+    color: var(--ink);
+  }
+  .cs-card__result {
+    font-size: 13px;
+    color: var(--ink-soft);
+    line-height: 1.5;
+    flex: 1;
+  }
+  .cs-card__result strong { color: var(--blue); font-weight: 600; }
+  .cs-card__cta {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--red);
+    margin-top: 4px;
+    transition: gap .2s;
+  }
+  .cs-card:hover .cs-card__cta { gap: 10px; }
+  .cs-card__cta svg { width: 14px; height: 14px; transition: transform .2s; }
+  .cs-card:hover .cs-card__cta svg { transform: translateX(3px); }
+  /* scroll dots */
+  .cs-dots {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+    margin-top: 28px;
+  }
+  .cs-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--border);
+    cursor: pointer;
+    transition: all .2s;
+  }
+  .cs-dot.active { width: 20px; border-radius: 3px; background: var(--red); }
 
-  .feature-text .eyebrow{margin-bottom:16px;}
-  .feature-text h3{font-size:clamp(24px,2.6vw,32px); line-height:1.15; margin-bottom:14px;}
-  .feature-text p{font-size:15.5px; line-height:1.6; color:var(--ink-soft); max-width:44ch;}
-
-  /* ---------- CROSS SELL ---------- */
-  .cross-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:20px;}
-  @media (max-width:800px){ .cross-grid{grid-template-columns:1fr;} }
-  .cross-card{
-    border:1px solid var(--line); border-radius:16px; padding:28px;
-    background:var(--white);
-    display:flex; flex-direction:column; justify-content:space-between; min-height:170px;
-    text-decoration:none; color:var(--ink);
-    transition:border-color .25s var(--ease), transform .25s var(--ease);
+  /* ─── CTA BAND ───────────────────────────────────── */
+  .cta-band {
+    position: relative;
+    padding: 120px 0;
+    overflow: hidden;
+    background: var(--blue-dark);
   }
-  .cross-card:hover{border-color:var(--ink); transform:translateY(-3px);}
-  .cross-label{font-family:var(--mono); font-size:11px; color:var(--ink-soft); letter-spacing:0.08em; text-transform:uppercase;}
-  .cross-card p{font-size:15px; font-weight:500; margin-top:22px; line-height:1.4;}
-  .cross-arrow{margin-top:18px; font-size:13px; font-weight:600; display:flex; align-items:center; gap:6px;}
-
-  /* ---------- CTA BAND ---------- */
-  .cta-band{
-    background:var(--navy); color:var(--white); border-radius:24px;
-    padding:72px 56px; position:relative; overflow:hidden;
-  }
-  .cta-band::before{
-    content:"";
-    position:absolute; inset:0;
+  .cta-band__bg {
+    position: absolute;
+    inset: 0;
     background:
-      radial-gradient(60% 80% at 10% 100%, rgba(5,94,170,0.5), transparent 60%),
-      radial-gradient(50% 70% at 95% 0%, rgba(205,32,31,0.42), transparent 60%);
+      linear-gradient(135deg, rgba(0,31,107,.96) 0%, rgba(0,33,160,.85) 50%, rgba(227,31,38,.18) 100%),
+      url('https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?w=1600&q=80') center/cover no-repeat;
   }
-  .cta-inner{position:relative; z-index:2; max-width:620px;}
-  .cta-band .eyebrow{color:#8fc4ea;}
-  .cta-band .eyebrow::before{background:var(--red);}
-  .cta-band h2{font-size:clamp(30px,4vw,44px); line-height:1.1; margin:18px 0 16px; color:#fff;}
-  .cta-band p.body{font-size:16px; line-height:1.6; color:rgba(255,255,255,0.72); max-width:50ch;}
-  .cta-band .hero-ctas{margin-top:30px;}
-  .cta-band .btn-primary{background:#fff; color:var(--navy);}
-  .cta-band .btn-primary:hover{background:#e8eef2;}
-  .cta-band .btn-ghost{border-color:rgba(255,255,255,0.28); color:#fff;}
-  .cta-band .btn-ghost:hover{border-color:#fff;}
-  .cta-micro{margin-top:22px; font-size:12.5px; color:rgba(255,255,255,0.5);}
+  .cta-band__line {
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--blue), transparent);
+  }
+  .cta-band__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .cta-band__content h2 {
+    font-family: var(--font-display);
+    font-size: clamp(28px, 4vw, 50px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.1;
+    letter-spacing: -.02em;
+    margin-top: 14px;
+  }
+  .cta-band__content p {
+    font-size: clamp(15px, 1.3vw, 18px);
+    color: rgba(255,255,255,.65);
+    margin-top: 20px;
+    line-height: 1.65;
+    font-weight: 300;
+  }
+  .cta-band__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  .cta-band__micro {
+    margin-top: 20px;
+    font-size: 12px;
+    color: rgba(255,255,255,.35);
+    letter-spacing: .02em;
+  }
 
-  /* ---------- FOOTER ---------- */
-  footer{padding:56px 0 64px; border-top:1px solid var(--line); margin-top:40px;}
-  .footer-grid{display:flex; justify-content:space-between; flex-wrap:wrap; gap:24px; align-items:center;}
-  .footer-links{display:flex; gap:22px; font-size:12.5px; color:var(--ink-soft); flex-wrap:wrap;}
-  .footer-links a{text-decoration:none;}
-  .footer-links a:hover{color:var(--ink);}
-  .footer-meta{font-size:12px; color:var(--ink-soft); font-family:var(--mono);}
+  /* ─── FOOTER ─────────────────────────────────────── */
+  .footer {
+    background: var(--ink);
+    padding: 56px 0 32px;
+  }
+  .footer__top {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  .footer__brand-name {
+    font-family: var(--font-display);
+    font-size: 20px;
+    font-weight: 800;
+    color: white;
+    letter-spacing: -.02em;
+    margin-bottom: 12px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .footer__tagline { font-size: 13px; color: rgba(255,255,255,.4); line-height: 1.6; }
+  .footer__col-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: rgba(255,255,255,.35);
+    margin-bottom: 18px;
+  }
+  .footer__links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer__links a { font-size: 13px; color: rgba(255,255,255,.55); transition: color .2s; }
+  .footer__links a:hover { color: white; }
+  .footer__bottom {
+    padding-top: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .footer__copy { font-size: 12px; color: rgba(255,255,255,.3); }
+  .footer__socials { display: flex; gap: 16px; }
+  .footer__socials a { font-size: 12px; color: rgba(255,255,255,.3); transition: color .2s; }
+  .footer__socials a:hover { color: white; }
 
-  ::selection{background:var(--blue); color:#fff;}
+  /* ─── SCROLL ANIMATIONS ──────────────────────────── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity .65s var(--ease), transform .65s var(--ease);
+  }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: .1s; }
+  .reveal-delay-2 { transition-delay: .2s; }
+  .reveal-delay-3 { transition-delay: .3s; }
+  .reveal-delay-4 { transition-delay: .4s; }
 
-  a:focus-visible, button:focus-visible{
-    outline:2px solid var(--blue); outline-offset:2px; border-radius:4px;
+  /* ─── LANG DISPLAY ───────────────────────────────── */
+  [data-lang] { display: none; }
+  body.lang-en [data-lang="en"] { display: inherit; }
+  body.lang-id [data-lang="id"] { display: inherit; }
+  /* for block elements */
+  p[data-lang], div[data-lang], span[data-lang], h1[data-lang], h2[data-lang], h3[data-lang], h4[data-lang] { display: block; }
+  body.lang-en p[data-lang="id"],
+  body.lang-en div[data-lang="id"],
+  body.lang-en span[data-lang="id"],
+  body.lang-en h1[data-lang="id"],
+  body.lang-en h2[data-lang="id"],
+  body.lang-en h3[data-lang="id"],
+  body.lang-en h4[data-lang="id"] { display: none; }
+  body.lang-id p[data-lang="en"],
+  body.lang-id div[data-lang="en"],
+  body.lang-id span[data-lang="en"],
+  body.lang-id h1[data-lang="en"],
+  body.lang-id h2[data-lang="en"],
+  body.lang-id h3[data-lang="en"],
+  body.lang-id h4[data-lang="en"] { display: none; }
+
+  /* ─── RESPONSIVE ─────────────────────────────────── */
+  @media (max-width: 1024px) {
+    .pillar-item, .why-item { grid-template-columns: 1fr; }
+    .pillar-item:nth-child(even) .pillar-visual { order: unset; }
+    .why-item:nth-child(odd) .why-visual { order: unset; }
+    .pillar-copy, .why-copy { padding: 56px 40px; }
+    .process__steps { grid-template-columns: 1fr 1fr; }
+    .numbers__grid  { grid-template-columns: 1fr 1fr; }
+    .platforms__grid { grid-template-columns: repeat(4, 1fr); }
+    .formats__grid  { grid-template-columns: 1fr 1fr; }
+    .footer__top    { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 768px) {
+    .nav__links { display: none; }
+    .hero { min-height: 90vh; padding-bottom: 60px; }
+    .hero__content { padding: 0 24px; }
+    .section-pad { padding: 72px 0; }
+    .process__steps { grid-template-columns: 1fr; }
+    .numbers__grid  { grid-template-columns: 1fr 1fr; }
+    .platforms__grid { grid-template-columns: repeat(3, 1fr); }
+    .formats__grid  { grid-template-columns: 1fr; }
+    .footer__top    { grid-template-columns: 1fr; }
+    .pillar-copy, .why-copy { padding: 48px 24px; }
+    .casestudies__header-top { flex-direction: column; align-items: flex-start; }
+    .hero__scroll { display: none; }
+  }
+  @media (max-width: 480px) {
+    .numbers__grid  { grid-template-columns: 1fr; }
+    .platforms__grid { grid-template-columns: repeat(2, 1fr); }
+    .nav { padding: 0 20px; }
+    .breadcrumb { padding: 12px 20px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
   }
 </style>
 </head>
-<body>
+<body class="lang-en">
 
-<nav class="topnav">
-  <div class="topnav-inner">
-    <div class="brand">IDEOWORKS<span class="dot">.</span>
-      <span class="brand-crumb" data-en>Services / Communicate</span>
-      <span class="brand-crumb" data-id>Layanan / Communicate</span>
+<!-- ─── NAV ──────────────────────────────────────── -->
+<nav class="nav">
+  <a href="/" class="nav__logo">
+    <div class="nav__logo-mark">
+      <svg viewBox="0 0 12 12" fill="white"><path d="M2 2h3v8H2zM7 2h3v4H7z"/></svg>
     </div>
-    <div class="nav-right">
-      <div class="nav-links">
-        <a href="#lineup" data-en>Lineup</a><a href="#lineup" data-id>Layanan</a>
-        <a href="#why" data-en>Why Us</a><a href="#why" data-id>Kenapa Kami</a>
-        <a href="#details">Details</a>
-        <a href="#beyond" data-en>Beyond</a><a href="#beyond" data-id>Selanjutnya</a>
-      </div>
-      <div class="lang-toggle">
-        <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
-        <button id="btn-id" onclick="setLang('id')">ID</button>
-      </div>
+    IDEOWORKS
+  </a>
+  <ul class="nav__links">
+    <li><a href="/works">Works</a></li>
+    <li><a href="/about">About</a></li>
+    <li><a href="/services" class="active">Services</a></li>
+    <li><a href="/articles">Articles</a></li>
+    <li><a href="/contact">Contact</a></li>
+  </ul>
+  <div class="nav__right">
+    <div class="lang-toggle" onclick="toggleLang()">
+      <span class="active-lang" id="langEN">EN</span>
+      <span class="lang-divider">/</span>
+      <span id="langID">ID</span>
     </div>
+    <a href="/contact" class="nav__cta">
+      <span data-lang="en">Talk to Us</span>
+      <span data-lang="id">Hubungi Kami</span>
+    </a>
   </div>
 </nav>
 
-<header class="hero">
-  <div class="hero-inner">
-    <div class="hero-copy">
-      <div class="eyebrow"><span data-en>Services — Communicate</span><span data-id>Layanan — Communicate</span></div>
-      <h1><span data-en>Say it right. Say it once.</span><span data-id>Sampaikan dengan tepat. Sampaikan sekali jadi.</span></h1>
-      <p class="hero-sub">
-        <span data-en>Strategy and storytelling, built from the ground up — so your brand sounds like itself in every frame, every channel, every time.</span>
-        <span data-id>Strategi dan storytelling, dibangun dari dasar — agar brand Anda terdengar seperti dirinya sendiri di setiap frame, setiap kanal, setiap saat.</span>
-      </p>
-      <div class="hero-ctas">
-        <a href="#lineup" class="btn btn-primary"><span data-en>Explore Communicate</span><span data-id>Jelajahi Communicate</span></a>
-        <a href="#contact" class="btn btn-ghost"><span data-en>Talk to Our Team</span><span data-id>Bicara dengan Tim Kami</span></a>
+<!-- ─── HERO ──────────────────────────────────────── -->
+<section class="hero">
+  <div class="hero__line"></div>
+  <div class="hero__bg"></div>
+
+  <!-- Breadcrumb -->
+  <div class="breadcrumb">
+    <a href="/services" data-lang="en">Services</a>
+    <a href="/services" data-lang="id">Layanan</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="/services#socialize">Socialize</a>
+    <span class="breadcrumb__sep">›</span>
+    <span class="breadcrumb__current">Social Media Marketing</span>
+  </div>
+
+  <div class="hero__content">
+    <div class="hero__module-tag">
+      <div class="dot">
+        <svg viewBox="0 0 10 10"><path d="M2 2h3v6H2zM6 2h2v3H6z"/></svg>
       </div>
+      <span data-lang="en">Module 03 — Socialize</span>
+      <span data-lang="id">Modul 03 — Socialize</span>
     </div>
-    <div class="hero-photo">
-      <div class="photo-tag">
-        <b data-en>Photo direction</b><b data-id>Arahan foto</b>
-        <span data-en>Candid BTS — creative director reviewing a shot on the director's monitor, dark-wood set, red/blue brand accents in soft bokeh.</span>
-        <span data-id>Candid BTS — creative director meninjau hasil di monitor director, set kayu gelap, aksen merah/biru brand dalam bokeh lembut.</span>
+
+    <h1 class="display" data-lang="en">Present, every day<br>that matters.</h1>
+    <h1 class="display" data-lang="id">Hadir, di setiap hari<br>yang berarti.</h1>
+
+    <p class="hero__sub" data-lang="en">Social media done right isn't about volume — it's about showing up consistently, saying the right thing, and building an audience that actually cares.</p>
+    <p class="hero__sub" data-lang="id">Social media yang dilakukan dengan benar bukan soal kuantitas — tapi tentang hadir secara konsisten, menyampaikan hal yang tepat, dan membangun audiens yang benar-benar peduli.</p>
+
+    <div class="hero__ctas">
+      <a href="/contact" class="btn btn--primary" data-lang="en">Start a Conversation</a>
+      <a href="/contact" class="btn btn--primary" data-lang="id">Mulai Percakapan</a>
+      <a href="#casestudies" class="btn btn--ghost" data-lang="en">See Our SMM Work</a>
+      <a href="#casestudies" class="btn btn--ghost" data-lang="id">Lihat Hasil Kerja Kami</a>
+    </div>
+  </div>
+
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ─── POSITIONING ───────────────────────────────── -->
+<section class="positioning reveal">
+  <div class="container">
+    <p class="eyebrow eyebrow--red" data-lang="en">What Social Media Marketing Means to Us</p>
+    <p class="eyebrow eyebrow--red" data-lang="id">Apa Arti SMM bagi Kami</p>
+    <h2 class="section-title" data-lang="en">A content engine,<br>not a content calendar.</h2>
+    <h2 class="section-title" data-lang="id">Mesin konten,<br>bukan sekadar kalender konten.</h2>
+    <p class="lead" data-lang="en">Most brands treat social media like a to-do list. We treat it like a living system — one that listens, learns, and compounds over time. Every post, caption, and reply is part of a bigger strategy designed to grow your brand's presence and convert attention into loyalty.</p>
+    <p class="lead" data-lang="id">Kebanyakan brand memperlakukan social media seperti daftar tugas. Kami memperlakukannya sebagai sistem yang hidup — yang mendengarkan, belajar, dan bertumbuh seiring waktu. Setiap post, caption, dan balasan komentar adalah bagian dari strategi yang lebih besar, dirancang untuk menumbuhkan kehadiran brand dan mengubah perhatian menjadi loyalitas.</p>
+  </div>
+</section>
+
+<!-- ─── PILLARS ────────────────────────────────────── -->
+<section class="pillars">
+
+  <!-- Pillar 1 -->
+  <div class="pillar-item reveal">
+    <div class="pillar-copy">
+      <p class="eyebrow eyebrow--blue" data-lang="en">Content Strategy</p>
+      <p class="eyebrow eyebrow--blue" data-lang="id">Strategi Konten</p>
+      <h3 class="card-title" data-lang="en">Built on what your audience actually wants.</h3>
+      <h3 class="card-title" data-lang="id">Dibangun dari apa yang benar-benar diinginkan audiens Anda.</h3>
+      <p class="body-copy" data-lang="en">We don't guess. We map your audience's behavior, study what they engage with, and build a content direction that feels native to the platform and true to your brand.</p>
+      <p class="body-copy" data-lang="id">Kami tidak menebak. Kami memetakan perilaku audiens, mempelajari apa yang membuat mereka terlibat, dan membangun arah konten yang terasa natural di platform sekaligus autentik terhadap brand Anda.</p>
+    </div>
+    <div class="pillar-visual">
+      <img src="https://images.unsplash.com/photo-1611162616475-46b635cb6868?w=800&q=80" alt="Content strategy planning" loading="lazy" />
+      <div class="pillar-visual__overlay"></div>
+    </div>
+  </div>
+
+  <!-- Pillar 2 -->
+  <div class="pillar-item reveal">
+    <div class="pillar-copy">
+      <p class="eyebrow eyebrow--red" data-lang="en">Content Production</p>
+      <p class="eyebrow eyebrow--red" data-lang="id">Produksi Konten</p>
+      <h3 class="card-title" data-lang="en">Every format. Every platform. Done properly.</h3>
+      <h3 class="card-title" data-lang="id">Setiap format. Setiap platform. Dikerjakan dengan benar.</h3>
+      <p class="body-copy" data-lang="en">From Reels to carousels, Stories to long-form — we produce content that looks native to the feed, not like it came from an agency. Shot, edited, and captioned in-house.</p>
+      <p class="body-copy" data-lang="id">Dari Reels hingga carousel, Stories hingga konten panjang — kami memproduksi konten yang terasa natural di feed, bukan seperti buatan agency. Diproduksi, diedit, dan diberi caption secara in-house.</p>
+    </div>
+    <div class="pillar-visual">
+      <img src="https://images.unsplash.com/photo-1542744094-3a31f272c490?w=800&q=80" alt="Content production in action" loading="lazy" />
+      <div class="pillar-visual__overlay"></div>
+    </div>
+  </div>
+
+  <!-- Pillar 3 -->
+  <div class="pillar-item reveal">
+    <div class="pillar-copy">
+      <p class="eyebrow eyebrow--blue" data-lang="en">Community Management</p>
+      <p class="eyebrow eyebrow--blue" data-lang="id">Manajemen Komunitas</p>
+      <h3 class="card-title" data-lang="en">The conversation doesn't stop when the post goes live.</h3>
+      <h3 class="card-title" data-lang="id">Percakapan tidak berhenti saat post diterbitkan.</h3>
+      <p class="body-copy" data-lang="en">We manage your comments, DMs, and mentions — keeping your brand responsive, human, and present in every thread that matters.</p>
+      <p class="body-copy" data-lang="id">Kami mengelola komentar, DM, dan mention Anda — menjaga brand tetap responsif, manusiawi, dan hadir di setiap percakapan yang penting.</p>
+    </div>
+    <div class="pillar-visual">
+      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&q=80" alt="Community team managing social channels" loading="lazy" />
+      <div class="pillar-visual__overlay"></div>
+    </div>
+  </div>
+
+  <!-- Pillar 4 -->
+  <div class="pillar-item reveal">
+    <div class="pillar-copy">
+      <p class="eyebrow eyebrow--red" data-lang="en">Performance & Reporting</p>
+      <p class="eyebrow eyebrow--red" data-lang="id">Performa & Pelaporan</p>
+      <h3 class="card-title" data-lang="en">Numbers that mean something.</h3>
+      <h3 class="card-title" data-lang="id">Angka yang berarti sesuatu.</h3>
+      <p class="body-copy" data-lang="en">Reach and impressions are a starting point, not the finish line. We track what actually matters — engagement rate, follower quality, content performance, and how social feeds into your broader business goals.</p>
+      <p class="body-copy" data-lang="id">Reach dan impresi hanyalah titik awal, bukan garis finish. Kami melacak yang benar-benar penting — engagement rate, kualitas follower, performa konten, dan bagaimana social berkontribusi pada tujuan bisnis Anda yang lebih besar.</p>
+    </div>
+    <div class="pillar-visual">
+      <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Analytics dashboard and reporting" loading="lazy" />
+      <div class="pillar-visual__overlay"></div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ─── PROCESS ────────────────────────────────────── -->
+<section class="process">
+  <div class="container">
+    <div class="process__header reveal">
+      <p class="eyebrow eyebrow--red" data-lang="en">How We Work</p>
+      <p class="eyebrow eyebrow--red" data-lang="id">Cara Kami Bekerja</p>
+      <h2 class="section-title" data-lang="en">Four steps. One system.</h2>
+      <h2 class="section-title" data-lang="id">Empat langkah. Satu sistem.</h2>
+    </div>
+    <div class="process__steps reveal">
+
+      <div class="process__step">
+        <div class="process__num">01</div>
+        <div class="process__icon">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h4 data-lang="en">Discover</h4>
+        <h4 data-lang="id">Temukan</h4>
+        <p data-lang="en">We audit your current social presence, study competitors, and map what's working in your category.</p>
+        <p data-lang="id">Kami mengaudit kehadiran social media Anda saat ini, mempelajari kompetitor, dan memetakan apa yang berhasil di kategori Anda.</p>
       </div>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="marquee">
-      <div class="marquee-track">
-        <span>BRAND STRATEGY</span><span>CREATIVE PRODUCTION</span><span>TV COMMERCIAL</span><span>DIGITAL VIDEO</span><span>CONTENT CREATION</span>
-        <span>BRAND STRATEGY</span><span>CREATIVE PRODUCTION</span><span>TV COMMERCIAL</span><span>DIGITAL VIDEO</span><span>CONTENT CREATION</span>
+
+      <div class="process__step">
+        <div class="process__num">02</div>
+        <div class="process__icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h4 data-lang="en">Define</h4>
+        <h4 data-lang="id">Definisikan</h4>
+        <p data-lang="en">A clear content strategy with platform guidelines, tone of voice, visual direction, and a publishing cadence built for your brand.</p>
+        <p data-lang="id">Strategi konten yang jelas dengan panduan platform, tone of voice, arah visual, dan frekuensi penerbitan yang dibangun khusus untuk brand Anda.</p>
       </div>
-    </div>
-  </div>
-</header>
 
-<div class="pillnav-wrap">
-  <div class="pillnav">
-    <a href="#c1">Brand Strategy</a>
-    <a href="#c2">Creative Production</a>
-    <a href="#c3">TV Commercial</a>
-    <a href="#c4">Digital Video</a>
-    <a href="#c5">Content Creation</a>
-  </div>
-</div>
-
-<section id="lineup">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow"><span data-en>The Lineup</span><span data-id>Rangkaian Layanan</span></div>
-      <h2><span data-en>Explore Communicate.</span><span data-id>Jelajahi Communicate.</span></h2>
-      <p class="sub"><span data-en>Five disciplines, one voice — from the first strategic spark to the final cut.</span><span data-id>Lima disiplin, satu suara — dari percikan strategi pertama hingga hasil akhir.</span></p>
-    </div>
-  </div>
-  <div class="wrap">
-    <div class="lineup-scroller">
-
-      <article class="service-card" id="c1">
-        <div class="service-photo sp-01"><span class="card-index">01</span></div>
-        <div class="card-body">
-          <h3>Brand Strategy</h3>
-          <p class="card-tagline"><span data-en>The plan before the plan.</span><span data-id>Rencana sebelum rencana.</span></p>
-          <p class="card-desc"><span data-en>A clear position, a sharp narrative, a foundation every future campaign can stand on.</span><span data-id>Posisi yang jelas, narasi yang kuat, fondasi yang menopang setiap campaign ke depannya.</span></p>
-          <a href="#" class="card-link"><span data-en>Learn more</span><span data-id>Pelajari Lebih Lanjut</span><span class="arrow">→</span></a>
+      <div class="process__step">
+        <div class="process__num">03</div>
+        <div class="process__icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
         </div>
-      </article>
+        <h4 data-lang="en">Create</h4>
+        <h4 data-lang="id">Buat</h4>
+        <p data-lang="en">Our in-house team produces every piece of content — copy, visual, video — ready to publish on schedule.</p>
+        <p data-lang="id">Tim in-house kami memproduksi setiap konten — copy, visual, video — siap untuk diterbitkan tepat waktu.</p>
+      </div>
 
-      <article class="service-card" id="c2">
-        <div class="service-photo sp-02"><span class="card-index">02</span></div>
-        <div class="card-body">
-          <h3>Creative Production</h3>
-          <p class="card-tagline"><span data-en>Ideas, made real.</span><span data-id>Ide, jadi nyata.</span></p>
-          <p class="card-desc"><span data-en>Concepts that don't just look good on a deck — they get built, shot, and shipped.</span><span data-id>Konsep yang tidak hanya bagus di atas slide — tapi benar-benar dieksekusi, diproduksi, dan dirilis.</span></p>
-          <a href="#" class="card-link"><span data-en>Learn more</span><span data-id>Pelajari Lebih Lanjut</span><span class="arrow">→</span></a>
+      <div class="process__step">
+        <div class="process__num">04</div>
+        <div class="process__icon">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
         </div>
-      </article>
-
-      <article class="service-card" id="c3">
-        <div class="service-photo sp-03"><span class="card-index">03</span></div>
-        <div class="card-body">
-          <h3>TV Commercial</h3>
-          <p class="card-tagline"><span data-en>Thirty seconds. Built to last.</span><span data-id>Tiga puluh detik. Dibuat untuk bertahan lama.</span></p>
-          <p class="card-desc"><span data-en>Broadcast-grade films crafted for the screen that still commands attention.</span><span data-id>Film berkualitas broadcast, dirancang untuk layar yang masih mampu merebut perhatian.</span></p>
-          <a href="#" class="card-link"><span data-en>Learn more</span><span data-id>Pelajari Lebih Lanjut</span><span class="arrow">→</span></a>
-        </div>
-      </article>
-
-      <article class="service-card" id="c4">
-        <div class="service-photo sp-04"><span class="card-index">04</span></div>
-        <div class="card-body">
-          <h3>Digital Video</h3>
-          <p class="card-tagline"><span data-en>Made for the scroll.</span><span data-id>Dibuat untuk layar yang di-scroll.</span></p>
-          <p class="card-desc"><span data-en>Short-form, vertical-first, built for the platforms where your audience actually lives.</span><span data-id>Format pendek, vertikal, dirancang untuk platform tempat audiens Anda sesungguhnya berada.</span></p>
-          <a href="#" class="card-link"><span data-en>Learn more</span><span data-id>Pelajari Lebih Lanjut</span><span class="arrow">→</span></a>
-        </div>
-      </article>
-
-      <article class="service-card" id="c5">
-        <div class="service-photo sp-05"><span class="card-index">05</span></div>
-        <div class="card-body">
-          <h3>Content Creation</h3>
-          <p class="card-tagline"><span data-en>Content, on schedule.</span><span data-id>Konten, tepat waktu.</span></p>
-          <p class="card-desc"><span data-en>A steady stream of assets that keep your brand present without losing its voice.</span><span data-id>Aliran konten yang konsisten, menjaga brand tetap hadir tanpa kehilangan karakternya.</span></p>
-          <a href="#" class="card-link"><span data-en>Learn more</span><span data-id>Pelajari Lebih Lanjut</span><span class="arrow">→</span></a>
-        </div>
-      </article>
+        <h4 data-lang="en">Optimize</h4>
+        <h4 data-lang="id">Optimalkan</h4>
+        <p data-lang="en">Monthly performance reviews, real-time monitoring, and continuous refinement so every month is better than the last.</p>
+        <p data-lang="id">Review performa bulanan, pemantauan real-time, dan penyempurnaan berkelanjutan agar setiap bulan lebih baik dari sebelumnya.</p>
+      </div>
 
     </div>
   </div>
 </section>
 
-<section id="why">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow"><span data-en>Why IDEOWORKS</span><span data-id>Kenapa IDEOWORKS</span></div>
-      <h2><span data-en>One team. Every story, told right.</span><span data-id>Satu tim. Setiap cerita, tersampaikan dengan tepat.</span></h2>
+<!-- ─── NUMBERS ────────────────────────────────────── -->
+<section class="numbers">
+  <div class="container">
+    <div class="numbers__header reveal">
+      <p class="eyebrow eyebrow--white" data-lang="en">Track Record</p>
+      <p class="eyebrow eyebrow--white" data-lang="id">Rekam Jejak</p>
+      <h2 data-lang="en">13 years of showing up.</h2>
+      <h2 data-lang="id">13 tahun hadir tanpa henti.</h2>
     </div>
+    <div class="numbers__grid">
+      <div class="numbers__item reveal reveal-delay-1">
+        <div class="numbers__value">3,000<span>+</span></div>
+        <div class="numbers__label" data-lang="en">Brands grown<br>since 2013</div>
+        <div class="numbers__label" data-lang="id">Brand yang bertumbuh<br>sejak 2013</div>
+      </div>
+      <div class="numbers__item reveal reveal-delay-2">
+        <div class="numbers__value">12<span>+</span></div>
+        <div class="numbers__label" data-lang="en">Years of social<br>media expertise</div>
+        <div class="numbers__label" data-lang="id">Tahun keahlian<br>social media</div>
+      </div>
+      <div class="numbers__item reveal reveal-delay-3">
+        <div class="numbers__value">50M<span>+</span></div>
+        <div class="numbers__label" data-lang="en">Impressions delivered<br>every month</div>
+        <div class="numbers__label" data-lang="id">Impresi yang dihasilkan<br>setiap bulan</div>
+      </div>
+      <div class="numbers__item reveal reveal-delay-4">
+        <div class="numbers__value" style="font-size:clamp(18px,2.2vw,28px);line-height:1.2;padding-top:8px"  data-lang="en">Indonesia's<br><span>First</span></div>
+        <div class="numbers__value" style="font-size:clamp(18px,2.2vw,28px);line-height:1.2;padding-top:8px"  data-lang="id">Google Premier<br><span>Partner</span></div>
+        <div class="numbers__label" data-lang="en">Google Premier Partner<br>for SMEs in Indonesia</div>
+        <div class="numbers__label" data-lang="id">Pertama di Indonesia<br>untuk segmen UKM</div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <div class="why-grid">
-      <div class="why-tile">
-        <span class="why-num">01</span>
+<!-- ─── PLATFORMS ─────────────────────────────────── -->
+<section class="platforms">
+  <div class="container container--wide">
+    <div class="platforms__header reveal">
+      <p class="eyebrow eyebrow--blue" data-lang="en">Platforms We Master</p>
+      <p class="eyebrow eyebrow--blue" data-lang="id">Platform yang Kami Kuasai</p>
+      <h2 class="section-title" data-lang="en">Where your audience lives,<br>we're already there.</h2>
+      <h2 class="section-title" data-lang="id">Di mana pun audiens Anda berada,<br>kami sudah ada di sana.</h2>
+    </div>
+    <div class="platforms__grid reveal">
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#ffeef0">
+          <span style="font-size:26px">📸</span>
+        </div>
+        <div class="platform-name">Instagram</div>
+        <div class="platform-note" data-lang="en">Visual identity<br>& community</div>
+        <div class="platform-note" data-lang="id">Identitas visual<br>& komunitas</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#f0f0f5">
+          <span style="font-size:26px">🎵</span>
+        </div>
+        <div class="platform-name">TikTok</div>
+        <div class="platform-note" data-lang="en">Trends & viral<br>short-form</div>
+        <div class="platform-note" data-lang="id">Tren & konten<br>viral pendek</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#e8f0fe">
+          <span style="font-size:26px">👥</span>
+        </div>
+        <div class="platform-name">Facebook</div>
+        <div class="platform-note" data-lang="en">Community &<br>ad conversion</div>
+        <div class="platform-note" data-lang="id">Komunitas &<br>konversi iklan</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#fff0f0">
+          <span style="font-size:26px">▶️</span>
+        </div>
+        <div class="platform-name">YouTube</div>
+        <div class="platform-note" data-lang="en">Long-form &<br>brand trust</div>
+        <div class="platform-note" data-lang="id">Konten panjang<br>& kepercayaan</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#e8edf8">
+          <span style="font-size:26px">💼</span>
+        </div>
+        <div class="platform-name">LinkedIn</div>
+        <div class="platform-note" data-lang="en">B2B &<br>thought leadership</div>
+        <div class="platform-note" data-lang="id">B2B &<br>thought leadership</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#f5f5f7">
+          <span style="font-size:26px">𝕏</span>
+        </div>
+        <div class="platform-name">X / Twitter</div>
+        <div class="platform-note" data-lang="en">Real-time<br>conversation</div>
+        <div class="platform-note" data-lang="id">Percakapan<br>real-time</div>
+      </div>
+
+      <div class="platform-card">
+        <div class="platform-icon" style="background:#f5f0fe">
+          <span style="font-size:26px">🧵</span>
+        </div>
+        <div class="platform-name">Threads</div>
+        <div class="platform-note" data-lang="en">The new<br>public square</div>
+        <div class="platform-note" data-lang="id">Alun-alun<br>publik baru</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── FORMATS ───────────────────────────────────── -->
+<section class="formats">
+  <div class="container container--wide">
+    <div class="formats__header reveal">
+      <p class="eyebrow eyebrow--red" data-lang="en">Content Formats We Produce</p>
+      <p class="eyebrow eyebrow--red" data-lang="id">Format Konten yang Kami Produksi</p>
+      <h2 class="section-title" data-lang="en">Every format your brand needs,<br>under one roof.</h2>
+      <h2 class="section-title" data-lang="id">Setiap format yang brand Anda butuhkan,<br>di bawah satu atap.</h2>
+    </div>
+    <div class="formats__grid reveal">
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
+        </div>
+        <h4 data-lang="en">Short-form Video</h4>
+        <h4 data-lang="id">Video Pendek</h4>
+        <p data-lang="en">Reels, TikTok, YouTube Shorts — built for the first 3 seconds.</p>
+        <p data-lang="id">Reels, TikTok, YouTube Shorts — dibangun untuk 3 detik pertama.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+        </div>
+        <h4 data-lang="en">Carousel & Slides</h4>
+        <h4 data-lang="id">Carousel & Slides</h4>
+        <p data-lang="en">Multi-image education, storytelling, and product showcases.</p>
+        <p data-lang="id">Edukasi, storytelling, dan showcase produk dalam format multi-gambar.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h4 data-lang="en">Static Visual</h4>
+        <h4 data-lang="id">Visual Statis</h4>
+        <p data-lang="en">Branded photography and graphics that stop the scroll.</p>
+        <p data-lang="id">Fotografi dan grafis berbranding yang membuat orang berhenti scroll.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h4 data-lang="en">Stories</h4>
+        <h4 data-lang="id">Stories</h4>
+        <p data-lang="en">24-hour content for real-time engagement and daily presence.</p>
+        <p data-lang="id">Konten 24 jam untuk engagement real-time dan kehadiran harian.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 0 0 1.46 6.42 29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58 2.78 2.78 0 0 0 1.95 1.95C5.12 20 12 20 12 20s6.88 0 8.59-.47a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/></svg>
+        </div>
+        <h4 data-lang="en">Long-form Video</h4>
+        <h4 data-lang="id">Video Panjang</h4>
+        <p data-lang="en">YouTube content and brand documentaries that build lasting trust.</p>
+        <p data-lang="id">Konten YouTube dan dokumentasi brand yang membangun kepercayaan jangka panjang.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h4 data-lang="en">Live Content</h4>
+        <h4 data-lang="id">Konten Live</h4>
+        <p data-lang="en">Brand events, Q&A sessions, and live product launches.</p>
+        <p data-lang="id">Event brand, sesi Q&A, dan peluncuran produk secara langsung.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h4 data-lang="en">UGC / KOL</h4>
+        <h4 data-lang="id">UGC / KOL</h4>
+        <p data-lang="en">Creator-led content that feels authentic because it is.</p>
+        <p data-lang="id">Konten dari kreator yang terasa autentik — karena memang begitu adanya.</p>
+      </div>
+
+      <div class="format-card">
+        <div class="format-card__icon">
+          <svg viewBox="0 0 24 24"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        </div>
+        <h4 data-lang="en">Copy & Captioning</h4>
+        <h4 data-lang="id">Copy & Caption</h4>
+        <p data-lang="en">Voice-consistent captions that sound like your brand, every time.</p>
+        <p data-lang="id">Caption yang konsisten dengan tone brand Anda, setiap saat.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── WHY IDEOWORKS ──────────────────────────────── -->
+<section class="why">
+  <div class="why__header container reveal">
+    <p class="eyebrow eyebrow--blue" data-lang="en">Why IDEOWORKS</p>
+    <p class="eyebrow eyebrow--blue" data-lang="id">Mengapa IDEOWORKS</p>
+    <h2 class="section-title" data-lang="en">Three things that make<br>the difference.</h2>
+    <h2 class="section-title" data-lang="id">Tiga hal yang membuat<br>perbedaan nyata.</h2>
+  </div>
+
+  <!-- Why 1 -->
+  <div class="why-item reveal">
+    <div class="why-copy">
+      <p class="eyebrow eyebrow--blue" data-lang="en">Fully Integrated</p>
+      <p class="eyebrow eyebrow--blue" data-lang="id">Sepenuhnya Terintegrasi</p>
+      <h3 class="card-title" data-lang="en">Social isn't a silo here.</h3>
+      <h3 class="card-title" data-lang="id">Social bukan silo di sini.</h3>
+      <p class="body-copy" data-lang="en">Your SMM sits inside the same CASA system as your paid media, creative production, and analytics — so everything moves together, amplifying each other instead of working in parallel.</p>
+      <p class="body-copy" data-lang="id">SMM Anda berada di dalam sistem CASA yang sama dengan paid media, produksi kreatif, dan analitik — sehingga semuanya bergerak bersama, saling memperkuat bukan hanya berjalan paralel.</p>
+    </div>
+    <div class="why-visual">
+      <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Integrated team working together" loading="lazy" />
+      <div class="why-visual__overlay"></div>
+      <div class="why-visual__badge" data-lang="en">CASA System</div>
+      <div class="why-visual__badge" data-lang="id">Sistem CASA</div>
+    </div>
+  </div>
+
+  <!-- Why 2 -->
+  <div class="why-item reveal">
+    <div class="why-copy">
+      <p class="eyebrow eyebrow--red" data-lang="en">In-House Production</p>
+      <p class="eyebrow eyebrow--red" data-lang="id">Produksi In-House</p>
+      <h3 class="card-title" data-lang="en">No outsourcing. No briefing lag.</h3>
+      <h3 class="card-title" data-lang="id">Tidak ada outsourcing. Tidak ada kelambatan briefing.</h3>
+      <p class="body-copy" data-lang="en">Our creative team produces content under one roof — strategy, design, video, and copy all in sync, moving at the speed your feed demands.</p>
+      <p class="body-copy" data-lang="id">Tim kreatif kami memproduksi konten di bawah satu atap — strategi, desain, video, dan copy semuanya tersinkronisasi, bergerak secepat yang dibutuhkan feed Anda.</p>
+    </div>
+    <div class="why-visual">
+      <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80" alt="In-house creative production team" loading="lazy" />
+      <div class="why-visual__overlay"></div>
+      <div class="why-visual__badge" data-lang="en">In-house Team</div>
+      <div class="why-visual__badge" data-lang="id">Tim In-house</div>
+    </div>
+  </div>
+
+  <!-- Why 3 -->
+  <div class="why-item reveal">
+    <div class="why-copy">
+      <p class="eyebrow eyebrow--blue" data-lang="en">Data-Led Always</p>
+      <p class="eyebrow eyebrow--blue" data-lang="id">Selalu Berbasis Data</p>
+      <h3 class="card-title" data-lang="en">Instinct, backed by numbers.</h3>
+      <h3 class="card-title" data-lang="id">Insting, didukung angka.</h3>
+      <p class="body-copy" data-lang="en">Every content decision is backed by real performance data — not trends we read about last week, but signals from your actual audience right now.</p>
+      <p class="body-copy" data-lang="id">Setiap keputusan konten didukung data performa nyata — bukan tren yang kami baca minggu lalu, tapi sinyal dari audiens Anda yang sesungguhnya saat ini.</p>
+    </div>
+    <div class="why-visual">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80" alt="Data analytics and reporting" loading="lazy" />
+      <div class="why-visual__overlay"></div>
+      <div class="why-visual__badge" data-lang="en">Data-Driven</div>
+      <div class="why-visual__badge" data-lang="id">Berbasis Data</div>
+    </div>
+  </div>
+
+  <div class="why__footer"></div>
+</section>
+
+<!-- ─── CASE STUDIES ───────────────────────────────── -->
+<section class="casestudies" id="casestudies">
+  <div class="container container--wide">
+    <div class="casestudies__header reveal">
+      <div class="casestudies__header-top">
         <div>
-          <h3><span data-en>Strategy-first, always.</span><span data-id>Strategi lebih dulu, selalu.</span></h3>
-          <p><span data-en>Every film, every post, every campaign starts with a position worth defending — not a trend worth chasing.</span><span data-id>Setiap film, setiap post, setiap campaign dimulai dari posisi yang layak dipertahankan — bukan tren yang sekadar dikejar.</span></p>
+          <p class="eyebrow eyebrow--red" data-lang="en">SMM Case Studies</p>
+          <p class="eyebrow eyebrow--red" data-lang="id">Studi Kasus SMM</p>
+          <h2 class="section-title" data-lang="en">Stories from the feed.</h2>
+          <h2 class="section-title" data-lang="id">Cerita dari feed kami.</h2>
         </div>
-      </div>
-      <div class="why-tile">
-        <span class="why-num">02</span>
-        <div>
-          <h3><span data-en>In-house, end to end.</span><span data-id>Satu atap, dari awal sampai akhir.</span></h3>
-          <p><span data-en>Strategy, script, shoot, and edit — under one roof, so nothing gets lost in translation between teams.</span><span data-id>Strategi, naskah, produksi, hingga editing — dalam satu tim, sehingga tidak ada yang hilang di antara proses.</span></p>
-        </div>
-      </div>
-      <div class="why-tile">
-        <span class="why-num">03</span>
-        <div>
-          <h3><span data-en>Proven with real brands.</span><span data-id>Terbukti bersama brand nyata.</span></h3>
-          <p><span data-en>Trusted by 3,000+ companies since 2013 — from FMCG to banking to retail — to tell their story right.</span><span data-id>Dipercaya 3.000+ perusahaan sejak 2013 — dari FMCG, perbankan, hingga retail — untuk menyampaikan cerita mereka dengan tepat.</span></p>
-        </div>
-      </div>
-      <div class="why-tile">
-        <span class="why-num">04</span>
-        <div>
-          <h3><span data-en>Built to connect with Amplify.</span><span data-id>Dirancang untuk terhubung dengan Amplify.</span></h3>
-          <p><span data-en>A story crafted here reaches further, because it's built to work with the media plan that follows.</span><span data-id>Cerita yang dibangun di sini menjangkau lebih jauh, karena dirancang untuk selaras dengan rencana media yang mengikutinya.</span></p>
-        </div>
+        <a href="/works" class="see-all" data-lang="en">
+          See All Works
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="/works" class="see-all" data-lang="id">
+          Lihat Semua Karya
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
       </div>
     </div>
+
+    <div class="cs-track-wrap">
+      <div class="cs-track" id="csTrack">
+
+        <!-- Card 1 -->
+        <div class="cs-card reveal reveal-delay-1">
+          <div class="cs-card__thumb">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=600&q=80" alt="Lion Parcel SMM Campaign" loading="lazy" />
+            <span class="cs-card__tag">SMM / Socialize</span>
+          </div>
+          <div class="cs-card__body">
+            <div class="cs-card__client">Lion Parcel</div>
+            <div class="cs-card__title" data-lang="en">#BeraniDiAndelin — Turning trust into a movement.</div>
+            <div class="cs-card__title" data-lang="id">#BeraniDiAndelin — Mengubah kepercayaan menjadi gerakan.</div>
+            <div class="cs-card__result" data-lang="en"><strong>2.3M</strong> organic reach in 30 days with zero paid amplification.</div>
+            <div class="cs-card__result" data-lang="id"><strong>2,3 juta</strong> organic reach dalam 30 hari tanpa paid amplification.</div>
+            <a href="/works/lion-parcel" class="cs-card__cta" data-lang="en">
+              Read the Story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/works/lion-parcel" class="cs-card__cta" data-lang="id">
+              Baca Ceritanya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="cs-card reveal reveal-delay-2">
+          <div class="cs-card__thumb">
+            <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80" alt="Haruka Indonesia SMM" loading="lazy" />
+            <span class="cs-card__tag cs-card__tag--red">SMM / Content</span>
+          </div>
+          <div class="cs-card__body">
+            <div class="cs-card__client">Haruka Indonesia</div>
+            <div class="cs-card__title" data-lang="en">Building a loyal beauty community from scratch.</div>
+            <div class="cs-card__title" data-lang="id">Membangun komunitas kecantikan yang loyal dari nol.</div>
+            <div class="cs-card__result" data-lang="en"><strong>5× engagement growth</strong> in Q3 with content-first strategy across Instagram & TikTok.</div>
+            <div class="cs-card__result" data-lang="id"><strong>5× pertumbuhan engagement</strong> di Q3 dengan strategi content-first di Instagram & TikTok.</div>
+            <a href="/works/haruka" class="cs-card__cta" data-lang="en">
+              Read the Story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/works/haruka" class="cs-card__cta" data-lang="id">
+              Baca Ceritanya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="cs-card reveal reveal-delay-3">
+          <div class="cs-card__thumb">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80" alt="Edo Food SMM Campaign" loading="lazy" />
+            <span class="cs-card__tag">SMM / Amplify</span>
+          </div>
+          <div class="cs-card__body">
+            <div class="cs-card__client">Edo Food</div>
+            <div class="cs-card__title" data-lang="en">#KreasikanEdo — From recipe content to a creator community.</div>
+            <div class="cs-card__title" data-lang="id">#KreasikanEdo — Dari konten resep ke komunitas kreator.</div>
+            <div class="cs-card__result" data-lang="en"><strong>180% follower growth</strong> in 60 days through UGC-led social strategy.</div>
+            <div class="cs-card__result" data-lang="id"><strong>180% pertumbuhan follower</strong> dalam 60 hari melalui strategi social berbasis UGC.</div>
+            <a href="/works/edo-food" class="cs-card__cta" data-lang="en">
+              Read the Story
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+            <a href="/works/edo-food" class="cs-card__cta" data-lang="id">
+              Baca Ceritanya
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Card 4 — See All -->
+        <div class="cs-card reveal reveal-delay-4" style="border: 2px dashed var(--border); background: var(--bg); justify-content: center; align-items: center; text-align: center; min-height: 380px; padding: 40px 28px;">
+          <div style="display:flex;flex-direction:column;align-items:center;gap:18px;">
+            <div style="width:56px;height:56px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--blue)" stroke-width="1.8"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </div>
+            <p style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);line-height:1.3" data-lang="en">More SMM work<br>in our portfolio.</p>
+            <p style="font-family:var(--font-display);font-size:18px;font-weight:700;color:var(--ink);line-height:1.3" data-lang="id">Lebih banyak karya SMM<br>di portofolio kami.</p>
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:200px" data-lang="en">13 years of campaigns across every industry and platform.</p>
+            <p style="font-size:13px;color:var(--ink-soft);line-height:1.6;max-width:200px" data-lang="id">13 tahun kampanye lintas industri dan platform.</p>
+            <a href="/works" class="btn btn--outline" data-lang="en" style="margin-top:8px">See All Works</a>
+            <a href="/works" class="btn btn--outline" data-lang="id" style="margin-top:8px">Lihat Semua</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- scroll dots -->
+    <div class="cs-dots" id="csDots">
+      <div class="cs-dot active" onclick="scrollToCard(0)"></div>
+      <div class="cs-dot" onclick="scrollToCard(1)"></div>
+      <div class="cs-dot" onclick="scrollToCard(2)"></div>
+      <div class="cs-dot" onclick="scrollToCard(3)"></div>
+    </div>
+
   </div>
 </section>
 
-<section id="details">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow"><span data-en>The Details</span><span data-id>Lebih Dalam</span></div>
-      <h2><span data-en>Get to know Communicate.</span><span data-id>Kenali lebih dekat Communicate.</span></h2>
+<!-- ─── CTA BAND ───────────────────────────────────── -->
+<section class="cta-band">
+  <div class="cta-band__bg"></div>
+  <div class="cta-band__line"></div>
+  <div class="cta-band__content reveal">
+    <p class="eyebrow eyebrow--white" data-lang="en">Let's Build Your Social Presence</p>
+    <p class="eyebrow eyebrow--white" data-lang="id">Mari Bangun Kehadiran Social Anda</p>
+    <h2 data-lang="en">Your audience is already out there. Let's make sure they find you.</h2>
+    <h2 data-lang="id">Audiens Anda sudah ada di luar sana. Mari pastikan mereka menemukan Anda.</h2>
+    <p data-lang="en">Whether you're starting from zero or scaling what you have — our social media team is ready to build something that lasts.</p>
+    <p data-lang="id">Baik Anda mulai dari nol atau mengembangkan yang sudah ada — tim social media kami siap membangun sesuatu yang bertahan.</p>
+    <div class="cta-band__actions">
+      <a href="/contact" class="btn btn--white" data-lang="en">Start a Conversation</a>
+      <a href="/contact" class="btn btn--white" data-lang="id">Mulai Percakapan</a>
+      <a href="/services" class="btn btn--ghost" data-lang="en">Back to Services</a>
+      <a href="/services" class="btn btn--ghost" data-lang="id">Kembali ke Layanan</a>
     </div>
-
-    <div class="feature-row">
-      <div class="feature-photo fp-1"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>01 — Strategy</span><span data-id>01 — Strategi</span></div>
-        <h3><span data-en>Strategic Foundation</span><span data-id>Fondasi Strategis</span></h3>
-        <p><span data-en>Every project starts with research, not a mood board.</span><span data-id>Setiap proyek dimulai dari riset, bukan sekadar mood board.</span></p>
-      </div>
-    </div>
-
-    <div class="feature-row reverse">
-      <div class="feature-photo fp-2"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>02 — Craft</span><span data-id>02 — Craft</span></div>
-        <h3><span data-en>Craft & Production Value</span><span data-id>Kualitas Produksi & Craft</span></h3>
-        <p><span data-en>Broadcast-grade equipment, experienced crews, no shortcuts.</span><span data-id>Peralatan setara broadcast, kru berpengalaman, tanpa jalan pintas.</span></p>
-      </div>
-    </div>
-
-    <div class="feature-row">
-      <div class="feature-photo fp-3"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>03 — Storytelling</span><span data-id>03 — Storytelling</span></div>
-        <h3><span data-en>Platform-Native Storytelling</span><span data-id>Storytelling yang Sesuai Platform</span></h3>
-        <p><span data-en>The same story, reshaped for TV, feed, and stream — never a copy-paste.</span><span data-id>Cerita yang sama, dibentuk ulang untuk TV, feed, dan streaming — tidak pernah sekadar salin-tempel.</span></p>
-      </div>
-    </div>
-
-    <div class="feature-row reverse">
-      <div class="feature-photo fp-4"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>04 — Consistency</span><span data-id>04 — Konsistensi</span></div>
-        <h3><span data-en>Consistency Across Every Touchpoint</span><span data-id>Konsistensi di Setiap Titik Sentuh</span></h3>
-        <p><span data-en>One brand voice, whether it's a 30-second TVC or a 3-second Reels hook.</span><span data-id>Satu suara brand, baik itu TVC 30 detik maupun hook Reels 3 detik.</span></p>
-      </div>
-    </div>
-
-    <div class="feature-row">
-      <div class="feature-photo fp-5"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>05 — Speed</span><span data-id>05 — Kecepatan</span></div>
-        <h3><span data-en>Speed Without Sacrificing Quality</span><span data-id>Cepat Tanpa Mengorbankan Kualitas</span></h3>
-        <p><span data-en>Content calendars that keep pace with culture, without cutting corners.</span><span data-id>Kalender konten yang mengikuti ritme budaya, tanpa mengorbankan kualitas.</span></p>
-      </div>
-    </div>
-
-    <div class="feature-row reverse">
-      <div class="feature-photo fp-6"></div>
-      <div class="feature-text">
-        <div class="eyebrow"><span data-en>06 — Results</span><span data-id>06 — Hasil</span></div>
-        <h3><span data-en>Real Brands, Real Results</span><span data-id>Brand Nyata, Hasil Nyata</span></h3>
-        <p><span data-en>From Mondial's Chinese New Year campaign to Bintang Toedjoe's content — see the craft in action.</span><span data-id>Dari campaign Chinese New Year Mondial hingga konten Bintang Toedjoe — lihat craft-nya dalam aksi.</span></p>
-      </div>
-    </div>
+    <p class="cta-band__micro" data-lang="en">No pitch decks. Just a real conversation about what your brand needs.</p>
+    <p class="cta-band__micro" data-lang="id">Tanpa presentasi formal. Cukup percakapan nyata tentang apa yang dibutuhkan brand Anda.</p>
   </div>
 </section>
 
-<section id="beyond">
-  <div class="wrap">
-    <div class="section-head">
-      <div class="eyebrow"><span data-en>The Full System</span><span data-id>Sistem yang Lengkap</span></div>
-      <h2><span data-en>A story is only the beginning.</span><span data-id>Cerita hanyalah permulaan.</span></h2>
-      <p class="sub"><span data-en>Once your story is ready, Amplify gets it in front of the right people, Socialize builds a community around it, and Analyze proves it worked.</span><span data-id>Setelah cerita Anda siap, Amplify menyalurkannya ke orang yang tepat, Socialize membangun komunitas di sekitarnya, dan Analyze membuktikan bahwa semuanya berhasil.</span></p>
-    </div>
-
-    <div class="cross-grid">
-      <a href="#" class="cross-card">
-        <span class="cross-label">Module 02</span>
-        <p><span data-en>See how we make every channel work harder.</span><span data-id>Lihat bagaimana kami membuat setiap kanal bekerja lebih keras.</span></p>
-        <span class="cross-arrow">Amplify →</span>
-      </a>
-      <a href="#" class="cross-card">
-        <span class="cross-label">Module 03</span>
-        <p><span data-en>See how we build more than an audience.</span><span data-id>Lihat bagaimana kami membangun lebih dari sekadar audiens.</span></p>
-        <span class="cross-arrow">Socialize →</span>
-      </a>
-      <a href="#" class="cross-card">
-        <span class="cross-label">Module 04</span>
-        <p><span data-en>See how we turn campaigns into proof.</span><span data-id>Lihat bagaimana kami mengubah campaign menjadi bukti.</span></p>
-        <span class="cross-arrow">Analyze →</span>
-      </a>
-    </div>
-  </div>
-</section>
-
-<section id="contact">
-  <div class="wrap">
-    <div class="cta-band">
-      <div class="cta-inner">
-        <div class="eyebrow"><span data-en>Let's Tell Your Story</span><span data-id>Mari Sampaikan Cerita Anda</span></div>
-        <h2><span data-en>Every brand has a story worth telling right.</span><span data-id>Setiap brand punya cerita yang layak disampaikan dengan tepat.</span></h2>
-        <p class="body"><span data-en>Whether you need a single film or a full content engine — IDEOWORKS builds the story your brand actually needs.</span><span data-id>Baik Anda membutuhkan satu film atau seluruh mesin konten — IDEOWORKS membangun cerita yang benar-benar dibutuhkan brand Anda.</span></p>
-        <div class="hero-ctas">
-          <a href="#" class="btn btn-primary"><span data-en>Start a Conversation</span><span data-id>Mulai Percakapan</span></a>
-          <a href="#" class="btn btn-ghost"><span data-en>See Our Work</span><span data-id>Lihat Hasil Karya Kami</span></a>
+<!-- ─── FOOTER ────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container container--wide">
+    <div class="footer__top">
+      <div>
+        <div class="footer__brand-name">
+          <div style="width:24px;height:24px;background:var(--red);border-radius:6px;display:flex;align-items:center;justify-content:center;">
+            <svg width="13" height="13" viewBox="0 0 12 12" fill="white"><path d="M2 2h3v8H2zM7 2h3v4H7z"/></svg>
+          </div>
+          IDEOWORKS
         </div>
-        <p class="cta-micro"><span data-en>No pitch decks. Just a real conversation about what you need.</span><span data-id>Tanpa presentasi formal. Cukup percakapan nyata tentang apa yang Anda butuhkan.</span></p>
+        <p class="footer__tagline" data-lang="en">Make Idea Works.<br>Jakarta, Indonesia — Est. 2013</p>
+        <p class="footer__tagline" data-lang="id">Make Idea Works.<br>Jakarta, Indonesia — Berdiri 2013</p>
+      </div>
+      <div>
+        <div class="footer__col-title" data-lang="en">Services</div>
+        <div class="footer__col-title" data-lang="id">Layanan</div>
+        <ul class="footer__links">
+          <li><a href="/services#communicate" data-lang="en">Communicate</a><a href="/services#communicate" data-lang="id">Communicate</a></li>
+          <li><a href="/services#amplify" data-lang="en">Amplify</a><a href="/services#amplify" data-lang="id">Amplify</a></li>
+          <li><a href="/services/social-media-marketing" data-lang="en">Social Media Marketing</a><a href="/services/social-media-marketing" data-lang="id">Social Media Marketing</a></li>
+          <li><a href="/services#analyze" data-lang="en">Analyze</a><a href="/services#analyze" data-lang="id">Analyze</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-lang="en">Company</div>
+        <div class="footer__col-title" data-lang="id">Perusahaan</div>
+        <ul class="footer__links">
+          <li><a href="/about" data-lang="en">About</a><a href="/about" data-lang="id">Tentang Kami</a></li>
+          <li><a href="/works" data-lang="en">Works</a><a href="/works" data-lang="id">Karya</a></li>
+          <li><a href="/articles" data-lang="en">Articles</a><a href="/articles" data-lang="id">Artikel</a></li>
+          <li><a href="/contact" data-lang="en">Contact</a><a href="/contact" data-lang="id">Kontak</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer__col-title" data-lang="en">Follow Us</div>
+        <div class="footer__col-title" data-lang="id">Ikuti Kami</div>
+        <ul class="footer__links">
+          <li><a href="https://instagram.com/ideoworks.id" target="_blank">Instagram</a></li>
+          <li><a href="https://linkedin.com/company/ideoworks.id" target="_blank">LinkedIn</a></li>
+          <li><a href="https://facebook.com/ideoworks.id" target="_blank">Facebook</a></li>
+          <li><a href="https://youtube.com/channel/UCqBOIujepQvxirpZVhMiQcw" target="_blank">YouTube</a></li>
+        </ul>
       </div>
     </div>
-  </div>
-</section>
-
-<footer>
-  <div class="wrap footer-grid">
-    <div class="footer-links">
-      <a href="#lineup" data-en>Back to Services</a><a href="#lineup" data-id>Kembali ke Services</a>
-      <a href="#why">Communicate</a>
-      <a href="#">Amplify</a>
-      <a href="#">Socialize</a>
-      <a href="#">Analyze</a>
+    <div class="footer__bottom">
+      <p class="footer__copy" data-lang="en">© 2026 PT. Cipta Urban Darsana — IDEOWORKS. All rights reserved.</p>
+      <p class="footer__copy" data-lang="id">© 2026 PT. Cipta Urban Darsana — IDEOWORKS. Hak cipta dilindungi.</p>
+      <div class="footer__socials">
+        <a href="https://ideoworks.id" target="_blank">ideoworks.id</a>
+      </div>
     </div>
-    <div class="footer-meta"><span data-en>Trusted by 3,000+ brands since 2013</span><span data-id>Dipercaya 3.000+ brand sejak 2013</span></div>
   </div>
 </footer>
 
+<!-- ─── SCRIPTS ───────────────────────────────────── -->
 <script>
-  function setLang(lang){
-    document.body.classList.toggle('lang-id', lang === 'id');
-    document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-    document.getElementById('btn-id').classList.toggle('active', lang === 'id');
-    document.documentElement.lang = lang;
+  /* ── Language Toggle ── */
+  let currentLang = 'en';
+  function toggleLang() {
+    currentLang = currentLang === 'en' ? 'id' : 'en';
+    document.body.className = 'lang-' + currentLang;
+    document.getElementById('langEN').classList.toggle('active-lang', currentLang === 'en');
+    document.getElementById('langID').classList.toggle('active-lang', currentLang === 'id');
   }
+
+  /* ── Scroll Reveal ── */
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); observer.unobserve(e.target); }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => observer.observe(el));
+
+  /* ── Case Study Scroll Dots ── */
+  const track = document.getElementById('csTrack');
+  const dots  = document.querySelectorAll('.cs-dot');
+
+  function scrollToCard(i) {
+    const cards = track.querySelectorAll('.cs-card');
+    if (cards[i]) track.scrollTo({ left: cards[i].offsetLeft - 24, behavior: 'smooth' });
+  }
+
+  track.addEventListener('scroll', () => {
+    const cards = track.querySelectorAll('.cs-card');
+    let closest = 0, minDist = Infinity;
+    cards.forEach((c, i) => {
+      const d = Math.abs(c.getBoundingClientRect().left - track.getBoundingClientRect().left);
+      if (d < minDist) { minDist = d; closest = i; }
+    });
+    dots.forEach((d, i) => d.classList.toggle('active', i === closest));
+  });
+
+  /* ── Nav opacity on scroll ── */
+  const nav = document.querySelector('.nav');
+  window.addEventListener('scroll', () => {
+    nav.style.background = window.scrollY > 60
+      ? 'rgba(255,255,255,.96)'
+      : 'rgba(255,255,255,.85)';
+  }, { passive: true });
 </script>
 
 </body>
