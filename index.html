@@ -3,593 +3,593 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IDEOWORKS — Social Media Marketing</title>
+<title>About — IDEOWORKS</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=Instrument+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500;1,9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#17171a;
-    --grey:#4c4c4e;
-    --grey-soft:#8a8a8c;
-    --paper:#f7f6f2;
-    --paper-dim:#eeece5;
-    --paper-card:#ffffff;
-    --red:#cd201f;
+    --ink:#12161a;
+    --ink-2:#1c2229;
+    --marble:#eeebe3;
+    --marble-2:#e2ddd0;
+    --paper:#faf8f4;
     --blue:#055eaa;
-    --brass:#b98b4e;
-    --line:rgba(23,23,26,0.10);
-    --shadow:0 20px 60px rgba(23,23,26,0.08);
-    --radius:18px;
-    --maxw:1180px;
+    --blue-deep:#033f72;
+    --red:#cd201f;
+    --grey:#4c4c4e;
+    --gold:#b08d57;
+    --gold-soft:#ddc79a;
+    --text-d:#12161a;
+    --text-l:#f4f1e9;
+    --muted-d:rgba(18,22,26,.6);
+    --muted-l:rgba(244,241,233,.64);
+    --serif:'Fraunces', serif;
+    --sans:'Inter', sans-serif;
+    --mono:'IBM Plex Mono', monospace;
   }
-  *{box-sizing:border-box;}
+  *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
   body{
-    margin:0;
+    font-family:var(--sans);
     background:var(--paper);
-    color:var(--ink);
-    font-family:'Instrument Sans', sans-serif;
+    color:var(--text-d);
     -webkit-font-smoothing:antialiased;
     overflow-x:hidden;
   }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    margin-bottom:18px;
+    color:var(--gold);
+  }
+  .eyebrow::before{
+    content:'';
+    width:22px;height:1px;
+    background:var(--gold);
+    display:inline-block;
+  }
+  .eyebrow.on-light{ color:var(--blue-deep); }
   h1,h2,h3{
-    font-family:'Bricolage Grotesque', sans-serif;
-    margin:0;
-    letter-spacing:-0.02em;
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-0.01em;
+    line-height:1.05;
   }
-  .mono{
-    font-family:'IBM Plex Mono', monospace;
-    letter-spacing:0.02em;
+  .section{
+    position:relative;
+    padding:120px 8vw;
   }
-  .wrap{
-    max-width:var(--maxw);
-    margin:0 auto;
-    padding:0 40px;
+  .section.dark{ background:var(--ink); color:var(--text-l); }
+  .section.light{ background:var(--paper); color:var(--text-d); }
+  .section.marble{ background:var(--marble); color:var(--text-d); }
+  .inner{ max-width:1180px; margin:0 auto; }
+  .kicker-lang{
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.1em;
+    color:var(--muted-d); margin-top:6px;
   }
-  a{color:inherit;}
-  img{max-width:100%;display:block;}
-
-  /* language toggle logic */
-  body.lang-en .t-id{display:none;}
-  body.lang-id .t-en{display:none;}
+  .dark .kicker-lang{ color:var(--muted-l); }
 
   /* ---------- NAV ---------- */
-  .nav{
-    position:sticky; top:0; z-index:100;
+  .topnav{
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 8vw;
+    mix-blend-mode:difference;
+    color:#fff;
+    font-family:var(--mono); font-size:12px; letter-spacing:.08em;
+    pointer-events:none;
+  }
+  .topnav .mark{ font-family:var(--serif); font-size:18px; font-style:italic; letter-spacing:0; }
+  .jumpnav{
+    position:fixed; left:50%; transform:translateX(-50%) translateY(-140%);
+    top:20px; z-index:99;
+    display:flex; gap:4px;
+    background:rgba(18,22,26,.86);
     backdrop-filter:blur(14px);
-    background:rgba(247,246,242,0.82);
-    border-bottom:1px solid var(--line);
+    border:1px solid rgba(255,255,255,.08);
+    padding:6px; border-radius:100px;
+    transition:transform .5s cubic-bezier(.16,1,.3,1);
   }
-  .nav-inner{
-    max-width:var(--maxw); margin:0 auto; padding:0 40px;
-    height:64px; display:flex; align-items:center; justify-content:space-between;
+  .jumpnav.show{ transform:translateX(-50%) translateY(0); }
+  .jumpnav a{
+    font-family:var(--mono); font-size:11px; letter-spacing:.05em;
+    color:var(--muted-l); padding:9px 16px; border-radius:100px;
+    transition:all .25s ease;
+    white-space:nowrap;
   }
-  .nav-mark{
-    font-family:'Bricolage Grotesque', sans-serif;
-    font-weight:800; font-size:15px; letter-spacing:0.02em;
-    display:flex; align-items:center; gap:8px;
-  }
-  .nav-mark .dot{width:7px;height:7px;border-radius:50%;background:var(--red);display:inline-block;}
-  .nav-links{
-    display:flex; gap:28px; list-style:none; margin:0; padding:0;
-    font-size:13px; color:var(--grey);
-  }
-  .nav-links a{text-decoration:none; transition:color .2s ease;}
-  .nav-links a:hover{color:var(--ink);}
-  .nav-right{display:flex; align-items:center; gap:18px;}
-  .lang-btn{
-    font-family:'IBM Plex Mono', monospace;
-    font-size:11px; border:1px solid var(--line); background:transparent;
-    border-radius:100px; padding:6px 12px; cursor:pointer; color:var(--ink);
-    display:flex; gap:6px; align-items:center;
-  }
-  .lang-btn span{padding:2px 6px; border-radius:100px; opacity:.4;}
-  .lang-btn span.active{background:var(--ink); color:var(--paper); opacity:1;}
-  @media (max-width:860px){ .nav-links{display:none;} }
-
-  /* ---------- SLATE / PHOTO PLACEHOLDER (signature element) ---------- */
-  .slate{
-    position:relative; border-radius:var(--radius); overflow:hidden;
-    isolation:isolate;
-    min-height:340px;
-    display:flex; align-items:flex-end;
-  }
-  .slate::before{
-    content:"";
-    position:absolute; inset:0;
-    background:
-      radial-gradient(120% 140% at 15% 0%, rgba(205,32,31,0.16), transparent 55%),
-      radial-gradient(120% 140% at 100% 100%, rgba(5,94,170,0.20), transparent 55%),
-      linear-gradient(160deg, #2b2b2e 0%, #1c1c1f 55%, #131315 100%);
-    z-index:-1;
-  }
-  .slate::after{
-    content:"";
-    position:absolute; inset:0;
-    background-image:repeating-linear-gradient(0deg, rgba(255,255,255,0.025) 0px, rgba(255,255,255,0.025) 1px, transparent 1px, transparent 3px);
-    z-index:-1; mix-blend-mode:overlay;
-  }
-  .slate-tag{
-    position:absolute; top:16px; left:16px;
-    font-size:10.5px; color:rgba(255,255,255,0.75);
-    background:rgba(0,0,0,0.35);
-    border:1px solid rgba(255,255,255,0.18);
-    padding:6px 10px; border-radius:6px;
-    display:flex; gap:8px; align-items:center;
-  }
-  .slate-tag .rec{width:6px;height:6px;border-radius:50%;background:var(--red); box-shadow:0 0 6px var(--red);}
-  .slate-caption{
-    position:relative; padding:18px 20px; color:rgba(255,255,255,0.88);
-    font-size:13px; line-height:1.5; max-width:92%;
-  }
-  .slate-caption b{color:#fff; font-weight:600;}
-  .slate.short{min-height:220px;}
+  .jumpnav a.active, .jumpnav a:hover{ color:var(--ink); background:var(--gold-soft); }
 
   /* ---------- HERO ---------- */
-  .hero{padding:96px 0 60px;}
-  .eyebrow{
-    font-size:12px; text-transform:uppercase; letter-spacing:0.14em;
-    color:var(--red); font-weight:600; margin-bottom:18px;
-    display:flex; align-items:center; gap:10px;
+  .hero{
+    height:100vh; min-height:720px;
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:0 8vw 90px;
+    background:
+      radial-gradient(ellipse 90% 60% at 20% 0%, rgba(5,94,170,.35), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 100% 100%, rgba(205,32,31,.22), transparent 55%),
+      linear-gradient(160deg,#0d1013 0%, #171c22 55%, #0e1216 100%);
+    color:var(--text-l);
+    position:relative;
+    overflow:hidden;
   }
-  .eyebrow::before{content:""; width:22px; height:1px; background:var(--red);}
+  .hero .photo-frame{
+    position:absolute; inset:0;
+    background:
+      repeating-linear-gradient(115deg, rgba(255,255,255,.025) 0 2px, transparent 2px 6px),
+      linear-gradient(200deg, rgba(176,141,87,.16), transparent 40%);
+    opacity:.9;
+  }
+  .hero .grain{
+    position:absolute; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+    mix-blend-mode:overlay; pointer-events:none;
+  }
+  .hero-caption{
+    position:absolute; top:110px; right:8vw;
+    max-width:230px; text-align:right;
+    font-family:var(--mono); font-size:10.5px; letter-spacing:.05em;
+    color:rgba(244,241,233,.42); line-height:1.6;
+  }
+  .hero-top{
+    position:absolute; top:110px; left:8vw;
+    display:flex; align-items:center; gap:12px;
+  }
+  .hero-top .dot{ width:6px; height:6px; border-radius:50%; background:var(--gold); }
   .hero h1{
-    font-size:clamp(42px, 6vw, 78px);
-    font-weight:700; line-height:1.02; max-width:820px;
+    font-size:clamp(40px, 6.4vw, 92px);
+    max-width:14ch;
+    margin-bottom:28px;
   }
+  .hero h1 em{ font-style:italic; color:var(--gold-soft); }
   .hero p.sub{
-    margin-top:26px; font-size:19px; line-height:1.55; color:var(--grey);
-    max-width:560px;
+    font-size:clamp(15px,1.5vw,19px);
+    max-width:520px;
+    color:var(--muted-l);
+    line-height:1.6;
+    margin-bottom:40px;
   }
-  .cta-row{display:flex; gap:14px; margin-top:38px; flex-wrap:wrap;}
+  .cta-row{ display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
   .btn{
-    font-family:'Instrument Sans', sans-serif;
-    font-size:14.5px; font-weight:600; padding:14px 26px; border-radius:100px;
-    text-decoration:none; display:inline-flex; align-items:center; gap:8px;
-    transition:transform .18s ease, box-shadow .18s ease;
+    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+    padding:15px 28px; border-radius:100px;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:all .3s cubic-bezier(.16,1,.3,1);
   }
-  .btn-primary{background:var(--ink); color:var(--paper);}
-  .btn-primary:hover{transform:translateY(-2px); box-shadow:0 10px 24px rgba(23,23,26,0.25);}
-  .btn-ghost{border:1px solid var(--line); color:var(--ink);}
-  .btn-ghost:hover{border-color:var(--ink); transform:translateY(-2px);}
+  .btn-primary{ background:var(--text-l); color:var(--ink); }
+  .btn-primary:hover{ background:var(--gold-soft); transform:translateY(-2px); }
+  .btn-ghost{ border:1px solid rgba(244,241,233,.3); color:var(--text-l); }
+  .btn-ghost:hover{ border-color:var(--gold-soft); color:var(--gold-soft); }
+  .btn-ghost.on-light{ border-color:rgba(18,22,26,.25); color:var(--text-d); }
+  .btn-ghost.on-light:hover{ border-color:var(--blue); color:var(--blue-deep); }
+  .scroll-cue{
+    position:absolute; bottom:36px; left:8vw;
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--mono); font-size:10px; letter-spacing:.1em;
+    color:var(--muted-l);
+  }
+  .scroll-cue .line{ width:1px; height:34px; background:linear-gradient(var(--gold),transparent); animation:pulse 2s ease-in-out infinite; }
+  @keyframes pulse{ 0%,100%{opacity:.3} 50%{opacity:1} }
 
-  /* ticker - signature motif referencing platforms/content pillars */
-  .ticker-shell{
-    margin-top:56px; border-top:1px solid var(--line); border-bottom:1px solid var(--line);
-    padding:16px 0; overflow:hidden; position:relative;
+  /* ---------- EXPLORE BAND ---------- */
+  .explore{ text-align:center; padding:96px 8vw; }
+  .explore h2{ font-size:clamp(26px,3.4vw,44px); max-width:16ch; margin:0 auto 46px; }
+  .explore-links{ display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+  .explore-links a{
+    font-family:var(--mono); font-size:12px; letter-spacing:.06em;
+    padding:14px 24px; border:1px solid var(--marble-2); border-radius:100px;
+    transition:all .3s ease;
   }
-  .ticker-shell::before, .ticker-shell::after{
-    content:""; position:absolute; top:0; bottom:0; width:80px; z-index:2;
-  }
-  .ticker-shell::before{left:0; background:linear-gradient(90deg, var(--paper), transparent);}
-  .ticker-shell::after{right:0; background:linear-gradient(270deg, var(--paper), transparent);}
-  .ticker-track{
-    display:flex; gap:40px; width:max-content;
-    animation:ticker 26s linear infinite;
-  }
-  .ticker-track span{
-    font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--grey);
-    display:flex; align-items:center; gap:10px; white-space:nowrap;
-  }
-  .ticker-track span i{width:5px;height:5px;border-radius:50%;background:var(--blue); display:inline-block;}
-  @keyframes ticker{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+  .explore-links a:hover{ border-color:var(--blue); color:var(--blue-deep); background:var(--marble); }
 
-  .hero-frame{margin-top:56px;}
-  .hero-frame .slate{min-height:420px;}
+  /* ---------- MODULE HEADER (shared) ---------- */
+  .mod-head{ max-width:640px; margin-bottom:64px; }
+  .mod-head h2{ font-size:clamp(30px,4vw,54px); margin-bottom:20px; }
+  .mod-head p{ font-size:16.5px; line-height:1.65; color:var(--muted-d); }
+  .dark .mod-head p{ color:var(--muted-l); }
 
-  /* ---------- OVERVIEW ---------- */
-  .overview{padding:110px 0; text-align:center;}
-  .overview .eyebrow{justify-content:center;}
-  .overview .eyebrow::before{display:none;}
-  .overview h2{font-size:clamp(30px,4vw,46px); font-weight:600; max-width:760px; margin:0 auto;}
-  .overview p{
-    max-width:640px; margin:26px auto 0; font-size:17px; line-height:1.7; color:var(--grey);
+  /* ---------- STORY / TIMELINE ---------- */
+  .story-visual{
+    height:340px; border-radius:20px; margin-bottom:64px; position:relative; overflow:hidden;
+    background:
+      linear-gradient(120deg, rgba(176,141,87,.18), transparent 55%),
+      linear-gradient(200deg,#3a332b 0%, #211d19 55%, #171310 100%);
+    display:flex; align-items:flex-end; padding:26px;
   }
+  .story-visual .cap{ font-family:var(--mono); font-size:10.5px; letter-spacing:.05em; color:rgba(244,241,233,.55); max-width:420px; line-height:1.6; }
+  .timeline{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; position:relative; }
+  .timeline::before{
+    content:''; position:absolute; top:11px; left:0; right:0; height:1px;
+    background:linear-gradient(90deg, var(--gold), var(--marble-2) 90%);
+  }
+  .t-item{ padding-top:44px; padding-right:28px; position:relative; }
+  .t-item::before{
+    content:''; position:absolute; top:6px; left:0; width:11px; height:11px; border-radius:50%;
+    background:var(--paper); border:2px solid var(--gold);
+  }
+  .t-year{ font-family:var(--mono); font-size:12px; color:var(--blue-deep); letter-spacing:.04em; margin-bottom:10px; display:block;}
+  .t-item h3{ font-family:var(--sans); font-weight:600; font-size:16px; margin-bottom:8px; }
+  .t-item p{ font-size:14px; line-height:1.55; color:var(--muted-d); }
 
-  /* ---------- FEATURES ---------- */
-  .feature{
-    padding:90px 0; border-top:1px solid var(--line);
-    display:grid; grid-template-columns:0.9fr 1.1fr; gap:64px; align-items:center;
+  /* ---------- CASA PILLARS ---------- */
+  .casa-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(244,241,233,.1); border-radius:20px; overflow:hidden; }
+  .casa-card{
+    background:var(--ink-2); padding:40px 26px; min-height:280px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:background .4s ease;
+    position:relative;
   }
-  .feature.reverse .feature-text{order:2;}
-  .feature.reverse .feature-media{order:1;}
-  .feature-index{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--brass);
-    margin-bottom:22px; display:flex; align-items:center; gap:10px;
-  }
-  .feature-index .ln{width:30px; height:1px; background:var(--brass);}
-  .feature h3{font-size:clamp(26px,3.2vw,38px); font-weight:600; line-height:1.15; max-width:420px;}
-  .feature p{font-size:16.5px; line-height:1.7; color:var(--grey); margin-top:20px; max-width:440px;}
-  @media (max-width:900px){
-    .feature, .feature.reverse{grid-template-columns:1fr; gap:32px;}
-    .feature.reverse .feature-text, .feature.reverse .feature-media{order:initial;}
-    .feature{padding:64px 0;}
-  }
+  .casa-card:hover{ background:#232a32; }
+  .casa-num{ font-family:var(--mono); font-size:11px; color:var(--gold); letter-spacing:.05em; }
+  .casa-name{ font-family:var(--serif); font-style:italic; font-size:22px; margin:18px 0 14px; color:var(--gold-soft); }
+  .casa-card h4{ font-family:var(--sans); font-weight:600; font-size:16.5px; margin-bottom:10px; line-height:1.3; color:var(--text-l); }
+  .casa-card p{ font-size:13.5px; line-height:1.55; color:var(--muted-l); }
+  .casa-link{ margin-top:36px; text-align:center; }
+  .casa-link a{ font-family:var(--mono); font-size:12px; letter-spacing:.05em; color:var(--gold-soft); border-bottom:1px solid rgba(221,199,154,.4); padding-bottom:2px; }
 
-  /* ---------- PORTFOLIO ---------- */
-  .portfolio{padding:100px 0; border-top:1px solid var(--line);}
-  .section-head{max-width:600px; margin-bottom:52px;}
-  .section-head h2{font-size:clamp(28px,3.6vw,42px); font-weight:600;}
-  .section-head p{color:var(--grey); font-size:16px; margin-top:14px; line-height:1.6;}
-  .portfolio-grid{
-    display:grid; grid-template-columns:repeat(3, 1fr); gap:28px;
+  /* ---------- PEOPLE ---------- */
+  .people-visual{
+    height:380px; border-radius:20px; margin-bottom:60px; overflow:hidden; position:relative;
+    background:
+      radial-gradient(circle at 30% 30%, rgba(5,94,170,.25), transparent 55%),
+      radial-gradient(circle at 80% 70%, rgba(205,32,31,.18), transparent 50%),
+      linear-gradient(160deg,#e7e2d5 0%, #d8d2c2 100%);
+    display:flex; align-items:flex-end; padding:26px;
   }
-  .p-card{
-    background:var(--paper-card); border-radius:var(--radius); overflow:hidden;
-    border:1px solid var(--line); transition:transform .25s ease, box-shadow .25s ease;
+  .people-visual .cap{ font-family:var(--mono); font-size:10.5px; color:rgba(18,22,26,.5); max-width:440px; line-height:1.6; }
+  .note-card{
+    background:var(--marble); border:1px dashed var(--gold);
+    border-radius:14px; padding:22px 24px; margin-bottom:56px;
+    font-family:var(--mono); font-size:12px; line-height:1.7; color:var(--grey);
   }
-  .p-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
-  .p-card .slate{min-height:200px; border-radius:0;}
-  .p-card-body{padding:22px 22px 26px;}
-  .p-card-body .client{font-weight:600; font-size:16px; margin-bottom:8px;}
-  .p-card-body .desc{font-size:14px; color:var(--grey); line-height:1.55;}
-  .p-card-body .link{
-    margin-top:16px; font-size:13px; font-weight:600; color:var(--red);
-    display:inline-flex; align-items:center; gap:6px; text-decoration:none;
-  }
-  @media (max-width:900px){ .portfolio-grid{grid-template-columns:1fr;} }
+  .note-card b{ color:var(--blue-deep); }
+  .culture-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:28px; }
+  .culture-card{ padding:34px 0 0; border-top:1px solid var(--marble-2); }
+  .culture-card h4{ font-family:var(--serif); font-style:italic; font-weight:500; font-size:22px; margin-bottom:14px; }
+  .culture-card p{ font-size:14.5px; line-height:1.6; color:var(--muted-d); }
 
-  /* ---------- WHY ---------- */
-  .why{padding:100px 0; border-top:1px solid var(--line); background:var(--paper-dim);}
-  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:40px; margin-top:52px;}
-  .why-item .num{
-    font-family:'IBM Plex Mono', monospace; font-size:13px; color:var(--blue); margin-bottom:16px; display:block;
+  /* ---------- TRUSTED BY ---------- */
+  .clients-visual{
+    height:320px; border-radius:20px; margin-bottom:56px; position:relative; overflow:hidden;
+    background:
+      linear-gradient(140deg, rgba(5,94,170,.35), transparent 50%),
+      linear-gradient(220deg,#22201b 0%, #15130f 100%);
+    display:flex; align-items:flex-end; padding:26px;
   }
-  .why-item h4{font-family:'Bricolage Grotesque', sans-serif; font-size:19px; font-weight:600; margin-bottom:10px;}
-  .why-item p{font-size:14.5px; color:var(--grey); line-height:1.6; margin:0;}
-  @media (max-width:900px){ .why-grid{grid-template-columns:1fr; gap:32px;} }
+  .clients-visual .cap{ font-family:var(--mono); font-size:10.5px; color:rgba(244,241,233,.5); max-width:440px; line-height:1.6; }
+  .marquee{ overflow:hidden; border-top:1px solid var(--marble-2); border-bottom:1px solid var(--marble-2); padding:26px 0; margin-bottom:56px; }
+  .marquee-track{ display:flex; gap:60px; width:max-content; animation:scroll 28s linear infinite; }
+  @keyframes scroll{ from{transform:translateX(0)} to{transform:translateX(-50%)} }
+  .marquee-track span{ font-family:var(--serif); font-size:20px; color:var(--grey); white-space:nowrap; opacity:.75; }
+  .recog-row{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .recog{ padding:26px; background:var(--marble); border-radius:14px; }
+  .recog .tag{ font-family:var(--mono); font-size:10px; letter-spacing:.06em; color:var(--red); margin-bottom:10px; display:block; }
+  .recog p{ font-size:15px; font-weight:600; line-height:1.4; }
 
-  /* ---------- RELATED ---------- */
-  .related{padding:100px 0; border-top:1px solid var(--line);}
-  .related-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; margin-top:44px;}
-  .r-card{
-    padding:26px 20px; border:1px solid var(--line); border-radius:14px;
-    text-decoration:none; color:var(--ink); transition:border-color .2s ease, transform .2s ease;
-    display:block;
+  /* ---------- QUICK FACTS ---------- */
+  .facts-grid{
+    display:grid; grid-template-columns:repeat(6,1fr); grid-auto-rows:150px; gap:1px;
+    background:rgba(244,241,233,.08); border-radius:20px; overflow:hidden;
   }
-  .r-card:hover{border-color:var(--ink); transform:translateY(-3px);}
-  .r-card .tag{font-size:11px; text-transform:uppercase; letter-spacing:.08em; color:var(--grey-soft); margin-bottom:12px; display:block;}
-  .r-card h5{font-family:'Bricolage Grotesque', sans-serif; font-size:16px; font-weight:600; margin:0 0 8px;}
-  .r-card p{font-size:13px; color:var(--grey); margin:0; line-height:1.5;}
-  @media (max-width:900px){ .related-grid{grid-template-columns:repeat(2,1fr);} }
+  .fact{
+    background:var(--ink); padding:26px; display:flex; flex-direction:column; justify-content:space-between;
+    grid-column:span 2;
+  }
+  .fact:nth-child(1),.fact:nth-child(4){ grid-column:span 3; grid-row:span 2; }
+  .fact .ic{ width:26px; height:26px; border-radius:6px; background:linear-gradient(135deg,var(--blue),var(--gold)); }
+  .fact h4{ font-family:var(--serif); font-weight:500; font-size:19px; color:var(--text-l); line-height:1.25; }
+  .fact p{ font-family:var(--sans); font-size:12.5px; color:var(--muted-l); line-height:1.5; margin-top:6px; }
+
+  /* ---------- COMMITMENT ---------- */
+  .commit-visual{
+    height:300px; border-radius:20px; margin-bottom:56px; overflow:hidden; position:relative;
+    background:linear-gradient(120deg,#0d0f11 0%, #1a1d20 60%, #0d0f11 100%);
+    display:flex; align-items:flex-end; padding:26px;
+  }
+  .commit-visual::after{
+    content:''; position:absolute; top:0; right:0; bottom:0; width:2px;
+    background:linear-gradient(var(--gold),transparent);
+  }
+  .commit-visual .cap{ font-family:var(--mono); font-size:10.5px; color:rgba(244,241,233,.45); max-width:420px; line-height:1.6; }
+  .commit-list{ display:flex; flex-wrap:wrap; gap:16px; margin-top:36px; }
+  .commit-list div{
+    font-family:var(--mono); font-size:12.5px; letter-spacing:.02em;
+    padding:14px 20px; border:1px solid rgba(244,241,233,.16); border-radius:100px;
+    color:var(--text-l);
+  }
+  .commit-list div::before{ content:'— '; color:var(--gold); }
 
   /* ---------- CLOSING CTA ---------- */
   .closing{
-    position:relative; margin:0; padding:130px 0; text-align:center; overflow:hidden;
-    color:#fff;
-  }
-  .closing::before{
-    content:""; position:absolute; inset:0;
+    text-align:center; padding:140px 8vw;
     background:
-      radial-gradient(90% 120% at 20% 10%, rgba(205,32,31,0.28), transparent 55%),
-      radial-gradient(90% 120% at 85% 90%, rgba(5,94,170,0.32), transparent 55%),
-      linear-gradient(160deg, #1c1c1f, #101012);
-    z-index:0;
+      radial-gradient(ellipse 70% 60% at 50% 0%, rgba(176,141,87,.16), transparent 60%),
+      linear-gradient(180deg,#0d0f11, #171b1f);
+    color:var(--text-l);
   }
-  .closing-inner{position:relative; z-index:1; max-width:640px; margin:0 auto;}
-  .closing .eyebrow{justify-content:center; color:var(--brass);}
-  .closing .eyebrow::before{background:var(--brass);}
-  .closing h2{font-size:clamp(32px,4.4vw,52px); font-weight:600; line-height:1.1;}
-  .closing p{color:rgba(255,255,255,0.7); font-size:17px; margin-top:20px;}
-  .closing .cta-row{justify-content:center; margin-top:36px;}
-  .closing .btn-ghost{border-color:rgba(255,255,255,0.25); color:#fff;}
-  .closing .btn-primary{background:#fff; color:var(--ink);}
+  .closing h2{ font-size:clamp(30px,4.6vw,58px); max-width:16ch; margin:0 auto 22px; }
+  .closing p{ max-width:460px; margin:0 auto 44px; color:var(--muted-l); font-size:16px; line-height:1.6; }
+  .micro{ margin-top:26px; font-family:var(--mono); font-size:11.5px; color:var(--muted-l); }
 
-  /* ---------- FOOTER ---------- */
-  footer{padding:44px 0; border-top:1px solid var(--line);}
-  .footer-inner{display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;}
-  footer .mono{font-size:12px; color:var(--grey-soft);}
+  footer{ padding:36px 8vw; display:flex; justify-content:space-between; align-items:center; background:var(--ink); color:var(--muted-l); font-family:var(--mono); font-size:11px; letter-spacing:.04em; }
 
-  /* reveal animation */
-  .reveal{opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease;}
-  .reveal.in{opacity:1; transform:translateY(0);}
-  @media (prefers-reduced-motion: reduce){
-    .reveal{opacity:1; transform:none; transition:none;}
-    .ticker-track{animation:none;}
+  .reveal{ opacity:0; transform:translateY(28px); transition:opacity .9s cubic-bezier(.16,1,.3,1), transform .9s cubic-bezier(.16,1,.3,1); }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  @media (max-width:860px){
+    .section{ padding:80px 6vw; }
+    .casa-grid{ grid-template-columns:1fr 1fr; }
+    .culture-grid{ grid-template-columns:1fr; }
+    .recog-row{ grid-template-columns:1fr; }
+    .timeline{ grid-template-columns:1fr 1fr; row-gap:40px; }
+    .timeline::before{ display:none; }
+    .facts-grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:150px;}
+    .fact:nth-child(1),.fact:nth-child(4){ grid-column:span 2; grid-row:span 1; }
+    .jumpnav{ display:none; }
+    .hero-caption{ display:none; }
   }
 </style>
 </head>
-<body class="lang-en">
+<body>
 
-  <nav class="nav">
-    <div class="nav-inner">
-      <div class="nav-mark"><span class="dot"></span>IDEOWORKS</div>
-      <ul class="nav-links">
-        <li><a href="#overview">Overview</a></li>
-        <li><a href="#strategy">Strategy</a></li>
-        <li><a href="#production">Production</a></li>
-        <li><a href="#engagement">Engagement</a></li>
-        <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#why">Why Us</a></li>
-      </ul>
-      <div class="nav-right">
-        <button class="lang-btn" id="langToggle" aria-label="Toggle language">
-          <span class="opt-en active">EN</span><span class="opt-id">ID</span>
-        </button>
+<div class="topnav">
+  <div class="mark">IDEOWORKS</div>
+  <div>EN — ID</div>
+</div>
+
+<nav class="jumpnav" id="jumpnav">
+  <a href="#story" data-target="story">Our Story</a>
+  <a href="#way" data-target="way">Our Way</a>
+  <a href="#people" data-target="people">Our People</a>
+  <a href="#trusted" data-target="trusted">Trusted By</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="photo-frame"></div>
+  <div class="grain"></div>
+  <div class="hero-top"><span class="dot"></span> ABOUT IDEOWORKS</div>
+  <div class="hero-caption">PHOTO DIRECTION — candid wide shot, professional walking through open workspace, dark wood &amp; marble interior, golden-hour morning light, no eye contact to camera.</div>
+  <h1>Since 2013.<br>Still making <em>ideas</em> work.</h1>
+  <p class="sub">IDEOWORKS is an integrated digital marketing agency built in Jakarta, trusted by 3,000+ companies to turn strategy into growth that can be measured.</p>
+  <div class="cta-row">
+    <a class="btn btn-primary" href="#story">Our Story</a>
+    <a class="btn btn-ghost" href="#trusted">See Our Work</a>
+  </div>
+  <div class="scroll-cue"><span class="line"></span>SCROLL</div>
+</section>
+
+<!-- EXPLORE BAND -->
+<section class="explore marble reveal">
+  <div class="eyebrow on-light" style="justify-content:center">EXPLORE IDEOWORKS</div>
+  <h2>Twelve years. One reason we still do this.</h2>
+  <div class="explore-links">
+    <a href="#story">Our Story</a>
+    <a href="#way">Our Way</a>
+    <a href="#people">Our People</a>
+    <a href="#trusted">Trusted By</a>
+  </div>
+</section>
+
+<!-- MODULE 1 — OUR STORY -->
+<section class="section light" id="story">
+  <div class="inner">
+    <div class="mod-head reveal">
+      <div class="eyebrow on-light">01 — OUR STORY</div>
+      <h2>It started with one idea: make idea work.</h2>
+      <p>Founded in 2013 under PT. Cipta Urban Darsana, IDEOWORKS began as a small team in Jakarta with one belief — that a good idea only matters if it actually performs.</p>
+    </div>
+
+    <div class="story-visual reveal">
+      <div class="cap">PHOTO DIRECTION — real founder / leadership photography (not stock). Candid, looking out of office window or standing before a wall of past campaign prints. Golden-hour, dark wood &amp; marble tones.</div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="t-item">
+        <span class="t-year">2013</span>
+        <h3>The Beginning</h3>
+        <p>A small agency in Jakarta, built on one tagline that still guides every brief: Make Idea Works.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">3,000+</span>
+        <h3>The Growth</h3>
+        <p>From small businesses to national enterprises across FMCG, banking, retail, property, and technology.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">1ST</span>
+        <h3>The Recognition</h3>
+        <p>Indonesia's first Google Premier Partner for SMEs — a title earned, not given.</p>
+      </div>
+      <div class="t-item">
+        <span class="t-year">TODAY</span>
+        <h3>The Present</h3>
+        <p>One integrated team, four disciplines, a single partner for measurable growth.</p>
       </div>
     </div>
-  </nav>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero wrap">
-    <div class="eyebrow">
-      <span class="t-en">Socialize — Social Media Marketing</span>
-      <span class="t-id">Socialize — Social Media Marketing</span>
-    </div>
-    <h1>
-      <span class="t-en">Show up. Every day that counts.</span>
-      <span class="t-id">Hadir. Di setiap hari yang berarti.</span>
-    </h1>
-    <p class="sub">
-      <span class="t-en">Not just posting — a content engine that keeps your brand part of the conversation, on every platform your audience actually opens.</span>
-      <span class="t-id">Bukan sekadar posting — mesin konten yang menjaga brand Anda tetap menjadi bagian dari percakapan, di setiap platform yang benar-benar dibuka audiens Anda.</span>
-    </p>
-    <div class="cta-row">
-      <a href="#" class="btn btn-primary">
-        <span class="t-en">See How It Works</span><span class="t-id">Lihat Cara Kerjanya</span>
-      </a>
-      <a href="#" class="btn btn-ghost">
-        <span class="t-en">Talk to Our Team</span><span class="t-id">Bicara dengan Tim Kami</span>
-      </a>
+<!-- MODULE 2 — OUR WAY / CASA -->
+<section class="section dark" id="way">
+  <div class="inner">
+    <div class="mod-head reveal">
+      <div class="eyebrow">02 — OUR WAY</div>
+      <h2>One framework.<br>Every brand, fully covered.</h2>
+      <p>We call it CASA — Communicate, Amplify, Socialize, Analyze. It's not a tagline, it's how every project actually gets built, from the first insight to the final report.</p>
     </div>
 
-    <div class="ticker-shell">
-      <div class="ticker-track">
-        <span><i></i>Instagram</span>
-        <span><i></i>TikTok</span>
-        <span><i></i>LinkedIn</span>
-        <span><i></i>YouTube</span>
-        <span><i></i>X</span>
-        <span><i></i>Content Calendar</span>
-        <span><i></i>Community Reply</span>
-        <span><i></i>Analytics</span>
-        <span><i></i>Instagram</span>
-        <span><i></i>TikTok</span>
-        <span><i></i>LinkedIn</span>
-        <span><i></i>YouTube</span>
-        <span><i></i>X</span>
-        <span><i></i>Content Calendar</span>
-        <span><i></i>Community Reply</span>
-        <span><i></i>Analytics</span>
+    <div class="casa-grid reveal">
+      <div class="casa-card">
+        <div class="casa-num">01 / 04</div>
+        <div><div class="casa-name">Communicate</div><h4>The story that moves people.</h4><p>Strategy and creative production that give every brand a voice worth listening to.</p></div>
+      </div>
+      <div class="casa-card">
+        <div class="casa-num">02 / 04</div>
+        <div><div class="casa-name">Amplify</div><h4>The reach that finds them.</h4><p>Media and advertising, planned and bought with data — not guesswork.</p></div>
+      </div>
+      <div class="casa-card">
+        <div class="casa-num">03 / 04</div>
+        <div><div class="casa-name">Socialize</div><h4>The community that stays.</h4><p>Social and community programs that turn attention into belonging.</p></div>
+      </div>
+      <div class="casa-card">
+        <div class="casa-num">04 / 04</div>
+        <div><div class="casa-name">Analyze</div><h4>The proof that it worked.</h4><p>Listening, analytics, and advisory that close the loop on every campaign.</p></div>
       </div>
     </div>
+    <div class="casa-link reveal"><a href="#">See how CASA works in full →</a></div>
+  </div>
+</section>
 
-    <div class="hero-frame reveal">
-      <div class="slate">
-        <div class="slate-tag"><span class="rec"></span>SCENE 01 · 85mm F1.4 · 07:30AM</div>
-        <div class="slate-caption">
-          <b class="t-en">Photo direction —</b><b class="t-id">Arah foto —</b>
-          <span class="t-en">Candid, smiling at phone, modern office lounge corner, warm ambient light, subtle red phone case / blue accessory, no eye contact.</span>
-          <span class="t-id">Candid, tersenyum melihat ponsel, sudut lounge kantor modern, cahaya ambient hangat, aksen merah di casing ponsel / biru di aksesori, tanpa kontak mata.</span>
-        </div>
+<!-- MODULE 3 — OUR PEOPLE -->
+<section class="section marble" id="people">
+  <div class="inner">
+    <div class="mod-head reveal">
+      <div class="eyebrow on-light">03 — OUR PEOPLE</div>
+      <h2>Strategists, creatives, and analysts.<br>Working as one.</h2>
+      <p>Behind every campaign is a team that treats your brand's growth like it's their own.</p>
+    </div>
+
+    <div class="people-visual reveal">
+      <div class="cap">PHOTO DIRECTION — candid lounge moment, mixed team laughing naturally, warm daylight, premium sofa &amp; interior, no eye contact to camera.</div>
+    </div>
+
+    <div class="note-card reveal">
+      NOTE — this section represents team culture collectively, <b>not</b> an individual leadership grid (photo + name + title + bio per person). Kept in line with the apple.com/apple-intelligence reference, which never uses a "meet the team" format on product pages. If individual leadership profiles are still needed, they're recommended as a separate section/page (e.g. linked from the footer) to keep this page's flow minimal.
+    </div>
+
+    <div class="culture-grid reveal">
+      <div class="culture-card">
+        <h4>No handoffs.<br>No silos.</h4>
+        <p>One team across strategy, production, media, and analytics — so nothing gets lost in translation.</p>
+      </div>
+      <div class="culture-card">
+        <h4>Big data meets<br>big ideas.</h4>
+        <p>Every creative decision is backed by analytical thinking, not just instinct.</p>
+      </div>
+      <div class="culture-card">
+        <h4>We stay for the<br>results.</h4>
+        <p>A team that shows up like it's building its own business — because your growth is the metric we care about.</p>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- OVERVIEW -->
-  <section class="overview wrap" id="overview">
-    <div class="eyebrow"><span class="t-en">What It Is</span><span class="t-id">Apa Itu</span></div>
-    <h2>
-      <span class="t-en">Social media marketing, done as a system.</span>
-      <span class="t-id">Social media marketing, dikerjakan sebagai satu sistem.</span>
-    </h2>
-    <p>
-      <span class="t-en">We plan it, we make it, we post it, we listen to what comes back — then we do it again, better. It's not a monthly content batch. It's an ongoing rhythm that turns followers into an audience that actually pays attention.</span>
-      <span class="t-id">Kami merencanakannya, membuatnya, mempostingnya, mendengarkan responsnya — lalu mengulanginya lagi, lebih baik. Ini bukan sekadar konten bulanan yang dikerjakan sekaligus. Ini ritme berkelanjutan yang mengubah followers menjadi audiens yang benar-benar memperhatikan.</span>
-    </p>
-  </section>
+<!-- MODULE 4 — TRUSTED BY -->
+<section class="section dark" id="trusted">
+  <div class="inner">
+    <div class="mod-head reveal">
+      <div class="eyebrow">04 — TRUSTED BY</div>
+      <h2>3,000+ brands.<br>One measurable standard.</h2>
+      <p>From national banks to challenger brands, IDEOWORKS has been the integrated partner behind campaigns that had to perform — not just look good.</p>
+    </div>
 
-  <!-- FEATURE 01 -->
-  <section class="feature wrap reveal" id="strategy">
-    <div class="feature-text">
-      <div class="feature-index"><span class="ln"></span>01 · <span class="t-en">Strategy</span><span class="t-id">Strategi</span></div>
-      <h3><span class="t-en">A calendar with a reason behind every post.</span><span class="t-id">Kalender dengan alasan di balik setiap posting-an.</span></h3>
-      <p><span class="t-en">Every piece of content starts with a question: does this move the brand forward? We build the content pillars, the posting rhythm, and the tone of voice — so nothing goes out just to fill a slot.</span>
-      <span class="t-id">Setiap konten dimulai dari satu pertanyaan: apakah ini membawa brand maju? Kami membangun pilar konten, ritme posting, dan tone of voice — agar tidak ada yang diposting hanya untuk mengisi jadwal.</span></p>
+    <div class="clients-visual reveal">
+      <div class="cap">PHOTO DIRECTION — executive desk, dark wood + brass lamp, large monitor showing a clean grid of client logos, candid gaze toward the screen.</div>
     </div>
-    <div class="feature-media">
-      <div class="slate short">
-        <div class="slate-tag"><span class="rec"></span>SCENE 02 · 50mm F1.2 · 08:10AM</div>
-        <div class="slate-caption"><span class="t-en">Reviewing content calendar on tablet, dark wood desk, gold accents, focused expression.</span><span class="t-id">Meninjau kalender konten di tablet, meja kayu gelap, aksen emas, ekspresi fokus.</span></div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- FEATURE 02 -->
-  <section class="feature reverse wrap reveal" id="production">
-    <div class="feature-text">
-      <div class="feature-index"><span class="ln"></span>02 · <span class="t-en">Production</span><span class="t-id">Produksi</span></div>
-      <h3><span class="t-en">Made to stop the scroll, not just fill it.</span><span class="t-id">Dibuat untuk menghentikan scroll, bukan sekadar mengisinya.</span></h3>
-      <p><span class="t-en">Photo, video, copy, motion — produced in-house and native to each platform's format, so it never feels like an ad pretending to be content.</span>
-      <span class="t-id">Foto, video, copy, motion — diproduksi in-house dan disesuaikan dengan format tiap platform, sehingga tidak pernah terasa seperti iklan yang menyamar jadi konten.</span></p>
+  <div class="marquee reveal">
+    <div class="marquee-track">
+      <span>Bank Sinarmas</span><span>Citilink</span><span>iBox</span><span>Erafone</span><span>Homyped</span><span>Koepoe Koepoe</span><span>HSBC</span><span>Bank Danamon</span><span>GoPro</span><span>Fujifilm</span><span>Smartfren</span><span>Park Hyatt</span><span>Calvin Klein</span>
+      <span>Bank Sinarmas</span><span>Citilink</span><span>iBox</span><span>Erafone</span><span>Homyped</span><span>Koepoe Koepoe</span><span>HSBC</span><span>Bank Danamon</span><span>GoPro</span><span>Fujifilm</span><span>Smartfren</span><span>Park Hyatt</span><span>Calvin Klein</span>
     </div>
-    <div class="feature-media">
-      <div class="slate short">
-        <div class="slate-tag"><span class="rec"></span>SCENE 03 · 85mm F1.4 · 09:00AM</div>
-        <div class="slate-caption"><span class="t-en">Behind-the-scenes, reviewing camera monitor, crew blurred, red clapperboard accent.</span><span class="t-id">Behind-the-scenes, meninjau monitor kamera, kru blur, aksen merah di clapperboard.</span></div>
-      </div>
-    </div>
-  </section>
+  </div>
 
-  <!-- FEATURE 03 -->
-  <section class="feature wrap reveal" id="engagement">
-    <div class="feature-text">
-      <div class="feature-index"><span class="ln"></span>03 · <span class="t-en">Engagement</span><span class="t-id">Keterlibatan</span></div>
-      <h3><span class="t-en">Every comment is a conversation, not a checkbox.</span><span class="t-id">Setiap komentar adalah percakapan, bukan sekadar centang tugas.</span></h3>
-      <p><span class="t-en">We reply, we moderate, we listen — in real time, in the right tone. Because a brand that responds is a brand people trust enough to talk back to.</span>
-      <span class="t-id">Kami membalas, memoderasi, dan mendengarkan — secara real-time, dengan nada yang tepat. Karena brand yang responsif adalah brand yang cukup dipercaya untuk diajak bicara balik.</span></p>
+  <div class="inner">
+    <div class="recog-row reveal">
+      <div class="recog"><span class="tag">RECOGNITION</span><p>Indonesia's first Google Premier Partner for SMEs</p></div>
+      <div class="recog"><span class="tag">RECOGNITION</span><p>Meta Business Partner</p></div>
+      <div class="recog"><span class="tag">RECOGNITION</span><p>3,000+ companies served since 2013</p></div>
     </div>
-    <div class="feature-media">
-      <div class="slate short">
-        <div class="slate-tag"><span class="rec"></span>SCENE 04 · 50mm F1.2 · 10:15AM</div>
-        <div class="slate-caption"><span class="t-en">Relaxed on lounge sofa, replying to comments, warm light, blue cushion accent.</span><span class="t-id">Santai di sofa lounge, membalas komentar, cahaya hangat, aksen biru pada bantal.</span></div>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURE 04 -->
-  <section class="feature reverse wrap reveal" id="platforms">
-    <div class="feature-text">
-      <div class="feature-index"><span class="ln"></span>04 · <span class="t-en">Platforms</span><span class="t-id">Platform</span></div>
-      <h3><span class="t-en">Instagram isn't TikTok. We don't treat them the same.</span><span class="t-id">Instagram bukan TikTok. Kami tidak memperlakukannya sama.</span></h3>
-      <p><span class="t-en">Instagram, TikTok, X, LinkedIn, YouTube — each platform has its own language, and we speak all of them fluently, without losing your brand's core voice.</span>
-      <span class="t-id">Instagram, TikTok, X, LinkedIn, YouTube — setiap platform punya bahasanya sendiri, dan kami fasih menggunakan semuanya, tanpa kehilangan karakter dasar brand Anda.</span></p>
+<!-- QUICK FACTS -->
+<section class="section" style="background:var(--ink);">
+  <div class="inner">
+    <div class="mod-head reveal" style="color:var(--text-l)">
+      <div class="eyebrow">AND SO MUCH MORE</div>
+      <h2 style="color:var(--text-l)">A few more numbers worth knowing.</h2>
     </div>
-    <div class="feature-media">
-      <div class="slate short">
-        <div class="slate-tag"><span class="rec"></span>SCENE 05 · 85mm F1.4 · 11:00AM</div>
-        <div class="slate-caption"><span class="t-en">Working across laptop and phone, marble desk accents, calm confident expression.</span><span class="t-id">Bekerja dengan laptop dan ponsel, aksen meja marble, ekspresi tenang percaya diri.</span></div>
-      </div>
+    <div class="facts-grid reveal">
+      <div class="fact"><div class="ic"></div><div><h4>Founded 2013</h4><p>Twelve years of building brands from the ground up.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>Jakarta-based</h4><p>Headquartered in Indonesia's biggest market.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>3,000+ companies</h4><p>From SMEs to national enterprises.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>Google Premier Partner</h4><p>First of its kind in Indonesia for SMEs.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>4 disciplines, 1 team</h4><p>CASA — fully integrated.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>PT. Cipta Urban Darsana</h4><p>Registered since day one.</p></div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FEATURE 05 -->
-  <section class="feature wrap reveal" id="performance">
-    <div class="feature-text">
-      <div class="feature-index"><span class="ln"></span>05 · <span class="t-en">Performance</span><span class="t-id">Performa</span></div>
-      <h3><span class="t-en">Every post, reported back in numbers that matter.</span><span class="t-id">Setiap posting-an, dilaporkan kembali dalam angka yang berarti.</span></h3>
-      <p><span class="t-en">Reach is a vanity metric until it's connected to something real. We track engagement, sentiment, and growth — then turn it into the next month's plan.</span>
-      <span class="t-id">Reach hanyalah metrik semu jika tidak terhubung dengan sesuatu yang nyata. Kami melacak engagement, sentimen, dan pertumbuhan — lalu mengubahnya menjadi rencana bulan berikutnya.</span></p>
+<!-- COMMITMENT -->
+<section class="section dark">
+  <div class="inner">
+    <div class="mod-head reveal">
+      <div class="eyebrow">HOW WE WORK</div>
+      <h2>Results you can measure.<br>A partner you can trust.</h2>
+      <p>Every strategy starts with real data and ends with a report that's honest about what worked — and what's next. We don't disappear after the pitch; we stay for the performance.</p>
     </div>
-    <div class="feature-media">
-      <div class="slate short">
-        <div class="slate-tag"><span class="rec"></span>SCENE 06 · 50mm F1.2 · 04:30PM</div>
-        <div class="slate-caption"><span class="t-en">Reviewing analytics dashboard, executive desk, brass lamp, red/blue chart accents.</span><span class="t-id">Meninjau dashboard analytics, meja eksekutif, lampu kuningan, aksen chart merah/biru.</span></div>
-      </div>
+    <div class="commit-visual reveal">
+      <div class="cap">PHOTO DIRECTION — close-up, hands over a document on dark wood desk, side-angle handshake, no faces toward camera.</div>
     </div>
-  </section>
+    <div class="commit-list reveal">
+      <div>One integrated team, no outsourced guesswork</div>
+      <div>Data-backed strategy at every stage</div>
+      <div>Transparent reporting, every time</div>
+    </div>
+  </div>
+</section>
 
-  <!-- PORTFOLIO -->
-  <section class="portfolio wrap reveal" id="portfolio">
-    <div class="section-head">
-      <div class="eyebrow"><span class="t-en">Proof, Not Promises</span><span class="t-id">Bukti, Bukan Sekadar Janji</span></div>
-      <h2><span class="t-en">A few brands we do this with.</span><span class="t-id">Beberapa brand yang sudah bekerja sama dengan kami.</span></h2>
-      <p><span class="t-en">Across FMCG, mobility, and retail — the system stays the same, the voice never does.</span><span class="t-id">Lintas FMCG, mobilitas, dan retail — sistemnya tetap sama, suaranya tidak pernah sama.</span></p>
-    </div>
-    <div class="portfolio-grid">
-      <div class="p-card">
-        <div class="slate"><div class="slate-tag"><span class="rec"></span>CHOCOLATOS</div></div>
-        <div class="p-card-body">
-          <div class="client">Chocolatos</div>
-          <div class="desc"><span class="t-en">FMCG content that keeps snack time part of daily conversation.</span><span class="t-id">Konten FMCG yang menjaga waktu ngemil tetap jadi bagian percakapan harian.</span></div>
-          <a href="#" class="link"><span class="t-en">See it in action →</span><span class="t-id">Lihat dalam aksi →</span></a>
-        </div>
-      </div>
-      <div class="p-card">
-        <div class="slate"><div class="slate-tag"><span class="rec"></span>ASTRA KINTO</div></div>
-        <div class="p-card-body">
-          <div class="client">Astra Kinto</div>
-          <div class="desc"><span class="t-en">Mobility subscription content built for a digitally fluent audience.</span><span class="t-id">Konten subscription mobilitas untuk audiens yang melek digital.</span></div>
-          <a href="#" class="link"><span class="t-en">See it in action →</span><span class="t-id">Lihat dalam aksi →</span></a>
-        </div>
-      </div>
-      <div class="p-card">
-        <div class="slate"><div class="slate-tag"><span class="rec"></span>JD SPORTS ID</div></div>
-        <div class="p-card-body">
-          <div class="client">JD Sports Indonesia</div>
-          <div class="desc"><span class="t-en">Sport-retail energy translated into scroll-stopping feed content.</span><span class="t-id">Energi retail olahraga diterjemahkan jadi konten yang menghentikan scroll.</span></div>
-          <a href="#" class="link"><span class="t-en">See it in action →</span><span class="t-id">Lihat dalam aksi →</span></a>
-        </div>
-      </div>
-    </div>
-  </section>
+<!-- CLOSING CTA -->
+<section class="closing reveal">
+  <div class="eyebrow" style="justify-content:center">LET'S BUILD</div>
+  <h2>Twelve years in.<br>Still just getting started.</h2>
+  <p>Whatever stage your brand is at, IDEOWORKS is built to be the one partner that takes it further.</p>
+  <div class="cta-row" style="justify-content:center">
+    <a class="btn btn-primary" href="#">Start a Conversation</a>
+    <a class="btn btn-ghost" href="#">Explore Our Services</a>
+  </div>
+  <div class="micro">No pitch decks. Just a real conversation about what you need.</div>
+</section>
 
-  <!-- WHY -->
-  <section class="why" id="why">
-    <div class="wrap reveal">
-      <div class="eyebrow"><span class="t-en">Why IDEOWORKS</span><span class="t-id">Kenapa IDEOWORKS</span></div>
-      <h2 style="font-size:clamp(28px,3.6vw,42px); font-weight:600;">
-        <span class="t-en">Not a content mill. A content system.</span>
-        <span class="t-id">Bukan pabrik konten. Sebuah sistem konten.</span>
-      </h2>
-      <div class="why-grid">
-        <div class="why-item">
-          <span class="num">01</span>
-          <h4><span class="t-en">Strategy first</span><span class="t-id">Strategi lebih dulu</span></h4>
-          <p><span class="t-en">Every post traces back to a content pillar, not a trend chase.</span><span class="t-id">Setiap posting-an kembali ke pilar konten, bukan sekadar mengejar tren.</span></p>
-        </div>
-        <div class="why-item">
-          <span class="num">02</span>
-          <h4><span class="t-en">In-house production</span><span class="t-id">Produksi in-house</span></h4>
-          <p><span class="t-en">No outsourced content mills — everything is made by our own creative team.</span><span class="t-id">Bukan konten dari pihak ketiga — semua dibuat oleh tim kreatif kami sendiri.</span></p>
-        </div>
-        <div class="why-item">
-          <span class="num">03</span>
-          <h4><span class="t-en">Connected to the full system</span><span class="t-id">Terhubung ke sistem penuh</span></h4>
-          <p><span class="t-en">Plugs directly into KOL, Community, and Analytics — one loop, not a silo.</span><span class="t-id">Terhubung langsung dengan KOL, Community, dan Analytics — satu siklus, bukan silo terpisah.</span></p>
-        </div>
-      </div>
-    </div>
-  </section>
+<footer>
+  <div>© IDEOWORKS — PT. CIPTA URBAN DARSANA</div>
+  <div>JAKARTA, INDONESIA</div>
+</footer>
 
-  <!-- RELATED -->
-  <section class="related wrap reveal">
-    <div class="section-head" style="margin-bottom:0;">
-      <div class="eyebrow"><span class="t-en">Pairs Well With</span><span class="t-id">Cocok Dipadukan Dengan</span></div>
-    </div>
-    <div class="related-grid">
-      <a href="#" class="r-card">
-        <span class="tag">Socialize</span>
-        <h5>KOL Marketing</h5>
-        <p><span class="t-en">Borrowed trust, used well.</span><span class="t-id">Kepercayaan yang dipinjam, digunakan dengan tepat.</span></p>
-      </a>
-      <a href="#" class="r-card">
-        <span class="tag">Socialize</span>
-        <h5>Digital Community</h5>
-        <p><span class="t-en">A place to belong, not just follow.</span><span class="t-id">Tempat untuk merasa memiliki, bukan sekadar mengikuti.</span></p>
-      </a>
-      <a href="#" class="r-card">
-        <span class="tag">Communicate</span>
-        <h5>Content Creation</h5>
-        <p><span class="t-en">Content, on schedule.</span><span class="t-id">Konten, tepat waktu.</span></p>
-      </a>
-      <a href="#" class="r-card">
-        <span class="tag">Analyze</span>
-        <h5>Listening &amp; Analytics</h5>
-        <p><span class="t-en">Every signal, accounted for.</span><span class="t-id">Setiap sinyal, terpantau.</span></p>
-      </a>
-    </div>
-  </section>
+<script>
+  // scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12});
+  reveals.forEach(el=>io.observe(el));
 
-  <!-- CLOSING -->
-  <section class="closing reveal">
-    <div class="closing-inner">
-      <div class="eyebrow"><span class="t-en">Let's Build</span><span class="t-id">Mari Membangun Bersama</span></div>
-      <h2><span class="t-en">Ready to show up, every day that counts?</span><span class="t-id">Siap untuk hadir, di setiap hari yang berarti?</span></h2>
-      <p><span class="t-en">Tell us about your brand, and we'll show you what a real content system looks like.</span><span class="t-id">Ceritakan tentang brand Anda, dan kami akan tunjukkan seperti apa sistem konten yang sesungguhnya.</span></p>
-      <div class="cta-row">
-        <a href="#" class="btn btn-primary"><span class="t-en">Start a Conversation</span><span class="t-id">Mulai Percakapan</span></a>
-        <a href="#" class="btn btn-ghost"><span class="t-en">See Our Work</span><span class="t-id">Lihat Hasil Karya Kami</span></a>
-      </div>
-    </div>
-  </section>
+  // jump nav show/hide + active state
+  const jumpnav = document.getElementById('jumpnav');
+  const hero = document.getElementById('hero');
+  const sections = ['story','way','people','trusted'].map(id=>document.getElementById(id));
+  const links = jumpnav.querySelectorAll('a');
 
-  <footer>
-    <div class="wrap footer-inner">
-      <div class="nav-mark"><span class="dot"></span>IDEOWORKS</div>
-      <div class="mono">© 2026 IDEOWORKS · CASA Framework</div>
-    </div>
-  </footer>
+  window.addEventListener('scroll', ()=>{
+    const heroBottom = hero.getBoundingClientRect().bottom;
+    jumpnav.classList.toggle('show', heroBottom < 0);
 
-  <script>
-    // language toggle
-    const btn = document.getElementById('langToggle');
-    const enOpt = btn.querySelector('.opt-en');
-    const idOpt = btn.querySelector('.opt-id');
-    btn.addEventListener('click', () => {
-      const toId = document.body.classList.contains('lang-en');
-      document.body.classList.toggle('lang-en', !toId);
-      document.body.classList.toggle('lang-id', toId);
-      enOpt.classList.toggle('active', !toId);
-      idOpt.classList.toggle('active', toId);
+    let current = null;
+    sections.forEach(sec=>{
+      const r = sec.getBoundingClientRect();
+      if(r.top < window.innerHeight*0.4 && r.bottom > window.innerHeight*0.2){ current = sec.id; }
     });
+    links.forEach(a=> a.classList.toggle('active', a.dataset.target === current));
+  });
+</script>
 
-    // scroll reveal
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} });
-    }, {threshold:0.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
 </body>
 </html>
