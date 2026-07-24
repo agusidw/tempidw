@@ -194,6 +194,29 @@
   .mod-head p{ font-size:16.5px; line-height:1.65; color:var(--muted-d); }
   .dark .mod-head p{ color:var(--muted-l); }
 
+  /* ---------- HERITAGE INSIGHT ---------- */
+  .heritage{
+    display:grid; grid-template-columns:1fr 1fr; gap:56px;
+    background:var(--marble-2); border-radius:20px; padding:52px;
+    margin-bottom:64px; position:relative; overflow:hidden;
+  }
+  .heritage::before{
+    content:''; position:absolute; top:0; left:50%; bottom:0; width:1px;
+    background:linear-gradient(var(--gold), transparent 80%);
+  }
+  .heritage-copy h3{ font-size:clamp(22px,2.6vw,30px); margin-bottom:18px; }
+  .heritage-copy p{ font-size:14.5px; line-height:1.7; color:var(--muted-d); margin-bottom:16px; }
+  .heritage-copy .closing-line{ font-family:var(--serif); font-style:italic; font-size:17px; color:var(--blue-deep); }
+  .heritage-chips{ display:flex; flex-direction:column; gap:16px; justify-content:center; }
+  .h-chip{ display:flex; gap:18px; align-items:flex-start; }
+  .h-chip .yr{ font-family:var(--mono); font-size:13px; color:var(--gold); min-width:44px; padding-top:2px; }
+  .h-chip p{ font-size:13.5px; line-height:1.55; color:var(--text-d); }
+  .qc-note{
+    font-family:var(--mono); font-size:11px; line-height:1.7; color:var(--grey);
+    border-top:1px dashed var(--gold); margin-top:26px; padding-top:16px;
+  }
+  @media (max-width:860px){ .heritage{ grid-template-columns:1fr; padding:32px; } .heritage::before{ display:none; } }
+
   /* ---------- STORY / TIMELINE ---------- */
   .story-visual{
     height:340px; border-radius:20px; margin-bottom:64px; position:relative; overflow:hidden;
@@ -356,7 +379,7 @@
   <div class="grain"></div>
   <div class="hero-top"><span class="dot"></span> ABOUT IDEOWORKS</div>
   <div class="hero-caption">PHOTO DIRECTION — candid wide shot, professional walking through open workspace, dark wood &amp; marble interior, golden-hour morning light, no eye contact to camera.</div>
-  <h1>Since 2013.<br>Still making <em>ideas</em> work.</h1>
+  <h1>Since 2011.<br>Still making <em>ideas</em> work.</h1>
   <p class="sub">IDEOWORKS is an integrated digital marketing agency built in Jakarta, trusted by 3,000+ companies to turn strategy into growth that can be measured.</p>
   <div class="cta-row">
     <a class="btn btn-primary" href="#story">Our Story</a>
@@ -368,7 +391,7 @@
 <!-- EXPLORE BAND -->
 <section class="explore marble reveal">
   <div class="eyebrow on-light" style="justify-content:center">EXPLORE IDEOWORKS</div>
-  <h2>Twelve years. One reason we still do this.</h2>
+  <h2>Fifteen years. One reason we still do this.</h2>
   <div class="explore-links">
     <a href="#story">Our Story</a>
     <a href="#way">Our Way</a>
@@ -383,28 +406,44 @@
     <div class="mod-head reveal">
       <div class="eyebrow on-light">01 — OUR STORY</div>
       <h2>It started with one idea: make idea work.</h2>
-      <p>Founded in 2013 under PT. Cipta Urban Darsana, IDEOWORKS began as a small team in Jakarta with one belief — that a good idea only matters if it actually performs.</p>
+      <p>Founded in Jakarta in 2011 as Gopher Indonesia, the company grew into IDEOWORKS on one belief that hasn't changed since day one — that a good idea only matters if it actually performs.</p>
     </div>
 
     <div class="story-visual reveal">
       <div class="cap">PHOTO DIRECTION — real founder / leadership photography (not stock). Candid, looking out of office window or standing before a wall of past campaign prints. Golden-hour, dark wood &amp; marble tones.</div>
     </div>
 
+    <div class="heritage reveal">
+      <div class="heritage-copy">
+        <div class="eyebrow on-light">BEFORE IDEOWORKS</div>
+        <h3>We didn't start as IDEOWORKS.</h3>
+        <p>Before the name IDEOWORKS, there was Gopher Indonesia — part of Gopher Group, a digital advertising technology company founded in Auckland, New Zealand in 2007. In 2011, Gopher Indonesia opened in Jakarta and became Indonesia's first, and only, Google AdWords Premier Partner for SMEs.</p>
+        <p>In 2014, IDEOWORKS invested in Gopher Indonesia — a move aligned with its own focus on e-commerce for SMEs. The goal set then was ambitious: serve 3,000 Indonesian SMEs within three years, through campaigns measured by real ROI, not vanity metrics.</p>
+        <p class="closing-line">That target didn't stay a target for long. It became who we are.</p>
+        <div class="qc-note">QC NOTE — sourced from Gopher Indonesia's LinkedIn profile and a 2014 Indotelko article on IDEOWORKS' investment in Gopher Indonesia (Chairman Andi S. Boediman). Please confirm with the internal team whether naming Gopher Group, John Campbell, BJ Sveistrup, and Andi S. Boediman explicitly is approved for public publishing, or whether this should be generalized as "Google partner heritage" without specific names.</div>
+      </div>
+      <div class="heritage-chips">
+        <div class="h-chip"><span class="yr">2007</span><p>Gopher Group founded in Auckland, New Zealand, by John Campbell and BJ Sveistrup.</p></div>
+        <div class="h-chip"><span class="yr">2011</span><p>Gopher Indonesia opens in Jakarta, becoming Indonesia's first Google Premier Partner for SMEs.</p></div>
+        <div class="h-chip"><span class="yr">2014</span><p>IDEOWORKS invests in Gopher Indonesia and sets the goal to serve 3,000 Indonesian SMEs.</p></div>
+      </div>
+    </div>
+
     <div class="timeline reveal">
       <div class="t-item">
-        <span class="t-year">2013</span>
+        <span class="t-year">2011</span>
         <h3>The Beginning</h3>
-        <p>A small agency in Jakarta, built on one tagline that still guides every brief: Make Idea Works.</p>
+        <p>What began as Gopher Indonesia carried one standard from day one: campaigns measured by real ROI.</p>
       </div>
       <div class="t-item">
         <span class="t-year">3,000+</span>
         <h3>The Growth</h3>
-        <p>From small businesses to national enterprises across FMCG, banking, retail, property, and technology.</p>
+        <p>The 3,000-SME goal set in 2014 was just the beginning — now spanning FMCG, banking, retail, property, and tech.</p>
       </div>
       <div class="t-item">
         <span class="t-year">1ST</span>
         <h3>The Recognition</h3>
-        <p>Indonesia's first Google Premier Partner for SMEs — a title earned, not given.</p>
+        <p>A title earned back in 2011 and carried forward — Indonesia's first Google Premier Partner for SMEs.</p>
       </div>
       <div class="t-item">
         <span class="t-year">TODAY</span>
@@ -505,7 +544,7 @@
     <div class="recog-row reveal">
       <div class="recog"><span class="tag">RECOGNITION</span><p>Indonesia's first Google Premier Partner for SMEs</p></div>
       <div class="recog"><span class="tag">RECOGNITION</span><p>Meta Business Partner</p></div>
-      <div class="recog"><span class="tag">RECOGNITION</span><p>3,000+ companies served since 2013</p></div>
+      <div class="recog"><span class="tag">RECOGNITION</span><p>3,000+ companies served since 2011</p></div>
     </div>
   </div>
 </section>
@@ -518,7 +557,7 @@
       <h2 style="color:var(--text-l)">A few more numbers worth knowing.</h2>
     </div>
     <div class="facts-grid reveal">
-      <div class="fact"><div class="ic"></div><div><h4>Founded 2013</h4><p>Twelve years of building brands from the ground up.</p></div></div>
+      <div class="fact"><div class="ic"></div><div><h4>Founded 2011</h4><p>Fifteen years of building brands from the ground up — starting as Gopher Indonesia.</p></div></div>
       <div class="fact"><div class="ic"></div><div><h4>Jakarta-based</h4><p>Headquartered in Indonesia's biggest market.</p></div></div>
       <div class="fact"><div class="ic"></div><div><h4>3,000+ companies</h4><p>From SMEs to national enterprises.</p></div></div>
       <div class="fact"><div class="ic"></div><div><h4>Google Premier Partner</h4><p>First of its kind in Indonesia for SMEs.</p></div></div>
@@ -550,7 +589,7 @@
 <!-- CLOSING CTA -->
 <section class="closing reveal">
   <div class="eyebrow" style="justify-content:center">LET'S BUILD</div>
-  <h2>Twelve years in.<br>Still just getting started.</h2>
+  <h2>Fifteen years in.<br>Still just getting started.</h2>
   <p>Whatever stage your brand is at, IDEOWORKS is built to be the one partner that takes it further.</p>
   <div class="cta-row" style="justify-content:center">
     <a class="btn btn-primary" href="#">Start a Conversation</a>
