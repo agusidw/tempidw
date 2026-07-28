@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Social Media Marketing — IDEOWORKS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #055eaa;
+      --red: #cd201f;
+      --grey: #4c4c4e;
+      --white: #ffffff;
+      --light-bg: #f5f7fb;
+      --border: #e4e8f0;
+      --text-primary: #141824;
+      --text-secondary: #4c4c4e;
+      --text-muted: #7a7d8c;
+      --hero-bg: #09111f;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-primary);
+      background: var(--white);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 56px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800; font-size: 17px;
+      color: var(--blue); letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--grey);
+      font-size: 13.5px; font-weight: 500; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-right { display: flex; align-items: center; gap: 14px; }
+    .lang-toggle {
+      display: flex; background: var(--light-bg);
+      border-radius: 20px; padding: 3px; gap: 2px;
+    }
+    .lang-btn {
+      border: none; background: transparent;
+      padding: 5px 14px; border-radius: 16px;
+      font-size: 11.5px; font-weight: 700;
+      cursor: pointer; color: var(--text-muted);
+      transition: all 0.2s; font-family: 'Inter', sans-serif;
+      letter-spacing: 0.3px;
+    }
+    .lang-btn.active {
+      background: var(--white); color: var(--blue);
+      box-shadow: 0 1px 6px rgba(0,0,0,0.1);
+    }
+    .nav-cta {
+      background: var(--blue); color: white;
+      border: none; padding: 10px 20px;
+      border-radius: 8px; font-size: 13px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background 0.2s;
+    }
+    .nav-cta:hover { background: #044c8e; }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--hero-bg);
+      min-height: 96vh;
+      display: flex; align-items: center;
+      padding: 100px 56px 80px;
+      position: relative; overflow: hidden;
+    }
+    .hero-glow-blue {
+      position: absolute; top: -10%; right: 0;
+      width: 680px; height: 680px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(5,94,170,0.22) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-glow-red {
+      position: absolute; bottom: -20%; left: 10%;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(205,32,31,0.08) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 680px; }
+    .hero-eyebrow {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 28px;
+    }
+    .hero-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(40px, 5.5vw, 72px);
+      font-weight: 800; color: var(--white);
+      line-height: 1.08; letter-spacing: -2.5px;
+      margin-bottom: 28px;
+    }
+    .hero-title .accent {
+      background: linear-gradient(120deg, #4aa3e8, #055eaa);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-sub {
+      font-size: 17px; color: rgba(255,255,255,0.48);
+      max-width: 460px; line-height: 1.75; margin-bottom: 48px;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue); color: white;
+      border: none; padding: 14px 28px;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-primary:hover { background: #044c8e; transform: translateY(-1px); }
+    .btn-ghost {
+      background: transparent; color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 14px 28px; border-radius: 8px;
+      font-size: 14px; font-weight: 500;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.45); color: white; }
+
+    /* Phone visual */
+    .hero-phone {
+      position: absolute; right: 80px; top: 50%;
+      transform: translateY(-50%);
+      width: 200px; height: 400px;
+      border: 1.5px solid rgba(255,255,255,0.1);
+      border-radius: 30px;
+      background: rgba(255,255,255,0.03);
+      backdrop-filter: blur(8px);
+      padding: 24px 12px 16px;
+      display: flex; flex-direction: column; gap: 8px;
+      overflow: hidden;
+    }
+    .hero-phone::before {
+      content: '';
+      position: absolute; top: 12px; left: 50%;
+      transform: translateX(-50%);
+      width: 48px; height: 3px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 2px;
+    }
+    .phone-card {
+      border-radius: 10px; border: 1px solid rgba(255,255,255,0.06);
+      flex-shrink: 0;
+    }
+    .phone-card:nth-child(1) { height: 88px; background: rgba(5,94,170,0.25); }
+    .phone-card:nth-child(2) { height: 64px; background: rgba(255,255,255,0.06); }
+    .phone-card:nth-child(3) { height: 72px; background: rgba(205,32,31,0.12); }
+    .phone-card:nth-child(4) { height: 60px; background: rgba(255,255,255,0.04); }
+    .phone-card:nth-child(5) { height: 56px; background: rgba(5,94,170,0.1); }
+
+    /* ── SHARED TOKENS ── */
+    .section { padding: 96px 56px; }
+    .section-sm { padding: 64px 56px; }
+    .section-light { background: var(--light-bg); }
+    .section-dark { background: var(--hero-bg); }
+
+    .red-accent {
+      width: 36px; height: 4px;
+      background: var(--red); border-radius: 2px;
+      margin-bottom: 20px;
+    }
+    .eyebrow {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 16px;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(26px, 3vw, 42px);
+      font-weight: 700; letter-spacing: -1px;
+      line-height: 1.2; color: var(--text-primary);
+      margin-bottom: 14px;
+    }
+    .section-title.light { color: white; }
+    .section-sub {
+      font-size: 16px; color: var(--text-muted);
+      max-width: 540px; line-height: 1.72;
+    }
+    .section-sub.light { color: rgba(255,255,255,0.48); }
+    .text-center { text-align: center; }
+    .text-center .section-sub,
+    .text-center .red-accent { margin-left: auto; margin-right: auto; }
+
+    /* ── BRAND INSIGHT ── */
+    .insight-layout {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 88px; align-items: start;
+    }
+    .insight-body {
+      font-size: 16.5px; color: var(--text-secondary);
+      line-height: 1.82; margin-top: 24px;
+    }
+    .insight-body p + p { margin-top: 18px; }
+    .insight-body strong { color: var(--text-primary); font-weight: 600; }
+    .stats-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 16px; margin-top: 12px;
+    }
+    .stat-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-top: 3px solid var(--red);
+      border-radius: 14px; padding: 24px 22px;
+      transition: box-shadow 0.3s;
+    }
+    .stat-card:hover { box-shadow: 0 6px 24px rgba(5,94,170,0.08); }
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 34px; font-weight: 800;
+      color: var(--blue); letter-spacing: -1px;
+      line-height: 1; margin-bottom: 6px;
+    }
+    .stat-label { font-size: 12.5px; color: var(--text-muted); line-height: 1.45; }
+
+    /* ── TWO VALUE PROPS ── */
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    .value-col {
+      padding: 56px 52px; background: var(--white);
+    }
+    .value-col:first-child { border-top: 3px solid var(--blue); }
+    .value-col:last-child { border-top: 3px solid var(--red); background: var(--light-bg); }
+    .value-col-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 22px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 14px;
+      letter-spacing: -0.4px; line-height: 1.25;
+    }
+    .value-col-body { font-size: 15px; color: var(--text-secondary); line-height: 1.78; }
+
+    /* ── SERVICES GRID ── */
+    .services-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+    .service-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 32px;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .service-card:hover { box-shadow: 0 12px 40px rgba(5,94,170,0.09); transform: translateY(-2px); }
+    .service-card.blue-border { border-top: 4px solid var(--blue); }
+    .service-card.red-border  { border-top: 4px solid var(--red); }
+    .service-tag {
+      display: inline-block; font-size: 10.5px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 5px 12px; border-radius: 20px; margin-bottom: 18px;
+    }
+    .service-tag.blue { color: var(--blue); background: rgba(5,94,170,0.08); }
+    .service-tag.red  { color: var(--red);  background: rgba(205,32,31,0.08); }
+    .service-card-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+    }
+    .service-card-body { font-size: 14px; color: var(--text-muted); line-height: 1.7; }
+    .service-list { margin-top: 20px; list-style: none; }
+    .service-list li {
+      font-size: 13px; color: var(--text-secondary);
+      padding: 8px 0; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .service-list li:last-child { border-bottom: none; }
+    .service-list li::before {
+      content: '';
+      width: 5px; height: 5px; border-radius: 50%;
+      background: var(--blue); flex-shrink: 0;
+    }
+
+    /* ── CASA MODEL ── */
+    .casa-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; margin-top: 44px; }
+    .casa-card {
+      padding: 32px 24px; border-radius: 16px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      position: relative; overflow: hidden;
+      transition: box-shadow 0.3s;
+    }
+    .casa-card:hover { box-shadow: 0 8px 32px rgba(5,94,170,0.1); }
+    .casa-ghost-letter {
+      font-family: 'Poppins', sans-serif;
+      font-size: 72px; font-weight: 900;
+      color: var(--blue); opacity: 0.07;
+      position: absolute; top: -10px; right: 10px;
+      line-height: 1; pointer-events: none;
+    }
+    .casa-index {
+      font-size: 10.5px; font-weight: 700;
+      color: var(--blue); letter-spacing: 2px;
+      text-transform: uppercase; margin-bottom: 10px;
+    }
+    .casa-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+    }
+    .casa-body { font-size: 13px; color: var(--text-muted); line-height: 1.65; }
+
+    /* ── WHY IDEOWORKS ── */
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .why-card {
+      padding: 36px 28px; border-radius: 16px;
+      border: 1px solid var(--border); background: var(--white);
+      border-top: 4px solid transparent;
+      transition: box-shadow 0.3s, transform 0.2s;
+    }
+    .why-card:nth-child(1) { border-top-color: var(--blue); }
+    .why-card:nth-child(2) { border-top-color: var(--red); }
+    .why-card:nth-child(3) { border-top-color: var(--blue); }
+    .why-card:hover { box-shadow: 0 8px 32px rgba(5,94,170,0.08); transform: translateY(-2px); }
+    .why-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(5,94,170,0.08);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 20px; margin-bottom: 20px;
+    }
+    .why-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+    }
+    .why-body { font-size: 14px; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── CLIENTS ── */
+    .clients-wrap { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 12px; }
+    .client-chip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px; padding: 12px 22px;
+      font-size: 13px; font-weight: 600;
+      color: var(--text-secondary); transition: all 0.2s;
+    }
+    .client-chip:hover { border-color: var(--blue); color: var(--blue); background: rgba(5,94,170,0.04); }
+
+    /* ── METRICS ── */
+    .metrics-grid {
+      display: grid; grid-template-columns: repeat(5, 1fr);
+      gap: 1px; background: var(--border);
+      border-radius: 16px; overflow: hidden;
+      margin-top: 44px; border: 1px solid var(--border);
+    }
+    .metric-item {
+      background: var(--white);
+      padding: 32px 18px; text-align: center;
+    }
+    .metric-icon { font-size: 26px; margin-bottom: 12px; }
+    .metric-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 13.5px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 6px;
+    }
+    .metric-desc { font-size: 12px; color: var(--text-muted); line-height: 1.5; }
+
+    /* ── GETTING STARTED ── */
+    .steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .step-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px; padding: 36px 28px;
+      transition: box-shadow 0.3s;
+    }
+    .step-card:hover { box-shadow: 0 8px 32px rgba(5,94,170,0.08); }
+    .step-number {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--blue); color: white;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .step-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 18px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 12px;
+    }
+    .step-body { font-size: 14px; color: var(--text-muted); line-height: 1.72; }
+
+    /* ── FAQ ── */
+    .faq-list { margin-top: 44px; max-width: 740px; margin-left: auto; margin-right: auto; }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-question {
+      width: 100%; background: none; border: none;
+      text-align: left; padding: 22px 0;
+      font-family: 'Poppins', sans-serif;
+      font-size: 15.5px; font-weight: 600;
+      color: var(--text-primary); cursor: pointer;
+      display: flex; justify-content: space-between;
+      align-items: center; gap: 16px; transition: color 0.2s;
+    }
+    .faq-question:hover { color: var(--blue); }
+    .faq-toggle {
+      width: 28px; height: 28px; border-radius: 50%;
+      border: 1.5px solid var(--border);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; font-size: 17px; color: var(--blue);
+      transition: all 0.2s; background: transparent;
+      font-weight: 300; line-height: 1;
+    }
+    .faq-item.open .faq-toggle {
+      background: var(--blue); color: white; border-color: var(--blue);
+    }
+    .faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.35s ease; }
+    .faq-answer-inner {
+      font-size: 14.5px; color: var(--text-secondary);
+      line-height: 1.78; padding-bottom: 22px;
+    }
+    .faq-item.open .faq-answer { max-height: 240px; }
+
+    /* ── PAIR WELL WITH ── */
+    .pair-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 44px; }
+    .pair-card {
+      background: var(--white); border: 1px solid var(--border);
+      border-radius: 16px; padding: 32px;
+      transition: all 0.3s; text-decoration: none; display: block;
+    }
+    .pair-card:hover {
+      border-color: var(--blue);
+      box-shadow: 0 8px 32px rgba(5,94,170,0.09);
+      transform: translateY(-2px);
+    }
+    .pair-tag {
+      font-size: 10.5px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--red); margin-bottom: 12px;
+    }
+    .pair-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 19px; font-weight: 700;
+      color: var(--text-primary); margin-bottom: 10px;
+      letter-spacing: -0.3px; line-height: 1.25;
+    }
+    .pair-body { font-size: 13.5px; color: var(--text-muted); line-height: 1.68; }
+    .pair-arrow {
+      margin-top: 20px; font-size: 13px;
+      color: var(--blue); font-weight: 600;
+      display: flex; align-items: center; gap: 5px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--hero-bg);
+      padding: 100px 56px;
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .cta-section::before {
+      content: '';
+      position: absolute; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 800px; height: 400px; border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(5,94,170,0.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .cta-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 800; color: white;
+      letter-spacing: -1.5px; line-height: 1.12;
+      margin-bottom: 20px; position: relative; z-index: 1;
+    }
+    .cta-sub {
+      font-size: 16px; color: rgba(255,255,255,0.45);
+      margin-bottom: 44px; position: relative; z-index: 1;
+    }
+    .cta-actions {
+      display: flex; gap: 14px;
+      justify-content: center; position: relative; z-index: 1;
+    }
+    .btn-cta {
+      background: var(--blue); color: white;
+      border: none; padding: 16px 36px;
+      border-radius: 8px; font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .btn-cta:hover { background: #044c8e; transform: translateY(-1px); }
+    .btn-cta-ghost {
+      background: transparent; color: rgba(255,255,255,0.6);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 16px 36px; border-radius: 8px;
+      font-size: 15px; font-weight: 500;
+      cursor: pointer; font-family: 'Inter', sans-serif;
+      transition: all 0.2s;
+    }
+    .btn-cta-ghost:hover { border-color: rgba(255,255,255,0.45); color: white; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #060d19;
+      padding: 60px 56px 36px;
+      color: rgba(255,255,255,0.35); font-size: 13px;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px; padding-bottom: 40px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      margin-bottom: 28px;
+    }
+    .footer-brand {
+      font-family: 'Poppins', sans-serif;
+      font-size: 17px; font-weight: 800;
+      color: white; margin-bottom: 12px; letter-spacing: -0.3px;
+    }
+    .footer-brand span { color: var(--red); }
+    .footer-tagline { font-size: 13px; color: rgba(255,255,255,0.3); line-height: 1.65; }
+    .footer-col-title {
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px;
+    }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a {
+      color: rgba(255,255,255,0.3); text-decoration: none;
+      font-size: 13px; transition: color 0.2s;
+    }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; justify-content: space-between; align-items: center; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1100px) {
+      nav, .section, .section-sm, .cta-section, footer { padding-left: 32px; padding-right: 32px; }
+      .hero { padding: 80px 32px; }
+      .hero-phone { display: none; }
+      .insight-layout { grid-template-columns: 1fr; gap: 44px; }
+      .casa-grid { grid-template-columns: repeat(2, 1fr); }
+      .metrics-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-top { grid-template-columns: 1fr 1fr; gap: 32px; }
+    }
+    @media (max-width: 768px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .section, .section-sm { padding: 56px 20px; }
+      .hero { padding: 60px 20px; min-height: auto; padding-top: 72px; }
+      .hero-title { font-size: 34px; letter-spacing: -1px; }
+      .two-col, .services-grid, .why-grid, .steps-grid, .pair-grid { grid-template-columns: 1fr; }
+      .casa-grid { grid-template-columns: 1fr 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .value-col { padding: 40px 28px; }
+      .cta-section { padding: 72px 20px; }
+      footer { padding: 44px 20px 28px; }
+      .footer-top { grid-template-columns: 1fr; gap: 28px; }
+      .footer-bottom { flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════
+  NAV
+════════════════════════════════════════════ -->
+<nav>
+  <div class="nav-logo">IDEO<span>WORKS</span></div>
+  <ul class="nav-links">
+    <li><a href="#">Works</a></li>
+    <li><a href="#">About</a></li>
+    <li><a href="#">Services</a></li>
+    <li><a href="#">Articles</a></li>
+    <li><a href="#">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('id')">ID</button>
+    </div>
+    <button class="nav-cta" data-en="Get in Touch" data-id="Hubungi Kami">Get in Touch</button>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════
+  1. HERO
+════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="hero-glow-blue"></div>
+  <div class="hero-glow-red"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-en="Social Media Marketing" data-id="Social Media Marketing">Social Media Marketing</div>
+    <h1 class="hero-title">
+      <span data-en="Be Present Where<br>It " data-id="Hadir di Momen<br>yang ">Be Present Where<br>It </span><span class="accent" data-en="Matters." data-id="Tepat.">Matters.</span>
+    </h1>
+    <p class="hero-sub" data-en="Stay visible, stay relevant, and stay part of the conversations that move your brand forward — in the moments that matter most." data-id="Tetap terlihat, tetap relevan, dan tetap menjadi bagian dari percakapan yang mendorong brand Anda maju — di momen yang paling penting.">Stay visible, stay relevant, and stay part of the conversations that move your brand forward — in the moments that matter most.</p>
+    <div class="hero-actions">
+      <button class="btn-primary" data-en="Start a Conversation" data-id="Mulai Konsultasi">Start a Conversation</button>
+      <button class="btn-ghost" data-en="See Our Work" data-id="Lihat Karya Kami">See Our Work</button>
+    </div>
+  </div>
+  <div class="hero-phone" aria-hidden="true">
+    <div class="phone-card"></div>
+    <div class="phone-card"></div>
+    <div class="phone-card"></div>
+    <div class="phone-card"></div>
+    <div class="phone-card"></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  2. BRAND INSIGHT — Why social presence matters
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="insight-layout">
+    <div>
+      <div class="red-accent"></div>
+      <div class="eyebrow" data-en="Why It Matters" data-id="Mengapa Ini Penting">Why It Matters</div>
+      <h2 class="section-title" data-en="Social presence is where brand affinity is built." data-id="Kehadiran di media sosial adalah tempat brand affinity terbentuk.">Social presence is where brand affinity is built.</h2>
+      <div class="insight-body">
+        <p data-en="For many Indonesians, social media <strong>is</strong> the internet — where they discover brands, form first impressions, and decide whether to follow or forget." data-id="Bagi banyak orang Indonesia, media sosial <strong>adalah</strong> internet itu sendiri — tempat mereka menemukan brand, membentuk kesan pertama, dan memutuskan apakah akan mengikuti atau melupakan.">For many Indonesians, social media <strong>is</strong> the internet — where they discover brands, form first impressions, and decide whether to follow or forget.</p>
+        <p data-en="A week of silence is a week the algorithm handed your audience to someone else. Real presence isn't about posting daily — it's about showing up with substance, consistency, and a voice your audience actually recognizes." data-id="Seminggu tanpa konten berarti seminggu algoritma menyerahkan audiens Anda ke kompetitor. Kehadiran nyata bukan soal posting setiap hari — ini soal tampil dengan substansi, konsistensi, dan suara yang benar-benar dikenali audiens Anda.">A week of silence is a week the algorithm handed your audience to someone else. Real presence isn't about posting daily — it's about showing up with substance, consistency, and a voice your audience actually recognizes.</p>
+        <p data-en="That's what we build: not just a content schedule, but a brand that <em>belongs</em> in your audience's feed." data-id="Itulah yang kami bangun: bukan sekadar jadwal konten, tapi brand yang <em>layak</em> ada di feed audiens Anda.">That's what we build: not just a content schedule, but a brand that <em>belongs</em> in your audience's feed.</p>
+      </div>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-number">167M<span style="font-size:18px">+</span></div>
+        <div class="stat-label" data-en="Active social media users in Indonesia" data-id="Pengguna media sosial aktif di Indonesia">Active social media users in Indonesia</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">3.3h</div>
+        <div class="stat-label" data-en="Average daily time spent per user on social" data-id="Rata-rata waktu harian di media sosial per pengguna">Average daily time spent per user on social</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">78%</div>
+        <div class="stat-label" data-en="of consumers research brands on social before buying" data-id="konsumen riset brand di sosial sebelum membeli">of consumers research brands on social before buying</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number">4.1×</div>
+        <div class="stat-label" data-en="more likely to buy from brands they actively follow" data-id="lebih mungkin membeli dari brand yang aktif diikuti">more likely to buy from brands they actively follow</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  3. TWO VALUE PROPS
+════════════════════════════════════════════ -->
+<div class="two-col">
+  <div class="value-col">
+    <div class="eyebrow" data-en="Our Approach" data-id="Pendekatan Kami">Our Approach</div>
+    <div class="value-col-title" data-en="Genuinely Part of the Conversation" data-id="Benar-benar Bagian dari Percakapan">Genuinely Part of the Conversation</div>
+    <div class="value-col-body" data-en="We don't manage brands from the outside. We immerse in your world — your tone, your audience's language, your industry's rhythms — and create content that feels like it belongs, not like it was scheduled by a vendor." data-id="Kami tidak mengelola brand dari luar. Kami menyelami dunia Anda — tone, bahasa audiens, ritme industri Anda — dan menciptakan konten yang terasa alami, bukan seperti dijadwalkan oleh vendor.">We don't manage brands from the outside. We immerse in your world — your tone, your audience's language, your industry's rhythms — and create content that feels like it belongs, not like it was scheduled by a vendor.</div>
+  </div>
+  <div class="value-col">
+    <div class="eyebrow" data-en="Our Promise" data-id="Janji Kami">Our Promise</div>
+    <div class="value-col-title" data-en="Creative, But Accountable" data-id="Kreatif, Tapi Bertanggung Jawab">Creative, But Accountable</div>
+    <div class="value-col-body" data-en="Every creative decision connects back to a number. We make content that stops the scroll and drives action — then we measure both, so you always know what's working and exactly why." data-id="Setiap keputusan kreatif terhubung kembali ke angka. Kami membuat konten yang menghentikan scroll dan mendorong tindakan — lalu mengukur keduanya, agar Anda selalu tahu apa yang berhasil dan mengapa.">Every creative decision connects back to a number. We make content that stops the scroll and drives action — then we measure both, so you always know what's working and exactly why.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+  4. SERVICES — What We Do
+════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="What We Do" data-id="Yang Kami Kerjakan">What We Do</div>
+  <h2 class="section-title" data-en="Stay Worth Paying Attention To." data-id="Selalu Layak untuk Diperhatikan.">Stay Worth Paying Attention To.</h2>
+  <p class="section-sub" data-en="Because attention isn't won once. It's earned repeatedly." data-id="Karena perhatian tidak diraih sekali saja. Harus dimenangkan berulang kali.">Because attention isn't won once. It's earned repeatedly.</p>
+  <div class="services-grid">
+    <div class="service-card blue-border">
+      <div class="service-tag blue" data-en="Strategy" data-id="Strategi">Strategy</div>
+      <div class="service-card-title" data-en="Every post needs a reason." data-id="Setiap post punya alasan.">Every post needs a reason.</div>
+      <div class="service-card-body" data-en="Content pillars, audience insights, and posting rhythms designed to move the brand forward — not just fill a calendar." data-id="Pilar konten, insight audiens, dan ritme posting yang dirancang untuk menggerakkan brand maju — bukan sekadar mengisi kalender.">Content pillars, audience insights, and posting rhythms designed to move the brand forward — not just fill a calendar.</div>
+      <ul class="service-list">
+        <li data-en="Content Strategy & Pillar Framework" data-id="Strategi Konten & Framework Pilar">Content Strategy & Pillar Framework</li>
+        <li data-en="Audience Research & Persona Mapping" data-id="Riset Audiens & Pemetaan Persona">Audience Research & Persona Mapping</li>
+        <li data-en="Platform-Specific Planning" data-id="Perencanaan Per Platform">Platform-Specific Planning</li>
+        <li data-en="Monthly Editorial Calendar" data-id="Kalender Editorial Bulanan">Monthly Editorial Calendar</li>
+      </ul>
+    </div>
+    <div class="service-card red-border">
+      <div class="service-tag red" data-en="Production" data-id="Produksi">Production</div>
+      <div class="service-card-title" data-en="Made to stop the scroll." data-id="Dibuat untuk menghentikan scroll.">Made to stop the scroll.</div>
+      <div class="service-card-body" data-en="Photo, video, and motion built natively for the platforms they live on — not repurposed from other channels." data-id="Foto, video, dan motion yang dibuat native untuk platform tempatnya hidup — bukan repurpose dari channel lain.">Photo, video, and motion built natively for the platforms they live on — not repurposed from other channels.</div>
+      <ul class="service-list">
+        <li data-en="Copywriting & Caption Writing" data-id="Copywriting & Penulisan Caption">Copywriting & Caption Writing</li>
+        <li data-en="Graphic Design & Motion" data-id="Desain Grafis & Motion">Graphic Design & Motion</li>
+        <li data-en="Reels & Short-Form Video" data-id="Reels & Video Pendek">Reels & Short-Form Video</li>
+        <li data-en="Community Management" data-id="Community Management">Community Management</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  5. HOW WE WORK — CASA Model
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="How We Work" data-id="Cara Kami Bekerja">How We Work</div>
+  <h2 class="section-title" data-en="The CASA Model" data-id="Model CASA">The CASA Model</h2>
+  <p class="section-sub" data-en="A connected system that ties the brand and feeds performance data back into everything else." data-id="Sistem terhubung yang mengikat brand dan mengembalikan data performa ke setiap elemen lainnya.">A connected system that ties the brand and feeds performance data back into everything else.</p>
+  <div class="casa-grid">
+    <div class="casa-card">
+      <div class="casa-ghost-letter">C</div>
+      <div class="casa-index" data-en="Content" data-id="Konten">Content</div>
+      <div class="casa-title" data-en="Content That Earns Attention" data-id="Konten yang Merebut Perhatian">Content That Earns Attention</div>
+      <div class="casa-body" data-en="Content pillars and creative direction built around what your audience actually responds to — not what looks good in a pitch." data-id="Pilar konten dan arahan kreatif yang dibangun berdasarkan apa yang benar-benar direspons audiens Anda — bukan yang terlihat bagus di pitch.">Content pillars and creative direction built around what your audience actually responds to — not what looks good in a pitch.</div>
+    </div>
+    <div class="casa-card">
+      <div class="casa-ghost-letter">A</div>
+      <div class="casa-index" data-en="Analytics" data-id="Analitik">Analytics</div>
+      <div class="casa-title" data-en="Analytics That Drive Decisions" data-id="Analitik yang Menggerakkan Keputusan">Analytics That Drive Decisions</div>
+      <div class="casa-body" data-en="We go beyond impressions — tracking engagement quality, follower growth velocity, and content-to-lead attribution every month." data-id="Kami melampaui impresi — melacak kualitas engagement, kecepatan pertumbuhan follower, dan atribusi konten ke lead setiap bulan.">We go beyond impressions — tracking engagement quality, follower growth velocity, and content-to-lead attribution every month.</div>
+    </div>
+    <div class="casa-card">
+      <div class="casa-ghost-letter">S</div>
+      <div class="casa-index" data-en="Social Ads" data-id="Iklan Sosial">Social Ads</div>
+      <div class="casa-title" data-en="Paid That Amplifies Organic" data-id="Iklan yang Memperkuat Organik">Paid That Amplifies Organic</div>
+      <div class="casa-body" data-en="We pair social ads with your organic content strategy to boost what's already working — at the right time, for the right audience." data-id="Kami menggabungkan iklan sosial dengan strategi organik untuk memperkuat yang sudah berhasil — di waktu yang tepat, untuk audiens yang tepat.">We pair social ads with your organic content strategy to boost what's already working — at the right time, for the right audience.</div>
+    </div>
+    <div class="casa-card">
+      <div class="casa-ghost-letter">A</div>
+      <div class="casa-index" data-en="Activation" data-id="Aktivasi">Activation</div>
+      <div class="casa-title" data-en="Activation Beyond the Feed" data-id="Aktivasi Melampaui Feed">Activation Beyond the Feed</div>
+      <div class="casa-body" data-en="From KOL collaborations to community management, we activate your brand across every touchpoint — not just in the algorithm." data-id="Dari kolaborasi KOL hingga community management, kami mengaktifkan brand Anda di setiap titik sentuh — bukan hanya di algoritma.">From KOL collaborations to community management, we activate your brand across every touchpoint — not just in the algorithm.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  6. WHY IDEOWORKS
+════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="Why IDEOWORKS" data-id="Mengapa IDEOWORKS">Why IDEOWORKS</div>
+  <h2 class="section-title" data-en="Building a presence takes more than filling a content calendar." data-id="Membangun kehadiran butuh lebih dari sekadar mengisi kalender konten.">Building a presence takes more than filling a content calendar.</h2>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-icon">🎯</div>
+      <div class="why-title" data-en="Strategy Before Content" data-id="Strategi Sebelum Konten">Strategy Before Content</div>
+      <div class="why-body" data-en="Every piece of content traces back to audience insights and brand pillars, not a trend chase. We plan before we post." data-id="Setiap konten berakar dari insight audiens dan pilar brand — bukan mengejar tren. Kami merencanakan sebelum memposting.">Every piece of content traces back to audience insights and brand pillars, not a trend chase. We plan before we post.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🏠</div>
+      <div class="why-title" data-en="Made In-House, End to End" data-id="Dikerjakan In-House, Menyeluruh">Made In-House, End to End</div>
+      <div class="why-body" data-en="Strategy, production, and publishing under one roof. No handoffs, no vendor chains — one team that owns the whole thing." data-id="Strategi, produksi, dan publikasi dalam satu atap. Tanpa handoff, tanpa rantai vendor — satu tim yang bertanggung jawab penuh.">Strategy, production, and publishing under one roof. No handoffs, no vendor chains — one team that owns the whole thing.</div>
+    </div>
+    <div class="why-card">
+      <div class="why-icon">🔗</div>
+      <div class="why-title" data-en="Social Doesn't Work Alone" data-id="Sosial Tidak Bekerja Sendiri">Social Doesn't Work Alone</div>
+      <div class="why-body" data-en="The best social strategies are backed by creative, paid media, and data working together. As a 360° agency, we connect every dot." data-id="Strategi sosial terbaik didukung oleh kreatif, media berbayar, dan data yang bekerja bersama. Sebagai agency 360°, kami menghubungkan semuanya.">The best social strategies are backed by creative, paid media, and data working together. As a 360° agency, we connect every dot.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  7. CLIENTS
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="Social Proof" data-id="Bukti Nyata">Social Proof</div>
+  <h2 class="section-title" data-en="Some of the Brands We Grow With" data-id="Brand-brand yang Kami Bantu Tumbuh">Some of the Brands We Grow With</h2>
+  <p class="section-sub" data-en="Because growth doesn't happen in a single campaign." data-id="Karena pertumbuhan tidak terjadi dalam satu kampanye saja.">Because growth doesn't happen in a single campaign.</p>
+  <div class="clients-wrap">
+    <div class="client-chip">Astra</div>
+    <div class="client-chip">UNDP Indonesia</div>
+    <div class="client-chip">KINTO Toyota</div>
+    <div class="client-chip">I Said Mondial</div>
+    <div class="client-chip">Brand Partner A</div>
+    <div class="client-chip">Brand Partner B</div>
+    <div class="client-chip">Brand Partner C</div>
+    <div class="client-chip">Brand Partner D</div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  8. HOW WE MEASURE
+════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="Results" data-id="Hasil">Results</div>
+  <h2 class="section-title" data-en="How We Measure Social Success" data-id="Cara Kami Mengukur Keberhasilan Sosial">How We Measure Social Success</h2>
+  <p class="section-sub" data-en="We set goals before we set content. Then we report on what actually matters." data-id="Kami menetapkan tujuan sebelum membuat konten. Lalu melaporkan apa yang benar-benar penting.">We set goals before we set content. Then we report on what actually matters.</p>
+  <div class="metrics-grid">
+    <div class="metric-item">
+      <div class="metric-icon">📡</div>
+      <div class="metric-name" data-en="Reach & Impressions" data-id="Jangkauan & Impresi">Reach & Impressions</div>
+      <div class="metric-desc" data-en="How many people see your brand and how often" data-id="Berapa banyak orang yang melihat brand Anda">How many people see your brand and how often</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-icon">💬</div>
+      <div class="metric-name" data-en="Engagement Rate" data-id="Tingkat Engagement">Engagement Rate</div>
+      <div class="metric-desc" data-en="Likes, comments, saves, and shares signaling real interest" data-id="Like, komentar, simpan, dan share sebagai tanda minat nyata">Likes, comments, saves, and shares signaling real interest</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-icon">📈</div>
+      <div class="metric-name" data-en="Community Growth" data-id="Pertumbuhan Komunitas">Community Growth</div>
+      <div class="metric-desc" data-en="Follower growth velocity and audience quality over time" data-id="Kecepatan pertumbuhan follower dan kualitas audiens">Follower growth velocity and audience quality over time</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-icon">🔁</div>
+      <div class="metric-name" data-en="Content-to-Lead" data-id="Konten ke Lead">Content-to-Lead</div>
+      <div class="metric-desc" data-en="Social posts attributed to inquiries and conversions" data-id="Post sosial yang menghasilkan pertanyaan dan konversi">Social posts attributed to inquiries and conversions</div>
+    </div>
+    <div class="metric-item">
+      <div class="metric-icon">🏆</div>
+      <div class="metric-name" data-en="Share of Voice" data-id="Share of Voice">Share of Voice</div>
+      <div class="metric-desc" data-en="Your brand presence relative to competitors" data-id="Kehadiran brand Anda dibanding kompetitor">Your brand presence relative to competitors</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  9. GETTING STARTED
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="Getting Started" data-id="Mulai Sekarang">Getting Started</div>
+  <h2 class="section-title" data-en="Getting Started with IDEOWORKS" data-id="Memulai Bersama IDEOWORKS">Getting Started with IDEOWORKS</h2>
+  <p class="section-sub" data-en="No lengthy onboarding. Just a focused process that gets your brand moving." data-id="Tanpa onboarding yang panjang. Hanya proses fokus yang langsung menggerakkan brand Anda.">No lengthy onboarding. Just a focused process that gets your brand moving.</p>
+  <div class="steps-grid">
+    <div class="step-card">
+      <div class="step-number">1</div>
+      <div class="step-title" data-en="Discovery" data-id="Discovery">Discovery</div>
+      <div class="step-body" data-en="We learn your brand, your audience, and your goals. No templates. Just deep listening and an honest assessment of where you actually stand." data-id="Kami mempelajari brand, audiens, dan tujuan Anda. Tanpa template. Hanya mendengar secara mendalam dan penilaian jujur tentang posisi Anda.">We learn your brand, your audience, and your goals. No templates. Just deep listening and an honest assessment of where you actually stand.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">2</div>
+      <div class="step-title" data-en="Strategy" data-id="Strategi">Strategy</div>
+      <div class="step-body" data-en="We build a content strategy tailored to where your brand is and where it needs to go — with clear pillars, platform direction, and measurable goals." data-id="Kami membangun strategi konten sesuai posisi brand Anda saat ini dan ke mana harus pergi — dengan pilar yang jelas, arahan platform, dan target terukur.">We build a content strategy tailored to where your brand is and where it needs to go — with clear pillars, platform direction, and measurable goals.</div>
+    </div>
+    <div class="step-card">
+      <div class="step-number">3</div>
+      <div class="step-title" data-en="Launch & Optimize" data-id="Luncurkan & Optimalkan">Launch & Optimize</div>
+      <div class="step-body" data-en="We publish, measure, and improve every month. Your brand stays present, the strategy stays sharp, and the results keep compounding." data-id="Kami mempublikasikan, mengukur, dan meningkatkan setiap bulan. Brand Anda tetap hadir, strategi tetap tajam, dan hasilnya terus berkembang.">We publish, measure, and improve every month. Your brand stays present, the strategy stays sharp, and the results keep compounding.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  10. FAQs
+════════════════════════════════════════════ -->
+<section class="section section-light">
+  <div class="text-center" style="margin-bottom:48px;">
+    <div class="red-accent"></div>
+    <div class="eyebrow" data-en="FAQ" data-id="FAQ">FAQ</div>
+    <h2 class="section-title" data-en="Social Media Management FAQs" data-id="Pertanyaan Seputar SMM">Social Media Management FAQs</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="How much does social media management cost?" data-id="Berapa biaya social media management?">How much does social media management cost?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Pricing depends on scope — platforms, posting frequency, content production level, and whether ads management is included. We always walk you through a custom proposal in our first discovery call." data-id="Harga bergantung pada cakupan — platform, frekuensi posting, level produksi konten, dan apakah termasuk pengelolaan iklan. Kami selalu memberikan proposal khusus di sesi discovery pertama.">Pricing depends on scope — platforms, posting frequency, content production level, and whether ads management is included. We always walk you through a custom proposal in our first discovery call.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="Which platforms do you manage?" data-id="Platform apa saja yang Anda kelola?">Which platforms do you manage?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Primarily Instagram, TikTok, Facebook, LinkedIn, and X/Twitter. We'll recommend the right platform mix based on your audience — not what's trending." data-id="Terutama Instagram, TikTok, Facebook, LinkedIn, dan X/Twitter. Kami akan merekomendasikan kombinasi platform yang tepat berdasarkan audiens Anda — bukan tren semata.">Primarily Instagram, TikTok, Facebook, LinkedIn, and X/Twitter. We'll recommend the right platform mix based on your audience — not what's trending.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="Do you create the content too?" data-id="Apakah Anda juga membuat kontennya?">Do you create the content too?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Yes — strategy, copywriting, design, video, and community management are all handled in-house. You get a full creative team, not just a scheduler." data-id="Ya — strategi, copywriting, desain, video, dan community management semuanya dikerjakan in-house. Anda mendapatkan tim kreatif penuh, bukan hanya penjadwal konten.">Yes — strategy, copywriting, design, video, and community management are all handled in-house. You get a full creative team, not just a scheduler.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="Do you post in Bahasa Indonesia?" data-id="Apakah Anda posting dalam Bahasa Indonesia?">Do you post in Bahasa Indonesia?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Absolutely. Most of our clients are Indonesian brands, and we're fluent in both formal Bahasa and the casual, gaul register your audience actually uses." data-id="Tentu. Sebagian besar klien kami adalah brand Indonesia, dan kami fasih dalam Bahasa formal maupun bahasa gaul sehari-hari yang benar-benar digunakan audiens Anda.">Absolutely. Most of our clients are Indonesian brands, and we're fluent in both formal Bahasa and the casual, gaul register your audience actually uses.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="How involved does our team need to be?" data-id="Seberapa terlibat tim kami harus ada?">How involved does our team need to be?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="As much or as little as you want. Some clients review every piece of content; others give us a brief and come back for the monthly report. We adapt to your workflow." data-id="Sebanyak atau sesedikit yang Anda inginkan. Beberapa klien me-review setiap konten; yang lain memberikan brief dan kembali untuk laporan bulanan. Kami beradaptasi dengan alur kerja Anda.">As much or as little as you want. Some clients review every piece of content; others give us a brief and come back for the monthly report. We adapt to your workflow.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="Do you work with both local and international brands?" data-id="Apakah Anda bekerja dengan brand lokal dan internasional?">Do you work with both local and international brands?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Yes. Through our SAMA (Strategic Asia Marketing Alliance) membership, we support regional and international brands entering Southeast Asia, while also growing Indonesian brands at home." data-id="Ya. Melalui keanggotaan SAMA (Strategic Asia Marketing Alliance), kami mendukung brand regional dan internasional yang masuk ke Asia Tenggara, sekaligus menumbuhkan brand Indonesia di pasar lokal.">Yes. Through our SAMA (Strategic Asia Marketing Alliance) membership, we support regional and international brands entering Southeast Asia, while also growing Indonesian brands at home.</div>
+      </div>
+    </div>
+    <div class="faq-item">
+      <button class="faq-question" onclick="toggleFaq(this)">
+        <span data-en="How do you measure social performance?" data-id="Bagaimana Anda mengukur performa sosial?">How do you measure social performance?</span>
+        <span class="faq-toggle">+</span>
+      </button>
+      <div class="faq-answer">
+        <div class="faq-answer-inner" data-en="Monthly reports covering reach, engagement rate, follower growth, and content-to-lead attribution. We also benchmark against your competitors so you always know where you stand." data-id="Laporan bulanan mencakup jangkauan, tingkat engagement, pertumbuhan follower, dan atribusi konten ke lead. Kami juga membandingkan dengan kompetitor agar Anda selalu tahu posisi Anda.">Monthly reports covering reach, engagement rate, follower growth, and content-to-lead attribution. We also benchmark against your competitors so you always know where you stand.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  11. PAIR WELL WITH
+════════════════════════════════════════════ -->
+<section class="section">
+  <div class="red-accent"></div>
+  <div class="eyebrow" data-en="Pairs Well With" data-id="Berjalan Baik Bersama">Pairs Well With</div>
+  <h2 class="section-title" data-en="The capabilities this work is most often bought alongside." data-id="Layanan yang paling sering dipakai bersama SMM.">The capabilities this work is most often bought alongside.</h2>
+  <div class="pair-grid">
+    <a href="#" class="pair-card">
+      <div class="pair-tag" data-en="KOL Marketing" data-id="KOL Marketing">KOL Marketing</div>
+      <div class="pair-title" data-en="The right voice changes everything." data-id="Suara yang tepat mengubah segalanya.">The right voice changes everything.</div>
+      <div class="pair-body" data-en="Authentic creator and influencer partnerships that build credibility and deepen community brand connection beyond your own channels." data-id="Kemitraan kreator dan influencer yang autentik untuk membangun kredibilitas dan memperdalam koneksi komunitas melampaui channel Anda sendiri.">Authentic creator and influencer partnerships that build credibility and deepen community brand connection beyond your own channels.</div>
+      <div class="pair-arrow" data-en="Learn more →" data-id="Pelajari lebih →">Learn more →</div>
+    </a>
+    <a href="#" class="pair-card">
+      <div class="pair-tag" data-en="Digital Community" data-id="Komunitas Digital">Digital Community</div>
+      <div class="pair-title" data-en="Connection beyond the algorithm." data-id="Koneksi melampaui algoritma.">Connection beyond the algorithm.</div>
+      <div class="pair-body" data-en="Create dedicated spaces where your most valuable audience connects, participates, and grows alongside your brand over time." data-id="Ciptakan ruang khusus di mana audiens paling berharga Anda terhubung, berpartisipasi, dan tumbuh bersama brand dari waktu ke waktu.">Create dedicated spaces where your most valuable audience connects, participates, and grows alongside your brand over time.</div>
+      <div class="pair-arrow" data-en="Learn more →" data-id="Pelajari lebih →">Learn more →</div>
+    </a>
+    <a href="#" class="pair-card">
+      <div class="pair-tag" data-en="Content Creation" data-id="Pembuatan Konten">Content Creation</div>
+      <div class="pair-title" data-en="Always-on brand presence." data-id="Kehadiran brand yang konsisten.">Always-on brand presence.</div>
+      <div class="pair-body" data-en="Ongoing content creation — photo, video, copy — that keeps your brand present, relevant, and recognizable across every touchpoint." data-id="Pembuatan konten berkelanjutan — foto, video, copy — yang menjaga brand Anda hadir, relevan, dan mudah dikenali di setiap titik sentuh.">Ongoing content creation — photo, video, copy — that keeps your brand present, relevant, and recognizable across every touchpoint.</div>
+      <div class="pair-arrow" data-en="Learn more →" data-id="Pelajari lebih →">Learn more →</div>
+    </a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  12. CTA
+════════════════════════════════════════════ -->
+<section class="cta-section">
+  <h2 class="cta-title" data-en="Let's Build Momentum<br>That Lasts." data-id="Mari Bangun Momentum<br>yang Berkelanjutan.">Let's Build Momentum<br>That Lasts.</h2>
+  <p class="cta-sub" data-en="Through content, conversation, and community designed for long-term growth." data-id="Melalui konten, percakapan, dan komunitas yang dirancang untuk pertumbuhan jangka panjang.">Through content, conversation, and community designed for long-term growth.</p>
+  <div class="cta-actions">
+    <button class="btn-cta" data-en="Get in Touch" data-id="Hubungi Kami">Get in Touch</button>
+    <button class="btn-cta-ghost" data-en="See Our Work" data-id="Lihat Karya Kami">See Our Work</button>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════
+  FOOTER
+════════════════════════════════════════════ -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">IDEO<span>WORKS</span></div>
+      <div class="footer-tagline" data-en="An integrated digital marketing agency providing full-service strategy, creative, media, and digital solutions." data-id="Digital marketing agency terintegrasi yang menyediakan layanan penuh dalam strategi, kreatif, media, dan digital.">An integrated digital marketing agency providing full-service strategy, creative, media, and digital solutions.</div>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Communicate" data-id="Komunikasi">Communicate</div>
+      <ul class="footer-links">
+        <li><a href="#" data-en="Brand Strategy" data-id="Strategi Brand">Brand Strategy</a></li>
+        <li><a href="#" data-en="TV Commercial" data-id="TV Commercial">TV Commercial</a></li>
+        <li><a href="#" data-en="Company Profile" data-id="Profil Perusahaan">Company Profile</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Socialize" data-id="Sosial">Socialize</div>
+      <ul class="footer-links">
+        <li><a href="#">Social Media Marketing</a></li>
+        <li><a href="#" data-en="Digital Community" data-id="Komunitas Digital">Digital Community</a></li>
+        <li><a href="#" data-en="KOL Marketing" data-id="KOL Marketing">KOL Marketing</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-title" data-en="Analyze" data-id="Analisa">Analyze</div>
+      <ul class="footer-links">
+        <li><a href="#" data-en="Listening & Analytics" data-id="Listening & Analitik">Listening & Analytics</a></li>
+        <li><a href="#" data-en="Performance Marketing" data-id="Performance Marketing">Performance Marketing</a></li>
+        <li><a href="#" data-en="Advisory & Consultancy" data-id="Advisory & Konsultansi">Advisory & Consultancy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div>© 2025 IDEOWORKS (PT. CIPTA USAHA BHINAYA) — All rights reserved</div>
+    <div><a href="https://ideoworks.id" style="color:rgba(255,255,255,0.3);text-decoration:none;">ideoworks.id</a></div>
+  </div>
+</footer>
+
+<script>
+  /* ── LANGUAGE TOGGLE ── */
+  function setLang(lang) {
+    document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector(`.lang-btn[onclick="setLang('${lang}')"]`).classList.add('active');
+    document.querySelectorAll('[data-en]').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (val.includes('<')) { el.innerHTML = val; }
+      else { el.textContent = val; }
+    });
+  }
+
+  /* ── FAQ ACCORDION ── */
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.faq-toggle').textContent = '+';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      item.querySelector('.faq-toggle').textContent = '−';
+    }
+  }
+
+  /* ── SCROLL REVEAL ── */
+  if ('IntersectionObserver' in window) {
+    const items = document.querySelectorAll(
+      '.stat-card, .service-card, .casa-card, .why-card, .step-card, .pair-card, .metric-item, .value-col'
+    );
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => {
+            e.target.style.opacity = '1';
+            e.target.style.transform = 'translateY(0)';
+          }, 60 * (e.target.dataset.idx || 0));
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    items.forEach((el, i) => {
+      el.dataset.idx = i % 5;
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(18px)';
+      el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      io.observe(el);
+    });
+  }
+</script>
+</body>
+</html>
