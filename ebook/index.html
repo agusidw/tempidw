@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics>
+<style>
+html,body{margin:0;padding:0}
+body{background:#fff;color:#1d1d1f;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:#0066cc;text-decoration:none}
+a:hover{color:#0055b3;text-decoration:underline}
+input,button,select,textarea{font-family:inherit}
+::selection{background:#ffd9d3}
+</style>
+<script src="./image-slot.js"></script>
+</helmet>
+
+<div style="min-width:1180px">
+
+<header style="position:sticky;top:0;z-index:60;background:rgba(255,255,255,0.72);backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(0,0,0,0.08)">
+<nav style="max-width:1180px;margin:0 auto;padding:0 32px;height:52px;display:flex;align-items:center;gap:40px">
+<div onClick="{{ goIndex }}" style="display:flex;align-items:baseline;gap:2px;cursor:pointer;font-size:17px;font-weight:600;letter-spacing:-0.02em;color:#1d1d1f">IDEOWORKS<span style="color:#e1341f">.</span></div>
+<div style="display:flex;gap:28px;font-size:12px;color:#1d1d1f;opacity:0.85">
+<span style="cursor:pointer"><span style="display:{{ idOn }}">Layanan</span><span style="display:{{ enOn }}">Services</span></span>
+<span style="cursor:pointer"><span style="display:{{ idOn }}">Karya</span><span style="display:{{ enOn }}">Work</span></span>
+<span onClick="{{ goIndex }}" style="cursor:pointer;font-weight:600">Ebook</span>
+<span style="cursor:pointer"><span style="display:{{ idOn }}">Riset</span><span style="display:{{ enOn }}">Research</span></span>
+<span style="cursor:pointer"><span style="display:{{ idOn }}">Tentang</span><span style="display:{{ enOn }}">About</span></span>
+</div>
+<div style="margin-left:auto;display:flex;align-items:center;gap:14px">
+<div style="display:flex;align-items:center;border:1px solid rgba(0,0,0,0.14);border-radius:980px;padding:2px;font-size:11px;font-weight:600;letter-spacing:0.02em">
+<span onClick="{{ setId }}" style="padding:4px 10px;border-radius:980px;cursor:pointer;background:{{ idPillBg }};color:{{ idPillFg }}">ID</span>
+<span onClick="{{ setEn }}" style="padding:4px 10px;border-radius:980px;cursor:pointer;background:{{ enPillBg }};color:{{ enPillFg }}">EN</span>
+</div>
+<span onClick="{{ openForm }}" style="font-size:12px;font-weight:500;color:#fff;background:#1d1d1f;padding:6px 14px;border-radius:980px;cursor:pointer"><span style="display:{{ idOn }}">Hubungi kami</span><span style="display:{{ enOn }}">Contact us</span></span>
+</div>
+</nav>
+</header>
+
+<sc-if value="{{ isIndex }}" hint-placeholder-val="{{ true }}">
+<main>
+
+<section style="max-width:1180px;margin:0 auto;padding:96px 32px 72px;text-align:center">
+<div data-reveal="1" style="font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-bottom:18px"><span style="display:{{ idOn }}">Perpustakaan IDEOWORKS</span><span style="display:{{ enOn }}">The IDEOWORKS Library</span></div>
+<h1 data-reveal="1" style="margin:0 auto;max-width:820px;font-size:76px;line-height:1.04;letter-spacing:-0.028em;font-weight:600;text-wrap:balance"><span style="display:{{ idOn }}">Wawasan yang bisa langsung dipakai.</span><span style="display:{{ enOn }}">Insight you can act on today.</span></h1>
+<p data-reveal="1" style="margin:26px auto 0;max-width:600px;font-size:21px;line-height:1.5;letter-spacing:-0.01em;color:#6e6e73"><span style="display:{{ idOn }}">Riset pasar, strategi digital, dan playbook yang kami pakai untuk klien kami. Gratis, tanpa jargon.</span><span style="display:{{ enOn }}">Market research, digital strategy, and the playbooks we run for our clients. Free, and free of jargon.</span></p>
+<div data-reveal="1" style="display:flex;justify-content:center;gap:26px;margin-top:34px;font-size:17px">
+<span onClick="{{ openDetail }}" style="color:#0066cc;cursor:pointer"><span style="display:{{ idOn }}">Lihat ebook terbaru &rsaquo;</span><span style="display:{{ enOn }}">See the latest ebook &rsaquo;</span></span>
+<a href="#library" style="color:#0066cc"><span style="display:{{ idOn }}">Jelajahi semua &rsaquo;</span><span style="display:{{ enOn }}">Browse all &rsaquo;</span></a>
+</div>
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:0 32px 40px">
+<div data-reveal="1" style="position:relative;border-radius:28px;overflow:hidden;background:#f5f5f7;display:grid;grid-template-columns:1.05fr 0.95fr">
+<div style="padding:72px 64px;display:flex;flex-direction:column;justify-content:center">
+<div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#e1341f;margin-bottom:16px"><span style="display:{{ idOn }}">Baru</span><span style="display:{{ enOn }}">New</span></div>
+<h2 style="margin:0;font-size:44px;line-height:1.09;letter-spacing:-0.022em;font-weight:600;max-width:11em">Indonesia Digital Consumer Report 2026</h2>
+<p style="margin:20px 0 0;font-size:17px;line-height:1.6;color:#6e6e73;max-width:26em"><span style="display:{{ idOn }}">Bagaimana 212 juta pengguna internet Indonesia mencari, membandingkan, dan membeli. Berdasarkan survei 4.800 responden di 12 kota.</span><span style="display:{{ enOn }}">How Indonesia's 212 million internet users search, compare, and buy. Based on a survey of 4,800 respondents across 12 cities.</span></p>
+<div style="display:flex;gap:14px;margin-top:32px;align-items:center">
+<span onClick="{{ openForm }}" style="background:#1d1d1f;color:#fff;font-size:15px;font-weight:500;padding:12px 22px;border-radius:980px;cursor:pointer"><span style="display:{{ idOn }}">Unduh gratis</span><span style="display:{{ enOn }}">Download free</span></span>
+<span onClick="{{ openDetail }}" style="font-size:15px;color:#0066cc;cursor:pointer"><span style="display:{{ idOn }}">Lihat isinya &rsaquo;</span><span style="display:{{ enOn }}">See what's inside &rsaquo;</span></span>
+</div>
+<div style="margin-top:36px;display:flex;gap:34px;font-size:12px;color:#86868b">
+<span>PDF &middot; 68 <span style="display:{{ idOn }}">halaman</span><span style="display:{{ enOn }}">pages</span></span>
+<span>ID / EN</span>
+<span><span style="display:{{ idOn }}">Maret 2026</span><span style="display:{{ enOn }}">March 2026</span></span>
+</div>
+</div>
+<div style="position:relative;min-height:520px;display:flex;align-items:center;justify-content:center;padding:56px 56px 0">
+<div style="width:330px;height:440px;box-shadow:0 30px 60px rgba(0,0,0,0.18);border-radius:6px;overflow:hidden;transform:rotate(-3deg)">
+<image-slot id="ebook-featured" shape="rect" placeholder="Cover: Digital Consumer Report 2026"></image-slot>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:56px 32px 24px;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(0,0,0,0.08);border-radius:18px;overflow:hidden">
+<div data-reveal="1" style="background:#fff;padding:34px 30px;text-align:center">
+<div style="font-size:44px;font-weight:600;letter-spacing:-0.02em">24</div>
+<div style="font-size:13px;color:#6e6e73;margin-top:6px"><span style="display:{{ idOn }}">Ebook &amp; laporan riset</span><span style="display:{{ enOn }}">Ebooks &amp; research reports</span></div>
+</div>
+<div data-reveal="1" style="background:#fff;padding:34px 30px;text-align:center">
+<div style="font-size:44px;font-weight:600;letter-spacing:-0.02em">18.400</div>
+<div style="font-size:13px;color:#6e6e73;margin-top:6px"><span style="display:{{ idOn }}">Unduhan oleh marketer</span><span style="display:{{ enOn }}">Downloads by marketers</span></div>
+</div>
+<div data-reveal="1" style="background:#fff;padding:34px 30px;text-align:center">
+<div style="font-size:44px;font-weight:600;letter-spacing:-0.02em">0</div>
+<div style="font-size:13px;color:#6e6e73;margin-top:6px"><span style="display:{{ idOn }}">Biaya. Semuanya gratis.</span><span style="display:{{ enOn }}">Cost. Every one is free.</span></div>
+</div>
+</section>
+
+<section id="library" style="max-width:1180px;margin:0 auto;padding:64px 32px 24px">
+<div data-reveal="1" style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:32px">
+<h2 style="margin:0;font-size:38px;letter-spacing:-0.022em;font-weight:600"><span style="display:{{ idOn }}">Semua ebook</span><span style="display:{{ enOn }}">All ebooks</span></h2>
+<div style="display:flex;gap:8px;font-size:12px">
+<span style="padding:6px 14px;border-radius:980px;background:#1d1d1f;color:#fff;cursor:pointer"><span style="display:{{ idOn }}">Semua</span><span style="display:{{ enOn }}">All</span></span>
+<span style="padding:6px 14px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;cursor:pointer"><span style="display:{{ idOn }}">Riset</span><span style="display:{{ enOn }}">Research</span></span>
+<span style="padding:6px 14px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;cursor:pointer">Paid Media</span>
+<span style="padding:6px 14px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;cursor:pointer">Social</span>
+<span style="padding:6px 14px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;cursor:pointer">SEO</span>
+<span style="padding:6px 14px;border-radius:980px;background:#f5f5f7;color:#1d1d1f;cursor:pointer">Branding</span>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-1" shape="rect" placeholder="Cover 1"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px"><span style="display:{{ idOn }}">Riset</span><span style="display:{{ enOn }}">Research</span></div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600">Indonesia Digital Consumer Report 2026</h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Perilaku belanja digital 4.800 konsumen di 12 kota.</span><span style="display:{{ enOn }}">Digital buying behaviour of 4,800 consumers in 12 cities.</span></p>
+</div>
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-2" shape="rect" placeholder="Cover 2"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px">Paid Media</div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">Playbook Performance Marketing</span><span style="display:{{ enOn }}">The Performance Marketing Playbook</span></h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Struktur akun, bidding, dan kreatif yang menurunkan CPA.</span><span style="display:{{ enOn }}">Account structure, bidding, and creative that lower CPA.</span></p>
+</div>
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-3" shape="rect" placeholder="Cover 3"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px">Social</div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">Social Commerce di Indonesia</span><span style="display:{{ enOn }}">Social Commerce in Indonesia</span></h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Dari live selling sampai afiliasi: apa yang benar-benar menjual.</span><span style="display:{{ enOn }}">From live selling to affiliates: what actually sells.</span></p>
+</div>
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-4" shape="rect" placeholder="Cover 4"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px">SEO</div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">SEO untuk Brand Lokal</span><span style="display:{{ enOn }}">SEO for Local Brands</span></h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Menang di pencarian saat anggaran iklan terbatas.</span><span style="display:{{ enOn }}">Winning search when the ad budget is tight.</span></p>
+</div>
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-5" shape="rect" placeholder="Cover 5"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px">Branding</div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">Membangun Brand yang Bertahan</span><span style="display:{{ enOn }}">Building a Brand That Lasts</span></h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Positioning, identitas, dan konsistensi selama 12 bulan pertama.</span><span style="display:{{ enOn }}">Positioning, identity, and consistency in the first 12 months.</span></p>
+</div>
+
+<div data-reveal="1" onClick="{{ openDetail }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;padding:40px 40px 0;display:flex;justify-content:center;align-items:flex-end;height:280px;overflow:hidden">
+<div style="width:196px;height:262px;box-shadow:0 18px 34px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden">
+<image-slot id="ebook-6" shape="rect" placeholder="Cover 6"></image-slot>
+</div>
+</div>
+<div style="font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;color:#e1341f;margin-top:18px">Analytics</div>
+<h3 style="margin:8px 0 0;font-size:20px;line-height:1.25;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">Mengukur yang Penting</span><span style="display:{{ enOn }}">Measuring What Matters</span></h3>
+<p style="margin:8px 0 0;font-size:14px;line-height:1.5;color:#6e6e73"><span style="display:{{ idOn }}">Kerangka pengukuran sederhana untuk tim kecil.</span><span style="display:{{ enOn }}">A simple measurement framework for small teams.</span></p>
+</div>
+
+</div>
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:80px 32px 96px">
+<div data-reveal="1" style="background:#f5f5f7;border-radius:28px;padding:64px;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center">
+<div>
+<h2 style="margin:0;font-size:34px;line-height:1.15;letter-spacing:-0.02em;font-weight:600"><span style="display:{{ idOn }}">Satu email sebulan. Riset baru lebih dulu.</span><span style="display:{{ enOn }}">One email a month. New research first.</span></h2>
+<p style="margin:16px 0 0;font-size:16px;line-height:1.6;color:#6e6e73"><span style="display:{{ idOn }}">Kami kirim ebook baru dan temuan riset sebelum dipublikasikan. Berhenti kapan saja.</span><span style="display:{{ enOn }}">We send new ebooks and research findings before they go public. Unsubscribe anytime.</span></p>
+</div>
+<div style="display:flex;gap:10px">
+<input type="email" placeholder="{{ emailPlaceholder }}" style="flex:1;padding:14px 18px;border-radius:12px;border:1px solid rgba(0,0,0,0.16);background:#fff;font-size:15px;outline:none" />
+<button style="background:#1d1d1f;color:#fff;border:none;font-size:15px;font-weight:500;padding:14px 24px;border-radius:12px;cursor:pointer"><span style="display:{{ idOn }}">Daftar</span><span style="display:{{ enOn }}">Sign up</span></button>
+</div>
+</div>
+</section>
+</main>
+</sc-if>
+
+<sc-if value="{{ isDetail }}" hint-placeholder-val="{{ false }}">
+<main>
+<div style="max-width:1180px;margin:0 auto;padding:24px 32px 0;font-size:12px;color:#86868b">
+<span onClick="{{ goIndex }}" style="cursor:pointer;color:#0066cc">Ebook</span> <span style="opacity:0.5">/</span> <span><span style="display:{{ idOn }}">Riset</span><span style="display:{{ enOn }}">Research</span></span>
+</div>
+
+<section style="max-width:1180px;margin:0 auto;padding:32px 32px 0;display:grid;grid-template-columns:0.9fr 1.1fr;gap:72px;align-items:start">
+<div style="position:sticky;top:96px">
+<div style="background:#f5f5f7;border-radius:24px;padding:52px;display:flex;justify-content:center">
+<div style="width:280px;height:374px;box-shadow:0 26px 50px rgba(0,0,0,0.2);border-radius:5px;overflow:hidden">
+<image-slot id="detail-cover" shape="rect" placeholder="Cover ebook (detail)"></image-slot>
+</div>
+</div>
+<div style="display:flex;gap:12px;margin-top:14px">
+<div style="flex:1;height:78px;background:#f5f5f7;border-radius:10px;overflow:hidden"><image-slot id="detail-pg1" shape="rect" placeholder="Preview 1"></image-slot></div>
+<div style="flex:1;height:78px;background:#f5f5f7;border-radius:10px;overflow:hidden"><image-slot id="detail-pg2" shape="rect" placeholder="Preview 2"></image-slot></div>
+<div style="flex:1;height:78px;background:#f5f5f7;border-radius:10px;overflow:hidden"><image-slot id="detail-pg3" shape="rect" placeholder="Preview 3"></image-slot></div>
+</div>
+</div>
+
+<div>
+<div style="font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#e1341f"><span style="display:{{ idOn }}">Laporan riset &middot; 2026</span><span style="display:{{ enOn }}">Research report &middot; 2026</span></div>
+<h1 style="margin:14px 0 0;font-size:52px;line-height:1.06;letter-spacing:-0.025em;font-weight:600">Indonesia Digital Consumer Report 2026</h1>
+<p style="margin:22px 0 0;font-size:19px;line-height:1.55;color:#6e6e73"><span style="display:{{ idOn }}">Selama enam bulan kami mensurvei 4.800 konsumen di 12 kota dan menggabungkannya dengan data belanja media dari 40 kampanye klien. Hasilnya: gambaran jelas tentang bagaimana orang Indonesia menemukan, membandingkan, dan memutuskan pembelian di 2026.</span><span style="display:{{ enOn }}">Over six months we surveyed 4,800 consumers across 12 cities and combined it with media spend data from 40 client campaigns. The result: a clear picture of how Indonesians discover, compare, and decide in 2026.</span></p>
+
+<div style="display:flex;align-items:center;gap:16px;margin-top:34px">
+<span onClick="{{ openForm }}" style="background:#1d1d1f;color:#fff;font-size:16px;font-weight:500;padding:14px 28px;border-radius:980px;cursor:pointer"><span style="display:{{ idOn }}">Unduh gratis</span><span style="display:{{ enOn }}">Download free</span></span>
+<span style="font-size:13px;color:#86868b"><span style="display:{{ idOn }}">PDF 68 halaman &middot; 8,4 MB &middot; tanpa biaya</span><span style="display:{{ enOn }}">68-page PDF &middot; 8.4 MB &middot; no cost</span></span>
+</div>
+
+<div style="margin-top:48px;padding-top:34px;border-top:1px solid rgba(0,0,0,0.1)">
+<h2 style="margin:0 0 22px;font-size:24px;letter-spacing:-0.015em;font-weight:600"><span style="display:{{ idOn }}">Isi di dalamnya</span><span style="display:{{ enOn }}">What's inside</span></h2>
+<div style="display:flex;flex-direction:column;gap:0">
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08)">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">01</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Peta konsumen digital 2026</span><span style="display:{{ enOn }}">The 2026 digital consumer map</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">Enam segmen, dan pemicu belanja masing-masing.</span><span style="display:{{ enOn }}">Six segments, and what triggers each to buy.</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08)">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">02</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Perjalanan pencarian</span><span style="display:{{ enOn }}">The search journey</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">Di mana orang mulai mencari, dan di mana mereka berhenti.</span><span style="display:{{ enOn }}">Where people start looking, and where they stop.</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08)">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">03</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Social commerce vs marketplace</span><span style="display:{{ enOn }}">Social commerce vs marketplace</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">Kategori mana yang pindah, dan seberapa cepat.</span><span style="display:{{ enOn }}">Which categories are shifting, and how fast.</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08)">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">04</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Harga, promo, dan kesabaran</span><span style="display:{{ enOn }}">Price, promos, and patience</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">Berapa lama konsumen menunggu diskon sebelum membeli.</span><span style="display:{{ enOn }}">How long shoppers wait for a discount before buying.</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08)">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">05</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Benchmark media 2026</span><span style="display:{{ enOn }}">2026 media benchmarks</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">CPM, CTR, dan CPA per kategori dari 40 kampanye.</span><span style="display:{{ enOn }}">CPM, CTR, and CPA by category from 40 campaigns.</span></div></div>
+</div>
+<div style="display:grid;grid-template-columns:38px 1fr;gap:18px;padding:16px 0">
+<span style="font-size:13px;color:#86868b;font-variant-numeric:tabular-nums">06</span>
+<div><div style="font-size:16px;font-weight:600"><span style="display:{{ idOn }}">Yang kami lakukan berbeda tahun ini</span><span style="display:{{ enOn }}">What we'd do differently this year</span></div><div style="font-size:14px;color:#6e6e73;margin-top:4px"><span style="display:{{ idOn }}">Sembilan rekomendasi praktis dari tim strategi kami.</span><span style="display:{{ enOn }}">Nine practical recommendations from our strategy team.</span></div></div>
+</div>
+</div>
+</div>
+
+<div style="margin-top:44px;padding:32px;background:#f5f5f7;border-radius:20px">
+<h2 style="margin:0 0 16px;font-size:19px;letter-spacing:-0.012em;font-weight:600"><span style="display:{{ idOn }}">Untuk siapa</span><span style="display:{{ enOn }}">Who it's for</span></h2>
+<div style="display:flex;flex-direction:column;gap:10px;font-size:15px;line-height:1.55;color:#424245">
+<div><span style="display:{{ idOn }}">Marketing lead yang menyusun rencana media tahun depan.</span><span style="display:{{ enOn }}">Marketing leads planning next year's media.</span></div>
+<div><span style="display:{{ idOn }}">Founder yang perlu memahami perilaku pembeli sebelum menaikkan anggaran.</span><span style="display:{{ enOn }}">Founders who need to understand buyer behaviour before scaling spend.</span></div>
+<div><span style="display:{{ idOn }}">Tim brand dan agensi yang mencari data pembanding.</span><span style="display:{{ enOn }}">Brand and agency teams looking for benchmark data.</span></div>
+</div>
+</div>
+
+<div style="margin-top:44px;display:flex;align-items:center;gap:18px;padding-top:28px;border-top:1px solid rgba(0,0,0,0.1)">
+<div style="width:52px;height:52px;border-radius:50%;overflow:hidden;flex:none"><image-slot id="author-photo" shape="circle" placeholder="Foto"></image-slot></div>
+<div>
+<div style="font-size:15px;font-weight:600">Tim Riset IDEOWORKS</div>
+<div style="font-size:13px;color:#6e6e73;margin-top:2px"><span style="display:{{ idOn }}">Disusun bersama tim strategi dan analitik kami di Jakarta.</span><span style="display:{{ enOn }}">Written with our strategy and analytics teams in Jakarta.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="max-width:1180px;margin:0 auto;padding:88px 32px 96px">
+<h2 style="margin:0 0 28px;font-size:30px;letter-spacing:-0.02em;font-weight:600"><span style="display:{{ idOn }}">Baca juga</span><span style="display:{{ enOn }}">Read next</span></h2>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:28px">
+<div onClick="{{ scrollTop }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;height:220px;display:flex;align-items:flex-end;justify-content:center;padding:32px 32px 0;overflow:hidden"><div style="width:150px;height:200px;box-shadow:0 14px 28px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden"><image-slot id="rel-1" shape="rect" placeholder="Cover"></image-slot></div></div>
+<h3 style="margin:16px 0 0;font-size:17px;line-height:1.3;font-weight:600"><span style="display:{{ idOn }}">Playbook Performance Marketing</span><span style="display:{{ enOn }}">The Performance Marketing Playbook</span></h3>
+</div>
+<div onClick="{{ scrollTop }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;height:220px;display:flex;align-items:flex-end;justify-content:center;padding:32px 32px 0;overflow:hidden"><div style="width:150px;height:200px;box-shadow:0 14px 28px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden"><image-slot id="rel-2" shape="rect" placeholder="Cover"></image-slot></div></div>
+<h3 style="margin:16px 0 0;font-size:17px;line-height:1.3;font-weight:600"><span style="display:{{ idOn }}">Social Commerce di Indonesia</span><span style="display:{{ enOn }}">Social Commerce in Indonesia</span></h3>
+</div>
+<div onClick="{{ scrollTop }}" style="cursor:pointer">
+<div style="background:#f5f5f7;border-radius:18px;height:220px;display:flex;align-items:flex-end;justify-content:center;padding:32px 32px 0;overflow:hidden"><div style="width:150px;height:200px;box-shadow:0 14px 28px rgba(0,0,0,0.16);border-radius:4px;overflow:hidden"><image-slot id="rel-3" shape="rect" placeholder="Cover"></image-slot></div></div>
+<h3 style="margin:16px 0 0;font-size:17px;line-height:1.3;font-weight:600"><span style="display:{{ idOn }}">Mengukur yang Penting</span><span style="display:{{ enOn }}">Measuring What Matters</span></h3>
+</div>
+</div>
+</section>
+</main>
+</sc-if>
+
+<footer style="background:#f5f5f7;border-top:1px solid rgba(0,0,0,0.08);padding:44px 0 56px">
+<div style="max-width:1180px;margin:0 auto;padding:0 32px">
+<div style="display:grid;grid-template-columns:repeat(4,1fr);gap:32px;font-size:12px;line-height:2;color:#424245">
+<div>
+<div style="font-weight:600;color:#1d1d1f;margin-bottom:6px"><span style="display:{{ idOn }}">Layanan</span><span style="display:{{ enOn }}">Services</span></div>
+<div>Brand Strategy</div><div>Performance Media</div><div>Content &amp; Social</div><div>Research</div>
+</div>
+<div>
+<div style="font-weight:600;color:#1d1d1f;margin-bottom:6px"><span style="display:{{ idOn }}">Sumber daya</span><span style="display:{{ enOn }}">Resources</span></div>
+<div>Ebook</div><div><span style="display:{{ idOn }}">Laporan riset</span><span style="display:{{ enOn }}">Research reports</span></div><div><span style="display:{{ idOn }}">Studi kasus</span><span style="display:{{ enOn }}">Case studies</span></div><div>Newsletter</div>
+</div>
+<div>
+<div style="font-weight:600;color:#1d1d1f;margin-bottom:6px"><span style="display:{{ idOn }}">Perusahaan</span><span style="display:{{ enOn }}">Company</span></div>
+<div><span style="display:{{ idOn }}">Tentang kami</span><span style="display:{{ enOn }}">About us</span></div><div><span style="display:{{ idOn }}">Karier</span><span style="display:{{ enOn }}">Careers</span></div><div><span style="display:{{ idOn }}">Kontak</span><span style="display:{{ enOn }}">Contact</span></div>
+</div>
+<div>
+<div style="font-weight:600;color:#1d1d1f;margin-bottom:6px">Jakarta</div>
+<div>hello@ideoworks.id</div><div>+62 21 000 0000</div>
+</div>
+</div>
+<div style="margin-top:34px;padding-top:18px;border-top:1px solid rgba(0,0,0,0.1);display:flex;justify-content:space-between;font-size:11px;color:#86868b">
+<span>Copyright &copy; 2026 IDEOWORKS. <span style="display:{{ idOn }}">Seluruh hak cipta dilindungi.</span><span style="display:{{ enOn }}">All rights reserved.</span></span>
+<span style="display:flex;gap:18px"><span><span style="display:{{ idOn }}">Kebijakan Privasi</span><span style="display:{{ enOn }}">Privacy Policy</span></span><span><span style="display:{{ idOn }}">Syarat Penggunaan</span><span style="display:{{ enOn }}">Terms of Use</span></span></span>
+</div>
+</div>
+</footer>
+
+<sc-if value="{{ modalOpen }}" hint-placeholder-val="{{ false }}">
+<div style="position:fixed;inset:0;z-index:100;background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;padding:32px">
+<div style="background:#fff;border-radius:22px;width:920px;max-width:100%;max-height:88vh;overflow:auto;display:grid;grid-template-columns:0.85fr 1.15fr;box-shadow:0 40px 90px rgba(0,0,0,0.3)">
+<div style="background:#f5f5f7;padding:44px 36px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center">
+<div style="width:170px;height:227px;box-shadow:0 20px 38px rgba(0,0,0,0.18);border-radius:4px;overflow:hidden"><image-slot id="modal-cover" shape="rect" placeholder="Cover"></image-slot></div>
+<div style="font-size:15px;font-weight:600;margin-top:22px;line-height:1.3">Indonesia Digital Consumer Report 2026</div>
+<div style="font-size:12px;color:#86868b;margin-top:8px">PDF &middot; 68 <span style="display:{{ idOn }}">halaman</span><span style="display:{{ enOn }}">pages</span> &middot; ID / EN</div>
+</div>
+<div style="padding:44px 44px 40px;position:relative">
+<span onClick="{{ closeForm }}" style="position:absolute;top:18px;right:20px;width:28px;height:28px;border-radius:50%;background:#f0f0f2;color:#6e6e73;display:flex;align-items:center;justify-content:center;font-size:15px;cursor:pointer">&times;</span>
+
+<sc-if value="{{ notDone }}" hint-placeholder-val="{{ true }}">
+<div>
+<h2 style="margin:0;font-size:28px;line-height:1.15;letter-spacing:-0.02em;font-weight:600"><span style="display:{{ idOn }}">Ke mana kami kirim ebook ini?</span><span style="display:{{ enOn }}">Where should we send it?</span></h2>
+<p style="margin:12px 0 26px;font-size:14px;line-height:1.55;color:#6e6e73"><span style="display:{{ idOn }}">Isi sebentar, tautan unduhan langsung terbuka dan salinannya kami kirim ke email kamu.</span><span style="display:{{ enOn }}">Fill this in and the download opens right away, with a copy sent to your inbox.</span></p>
+<div style="display:flex;flex-direction:column;gap:14px">
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div><div style="font-size:12px;font-weight:600;color:#424245;margin-bottom:6px"><span style="display:{{ idOn }}">Nama lengkap</span><span style="display:{{ enOn }}">Full name</span></div><input value="{{ fName }}" onChange="{{ onName }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid rgba(0,0,0,0.18);border-radius:11px;font-size:14px;outline:none" /></div>
+<div><div style="font-size:12px;font-weight:600;color:#424245;margin-bottom:6px"><span style="display:{{ idOn }}">Email kerja</span><span style="display:{{ enOn }}">Work email</span></div><input value="{{ fEmail }}" onChange="{{ onEmail }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid rgba(0,0,0,0.18);border-radius:11px;font-size:14px;outline:none" /></div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+<div><div style="font-size:12px;font-weight:600;color:#424245;margin-bottom:6px"><span style="display:{{ idOn }}">Perusahaan</span><span style="display:{{ enOn }}">Company</span></div><input value="{{ fCompany }}" onChange="{{ onCompany }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid rgba(0,0,0,0.18);border-radius:11px;font-size:14px;outline:none" /></div>
+<div><div style="font-size:12px;font-weight:600;color:#424245;margin-bottom:6px"><span style="display:{{ idOn }}">Jabatan</span><span style="display:{{ enOn }}">Role</span></div><input value="{{ fRole }}" onChange="{{ onRole }}" style="width:100%;box-sizing:border-box;padding:12px 14px;border:1px solid rgba(0,0,0,0.18);border-radius:11px;font-size:14px;outline:none" /></div>
+</div>
+<label style="display:flex;gap:10px;align-items:flex-start;font-size:12px;line-height:1.5;color:#6e6e73;margin-top:4px;cursor:pointer">
+<input type="checkbox" checked="{{ consent }}" onChange="{{ onConsent }}" style="margin-top:2px" />
+<span><span style="display:{{ idOn }}">Saya setuju menerima riset dan ebook baru dari IDEOWORKS. Bisa berhenti kapan saja.</span><span style="display:{{ enOn }}">I agree to receive new research and ebooks from IDEOWORKS. Unsubscribe anytime.</span></span>
+</label>
+<div onClick="{{ submitForm }}" style="margin-top:10px;background:#1d1d1f;color:#fff;text-align:center;font-size:15px;font-weight:500;padding:14px;border-radius:12px;cursor:pointer"><span style="display:{{ idOn }}">Unduh ebook</span><span style="display:{{ enOn }}">Download the ebook</span></div>
+<div style="font-size:11px;color:#86868b;text-align:center"><span style="display:{{ idOn }}">Data kamu aman. Tidak dibagikan ke pihak ketiga.</span><span style="display:{{ enOn }}">Your data stays with us. Never shared with third parties.</span></div>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
+<div style="padding:26px 0">
+<div style="width:46px;height:46px;border-radius:50%;background:#e1341f;color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px">&#10003;</div>
+<h2 style="margin:22px 0 0;font-size:28px;line-height:1.15;letter-spacing:-0.02em;font-weight:600"><span style="display:{{ idOn }}">Siap diunduh.</span><span style="display:{{ enOn }}">Ready to download.</span></h2>
+<p style="margin:12px 0 0;font-size:15px;line-height:1.6;color:#6e6e73"><span style="display:{{ idOn }}">Kami juga mengirim tautannya ke email kamu, jadi bisa dibuka lagi nanti.</span><span style="display:{{ enOn }}">We also emailed you the link, so you can open it again later.</span></p>
+<div style="display:flex;flex-direction:column;gap:10px;margin-top:28px">
+<div style="background:#1d1d1f;color:#fff;text-align:center;font-size:15px;font-weight:500;padding:14px;border-radius:12px;cursor:pointer"><span style="display:{{ idOn }}">Unduh PDF (8,4 MB)</span><span style="display:{{ enOn }}">Download PDF (8.4 MB)</span></div>
+<div onClick="{{ closeForm }}" style="text-align:center;font-size:14px;color:#0066cc;padding:8px;cursor:pointer"><span style="display:{{ idOn }}">Kembali ke perpustakaan</span><span style="display:{{ enOn }}">Back to the library</span></div>
+</div>
+</div>
+</sc-if>
+</div>
+</div>
+</div>
+</sc-if>
+
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;accent&quot;:{&quot;editor&quot;:&quot;color&quot;,&quot;default&quot;:&quot;#e1341f&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;options&quot;:[&quot;#e1341f&quot;,&quot;#0071e3&quot;,&quot;#1d1d1f&quot;,&quot;#0a7d54&quot;],&quot;section&quot;:&quot;Brand&quot;},&quot;disableReveal&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:false,&quot;tsType&quot;:&quot;boolean&quot;,&quot;section&quot;:&quot;Motion&quot;}}">
+class Component extends DCLogic {
+  state = { lang: 'id', view: 'index', modal: false, done: false, consent: true, name: '', email: '', company: '', role: '' };
+
+  componentDidMount() { this.reveal(); }
+  componentDidUpdate() { this.reveal(); }
+
+  reveal() {
+    if (this.props.disableReveal) return;
+    const els = document.querySelectorAll('[data-reveal]:not([data-revealed])');
+    if (!els.length) return;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'none';
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    els.forEach(el => {
+      el.setAttribute('data-revealed', '1');
+      el.style.transition = 'opacity .7s cubic-bezier(.28,.11,.32,1), transform .7s cubic-bezier(.28,.11,.32,1)';
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(22px)';
+      io.observe(el);
+    });
+  }
+
+  go(view) { this.setState({ view }); window.scrollTo(0, 0); }
+
+  renderVals() {
+    const id = this.state.lang === 'id';
+    const accent = this.props.accent ?? '#e1341f';
+    return {
+      idOn: id ? 'inline' : 'none',
+      enOn: id ? 'none' : 'inline',
+      idPillBg: id ? '#1d1d1f' : 'transparent',
+      idPillFg: id ? '#fff' : '#1d1d1f',
+      enPillBg: id ? 'transparent' : '#1d1d1f',
+      enPillFg: id ? '#1d1d1f' : '#fff',
+      accent,
+      emailPlaceholder: id ? 'Alamat email' : 'Email address',
+      isIndex: this.state.view === 'index',
+      isDetail: this.state.view === 'detail',
+      modalOpen: this.state.modal,
+      done: this.state.done,
+      notDone: !this.state.done,
+      consent: this.state.consent,
+      fName: this.state.name, fEmail: this.state.email, fCompany: this.state.company, fRole: this.state.role,
+      onName: e => this.setState({ name: e.target.value }),
+      onEmail: e => this.setState({ email: e.target.value }),
+      onCompany: e => this.setState({ company: e.target.value }),
+      onRole: e => this.setState({ role: e.target.value }),
+      onConsent: e => this.setState({ consent: e.target.checked }),
+      setId: () => this.setState({ lang: 'id' }),
+      setEn: () => this.setState({ lang: 'en' }),
+      goIndex: () => this.go('index'),
+      openDetail: () => this.go('detail'),
+      scrollTop: () => window.scrollTo({ top: 0, behavior: 'smooth' }),
+      openForm: () => this.setState({ modal: true, done: false }),
+      closeForm: () => this.setState({ modal: false }),
+      submitForm: () => this.setState({ done: true })
+    };
+  }
+}
+</script>
+</body>
+</html>
